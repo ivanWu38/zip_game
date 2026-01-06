@@ -53,23 +53,23 @@ extension Color {
             : UIColor(red: 0.85, green: 0.87, blue: 0.90, alpha: 1)
     })
 
-    // Adaptive Text colors
+    // Adaptive Text colors - improved contrast for light mode
     static let zipTextPrimary = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(white: 1.0, alpha: 1.0)
-            : UIColor(red: 0.1, green: 0.1, blue: 0.15, alpha: 1)
+            : UIColor(red: 0.05, green: 0.05, blue: 0.1, alpha: 1)  // Almost black
     })
 
     static let zipTextSecondary = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
-            ? UIColor(white: 1.0, alpha: 0.6)
-            : UIColor(red: 0.4, green: 0.42, blue: 0.48, alpha: 1)
+            ? UIColor(white: 1.0, alpha: 0.7)
+            : UIColor(red: 0.25, green: 0.27, blue: 0.32, alpha: 1)  // Dark gray
     })
 
     static let zipTextTertiary = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
-            ? UIColor(white: 1.0, alpha: 0.4)
-            : UIColor(red: 0.55, green: 0.58, blue: 0.65, alpha: 1)
+            ? UIColor(white: 1.0, alpha: 0.5)
+            : UIColor(red: 0.4, green: 0.42, blue: 0.48, alpha: 1)  // Medium gray
     })
 
     // Tab bar background
@@ -79,11 +79,11 @@ extension Color {
             : UIColor(white: 1.0, alpha: 0.98)
     })
 
-    // Tab icon inactive
+    // Tab icon inactive - darker for light mode
     static let zipTabInactive = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(white: 1.0, alpha: 0.4)
-            : UIColor(red: 0.6, green: 0.62, blue: 0.68, alpha: 1)
+            : UIColor(red: 0.45, green: 0.47, blue: 0.52, alpha: 1)  // Darker gray
     })
 }
 

@@ -15,7 +15,7 @@ struct HomeView: View {
                     .ignoresSafeArea()
 
                 ScrollView(showsIndicators: false) {
-                    VStack(spacing: 28) {
+                    VStack(spacing: 32) {
                         // Logo/Title
                         titleSection
 
@@ -38,7 +38,7 @@ struct HomeView: View {
                         playButton
                     }
                     .padding(.horizontal, 24)
-                    .padding(.top, 20)
+                    .padding(.top, 24)
                     .padding(.bottom, 100) // Extra padding for tab bar
                 }
             }
@@ -57,42 +57,42 @@ struct HomeView: View {
     }
 
     private var titleSection: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 18) {
             // Logo
             ZStack {
                 Circle()
                     .fill(Color.zipPrimary.opacity(0.2))
-                    .frame(width: 100, height: 100)
+                    .frame(width: 120, height: 120)
 
                 Image(systemName: "point.topleft.down.to.point.bottomright.curvepath.fill")
-                    .font(.system(size: 44))
+                    .font(.system(size: 56))
                     .foregroundStyle(Color.zipPrimary)
                     .shadow(color: Color.zipPrimary.opacity(0.5), radius: 10)
             }
 
             // Title
             Text("Zip")
-                .font(.system(size: 42, weight: .bold, design: .rounded))
+                .font(.system(size: 56, weight: .bold, design: .rounded))
                 .foregroundStyle(Color.zipTextPrimary)
 
             // Subtitle
             Text("Draw a path through every cell")
-                .font(.system(size: 16, weight: .medium, design: .rounded))
+                .font(.system(size: 20, weight: .medium, design: .rounded))
                 .foregroundStyle(Color.zipTextSecondary)
         }
-        .padding(.top, 30)
+        .padding(.top, 20)
         .padding(.bottom, 10)
     }
 
     private var modeSelectionSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 16) {
             Text("Game Mode")
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
-            VStack(spacing: 12) {
+            VStack(spacing: 14) {
                 ForEach(GameMode.allCases) { mode in
                     ModeCard(
                         mode: mode,
@@ -109,14 +109,14 @@ struct HomeView: View {
     }
 
     private var difficultySection: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 16) {
             Text("Difficulty")
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
-            HStack(spacing: 12) {
+            HStack(spacing: 14) {
                 ForEach(Difficulty.allCases) { difficulty in
                     DifficultyButton(
                         difficulty: difficulty,
@@ -132,48 +132,48 @@ struct HomeView: View {
     }
 
     private var dailyInfoSection: some View {
-        VStack(spacing: 14) {
+        VStack(spacing: 16) {
             if dailyService.isTodayCompleted {
-                HStack(spacing: 10) {
+                HStack(spacing: 12) {
                     Image(systemName: "checkmark.circle.fill")
-                        .font(.system(size: 20))
+                        .font(.system(size: 28))
                         .foregroundStyle(Color.zipSuccess)
 
                     Text("Completed today!")
-                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .font(.system(size: 20, weight: .semibold, design: .rounded))
                         .foregroundStyle(Color.zipSuccess)
                 }
 
                 if let time = dailyService.todayCompletionTime {
                     Text("Time: \(formatTime(time))")
-                        .font(.system(size: 14, weight: .medium, design: .rounded))
+                        .font(.system(size: 18, weight: .medium, design: .rounded))
                         .foregroundStyle(Color.zipTextSecondary)
                 }
 
-                HStack(spacing: 6) {
+                HStack(spacing: 8) {
                     Image(systemName: "clock")
-                        .font(.system(size: 12))
+                        .font(.system(size: 16))
                     Text("Next puzzle in \(dailyService.timeUntilNextPuzzle)")
-                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .font(.system(size: 17, weight: .medium, design: .rounded))
                 }
                 .foregroundStyle(Color.zipTextTertiary)
             } else {
-                HStack(spacing: 8) {
+                HStack(spacing: 10) {
                     Image(systemName: "calendar")
-                        .font(.system(size: 16))
+                        .font(.system(size: 24))
                     Text("Puzzle #\(dailyService.currentPuzzleNumber)")
-                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .font(.system(size: 20, weight: .semibold, design: .rounded))
                 }
                 .foregroundStyle(Color.zipTextSecondary)
             }
         }
-        .padding(.vertical, 20)
+        .padding(.vertical, 24)
         .frame(maxWidth: .infinity)
         .background(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: 18)
                 .fill(Color.zipCardBackground)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
+                    RoundedRectangle(cornerRadius: 18)
                         .stroke(Color.zipCardBorder, lineWidth: 1)
                 )
         )
@@ -183,17 +183,17 @@ struct HomeView: View {
         Button {
             startGame()
         } label: {
-            HStack(spacing: 10) {
+            HStack(spacing: 12) {
                 Image(systemName: selectedMode == .daily && dailyService.isTodayCompleted ? "arrow.clockwise" : "play.fill")
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 22, weight: .semibold))
                 Text(selectedMode == .daily && dailyService.isTodayCompleted ? "Play Again" : "Play")
-                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .font(.system(size: 22, weight: .bold, design: .rounded))
             }
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 18)
+            .padding(.vertical, 22)
             .background(LinearGradient.zipButtonGradient)
-            .cornerRadius(16)
+            .cornerRadius(18)
             .shadow(color: Color.zipPrimary.opacity(0.4), radius: 15, y: 5)
         }
         .buttonStyle(ScaleButtonStyle())
@@ -232,34 +232,38 @@ struct ModeCard: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 16) {
+            HStack(spacing: 18) {
                 // Icon
                 ZStack {
                     Circle()
                         .fill(isSelected ? Color.zipPrimary : Color.zipCardBackground)
-                        .frame(width: 48, height: 48)
+                        .frame(width: 58, height: 58)
+                        .overlay(
+                            Circle()
+                                .stroke(isSelected ? Color.clear : Color.zipCardBorder, lineWidth: 1)
+                        )
 
                     Image(systemName: mode.iconName)
-                        .font(.system(size: 20, weight: .semibold))
+                        .font(.system(size: 24, weight: .semibold))
                         .foregroundStyle(isSelected ? .white : Color.zipTextSecondary)
                 }
 
                 // Text content
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack(spacing: 8) {
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack(spacing: 10) {
                         Text(mode.rawValue)
-                            .font(.system(size: 17, weight: .semibold, design: .rounded))
+                            .font(.system(size: 21, weight: .semibold, design: .rounded))
                             .foregroundStyle(Color.zipTextPrimary)
 
                         if dailyCompleted {
                             Image(systemName: "checkmark.circle.fill")
-                                .font(.system(size: 14))
+                                .font(.system(size: 18))
                                 .foregroundStyle(Color.zipSuccess)
                         }
                     }
 
                     Text(mode.description)
-                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .font(.system(size: 16, weight: .medium, design: .rounded))
                         .foregroundStyle(Color.zipTextTertiary)
                 }
 
@@ -269,21 +273,21 @@ struct ModeCard: View {
                 ZStack {
                     Circle()
                         .stroke(isSelected ? Color.zipPrimary : Color.zipCardBorder, lineWidth: 2)
-                        .frame(width: 24, height: 24)
+                        .frame(width: 28, height: 28)
 
                     if isSelected {
                         Circle()
                             .fill(Color.zipPrimary)
-                            .frame(width: 14, height: 14)
+                            .frame(width: 18, height: 18)
                     }
                 }
             }
-            .padding(16)
+            .padding(20)
             .background(
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 18)
                     .fill(Color.zipCardBackground)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 16)
+                        RoundedRectangle(cornerRadius: 18)
                             .stroke(isSelected ? Color.zipPrimary.opacity(0.5) : Color.zipCardBorder, lineWidth: 1)
                     )
             )
@@ -299,22 +303,22 @@ struct DifficultyButton: View {
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 6) {
+            VStack(spacing: 8) {
                 Text(difficulty.rawValue)
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .font(.system(size: 19, weight: .semibold, design: .rounded))
                     .foregroundStyle(isSelected ? .white : Color.zipTextSecondary)
 
                 Text("\(difficulty.gridSize)×\(difficulty.gridSize)")
-                    .font(.system(size: 12, weight: .medium, design: .rounded))
+                    .font(.system(size: 16, weight: .medium, design: .rounded))
                     .foregroundStyle(isSelected ? .white.opacity(0.8) : Color.zipTextTertiary)
             }
-            .padding(.vertical, 14)
+            .padding(.vertical, 18)
             .frame(maxWidth: .infinity)
             .background(
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 14)
                     .fill(isSelected ? Color.zipPrimary.opacity(0.3) : Color.zipCardBackground)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 12)
+                        RoundedRectangle(cornerRadius: 14)
                             .stroke(isSelected ? Color.zipPrimary.opacity(0.6) : Color.zipCardBorder, lineWidth: 1)
                     )
             )

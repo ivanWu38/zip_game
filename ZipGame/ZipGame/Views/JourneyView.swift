@@ -59,7 +59,7 @@ struct JourneyView: View {
     private var statisticsSection: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Statistics")
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
@@ -91,7 +91,7 @@ struct JourneyView: View {
     private var bestTimesSection: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Best Times")
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
@@ -109,7 +109,7 @@ struct JourneyView: View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
                 Text("Achievements")
-                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                    .font(.system(size: 16, weight: .semibold, design: .rounded))
                     .foregroundStyle(Color.zipTextTertiary)
                     .textCase(.uppercase)
                     .tracking(1)
@@ -117,7 +117,7 @@ struct JourneyView: View {
                 Spacer()
 
                 Text("\(statsService.achievements.count)/\(statsService.allAchievements.count)")
-                    .font(.system(size: 13, weight: .medium, design: .rounded))
+                    .font(.system(size: 16, weight: .medium, design: .rounded))
                     .foregroundStyle(Color.zipPrimary)
             }
 
@@ -145,28 +145,28 @@ struct StreakCard: View {
         VStack(spacing: 12) {
             // Icon
             ZStack {
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 18)
                     .fill(iconColor.opacity(0.2))
-                    .frame(width: 56, height: 56)
+                    .frame(width: 64, height: 64)
 
                 Image(systemName: icon)
-                    .font(.system(size: 26))
+                    .font(.system(size: 30))
                     .foregroundStyle(iconColor)
             }
 
             // Value
             Text("\(value)")
-                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .font(.system(size: 42, weight: .bold, design: .rounded))
                 .foregroundStyle(Color.zipTextPrimary)
 
             // Label
             Text(value == 1 ? label.replacingOccurrences(of: "streak", with: "day") : label)
-                .font(.system(size: 13, weight: .medium, design: .rounded))
+                .font(.system(size: 16, weight: .medium, design: .rounded))
                 .foregroundStyle(Color.zipTextSecondary)
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 20)
+        .padding(.vertical, 22)
         .background(
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.zipCardBackground)
@@ -187,21 +187,21 @@ struct StatRow: View {
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
-                .font(.system(size: 16))
+                .font(.system(size: 20))
                 .foregroundStyle(Color.zipPrimary)
-                .frame(width: 24)
+                .frame(width: 28)
 
             Text(label)
-                .font(.system(size: 15, weight: .medium, design: .rounded))
+                .font(.system(size: 18, weight: .medium, design: .rounded))
                 .foregroundStyle(Color.zipTextPrimary)
 
             Spacer()
 
             Text(value)
-                .font(.system(size: 15, weight: .semibold, design: .rounded))
+                .font(.system(size: 18, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextPrimary)
         }
-        .padding(.vertical, 12)
+        .padding(.vertical, 14)
     }
 }
 
@@ -212,18 +212,18 @@ struct BestTimeCard: View {
     let color: Color
 
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 10) {
             Text(difficulty)
-                .font(.system(size: 12, weight: .semibold, design: .rounded))
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(color)
 
             Text(time)
-                .font(.system(size: 20, weight: .bold, design: .rounded))
+                .font(.system(size: 24, weight: .bold, design: .rounded))
                 .foregroundStyle(Color.zipTextPrimary)
                 .monospacedDigit()
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 16)
+        .padding(.vertical, 18)
         .background(
             RoundedRectangle(cornerRadius: 14)
                 .fill(Color.zipCardBackground)
@@ -240,26 +240,26 @@ struct AchievementBadge: View {
     let achievement: Achievement
 
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 10) {
             ZStack {
                 Circle()
                     .fill(achievement.isUnlocked ? achievement.color.opacity(0.2) : Color.zipCardBackground)
-                    .frame(width: 50, height: 50)
+                    .frame(width: 56, height: 56)
 
                 Image(systemName: achievement.isUnlocked ? achievement.icon : "lock.fill")
-                    .font(.system(size: 22))
+                    .font(.system(size: 26))
                     .foregroundStyle(achievement.isUnlocked ? achievement.color : Color.zipTextTertiary)
             }
 
             Text(achievement.title)
-                .font(.system(size: 10, weight: .medium, design: .rounded))
+                .font(.system(size: 13, weight: .medium, design: .rounded))
                 .foregroundStyle(achievement.isUnlocked ? Color.zipTextPrimary : Color.zipTextTertiary)
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
-                .frame(height: 28)
+                .frame(height: 36)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 12)
+        .padding(.vertical, 14)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color.zipCardBackground)

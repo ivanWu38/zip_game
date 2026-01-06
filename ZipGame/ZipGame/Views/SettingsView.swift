@@ -58,7 +58,7 @@ struct SettingsView: View {
                     .ignoresSafeArea()
 
                 ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
+                    VStack(spacing: 28) {
                         // System Settings
                         systemSection
 
@@ -69,7 +69,7 @@ struct SettingsView: View {
                         dangerSection
                     }
                     .padding(.horizontal, 20)
-                    .padding(.top, 10)
+                    .padding(.top, 16)
                     .padding(.bottom, 100) // Extra padding for tab bar
                 }
             }
@@ -88,31 +88,31 @@ struct SettingsView: View {
 
     // MARK: - System Section
     private var systemSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 16) {
             Text("System")
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
             VStack(spacing: 0) {
                 // Appearance Mode
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 14) {
+                    HStack(spacing: 14) {
                         Image(systemName: "circle.lefthalf.filled")
-                            .font(.system(size: 18))
+                            .font(.system(size: 22))
                             .foregroundStyle(Color.zipPrimary)
-                            .frame(width: 28)
+                            .frame(width: 32)
 
                         Text("Appearance")
-                            .font(.system(size: 15, weight: .medium, design: .rounded))
+                            .font(.system(size: 19, weight: .medium, design: .rounded))
                             .foregroundStyle(Color.zipTextPrimary)
 
                         Spacer()
                     }
 
                     // Mode Picker
-                    HStack(spacing: 8) {
+                    HStack(spacing: 10) {
                         ForEach(AppearanceMode.allCases, id: \.self) { mode in
                             AppearanceModeButton(
                                 mode: mode,
@@ -125,8 +125,8 @@ struct SettingsView: View {
                         }
                     }
                 }
-                .padding(.vertical, 14)
-                .padding(.horizontal, 16)
+                .padding(.vertical, 16)
+                .padding(.horizontal, 18)
 
                 Divider().background(Color.zipCardBorder)
 
@@ -149,10 +149,10 @@ struct SettingsView: View {
                 )
             }
             .background(
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 18)
                     .fill(Color.zipCardBackground)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 16)
+                        RoundedRectangle(cornerRadius: 18)
                             .stroke(Color.zipCardBorder, lineWidth: 1)
                     )
             )
@@ -161,9 +161,9 @@ struct SettingsView: View {
 
     // MARK: - App Info Section
     private var appInfoSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 16) {
             Text("About")
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
@@ -173,12 +173,12 @@ struct SettingsView: View {
                 Divider().background(Color.zipCardBorder)
                 InfoRow(icon: "hammer.fill", label: "Build", value: "1")
             }
-            .padding(16)
+            .padding(18)
             .background(
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 18)
                     .fill(Color.zipCardBackground)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 16)
+                        RoundedRectangle(cornerRadius: 18)
                             .stroke(Color.zipCardBorder, lineWidth: 1)
                     )
             )
@@ -187,9 +187,9 @@ struct SettingsView: View {
 
     // MARK: - Danger Section
     private var dangerSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 16) {
             Text("Data")
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
@@ -197,34 +197,34 @@ struct SettingsView: View {
             Button(action: {
                 showResetAlert = true
             }) {
-                HStack(spacing: 12) {
+                HStack(spacing: 14) {
                     Image(systemName: "trash.fill")
-                        .font(.system(size: 18))
+                        .font(.system(size: 22))
                         .foregroundStyle(.red)
-                        .frame(width: 28)
+                        .frame(width: 32)
 
-                    VStack(alignment: .leading, spacing: 2) {
+                    VStack(alignment: .leading, spacing: 5) {
                         Text("Reset All Statistics")
-                            .font(.system(size: 15, weight: .medium, design: .rounded))
+                            .font(.system(size: 19, weight: .medium, design: .rounded))
                             .foregroundStyle(.red)
 
                         Text("Clear all progress, streaks, and achievements")
-                            .font(.system(size: 12, weight: .regular, design: .rounded))
+                            .font(.system(size: 15, weight: .regular, design: .rounded))
                             .foregroundStyle(Color.zipTextTertiary)
                     }
 
                     Spacer()
 
                     Image(systemName: "chevron.right")
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: 16, weight: .semibold))
                         .foregroundStyle(Color.zipTextTertiary)
                 }
-                .padding(16)
+                .padding(20)
                 .background(
-                    RoundedRectangle(cornerRadius: 16)
+                    RoundedRectangle(cornerRadius: 18)
                         .fill(Color.zipCardBackground)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16)
+                            RoundedRectangle(cornerRadius: 18)
                                 .stroke(Color.red.opacity(0.3), lineWidth: 1)
                         )
                 )
@@ -241,15 +241,15 @@ struct AppearanceModeButton: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 6) {
+            HStack(spacing: 8) {
                 Image(systemName: mode.icon)
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: 16, weight: .semibold))
                 Text(mode.displayName)
-                    .font(.system(size: 13, weight: .semibold, design: .rounded))
+                    .font(.system(size: 17, weight: .semibold, design: .rounded))
             }
             .foregroundStyle(isSelected ? .white : Color.zipTextSecondary)
-            .padding(.horizontal, 14)
-            .padding(.vertical, 8)
+            .padding(.horizontal, 18)
+            .padding(.vertical, 12)
             .background(
                 Capsule()
                     .fill(isSelected ? Color.zipPrimary : Color.zipCardBackground)
@@ -270,19 +270,19 @@ struct SettingsToggleRow: View {
     @Binding var isOn: Bool
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 14) {
             Image(systemName: icon)
-                .font(.system(size: 18))
+                .font(.system(size: 22))
                 .foregroundStyle(Color.zipPrimary)
-                .frame(width: 28)
+                .frame(width: 32)
 
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(label)
-                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                    .font(.system(size: 19, weight: .medium, design: .rounded))
                     .foregroundStyle(Color.zipTextPrimary)
 
                 Text(description)
-                    .font(.system(size: 12, weight: .regular, design: .rounded))
+                    .font(.system(size: 15, weight: .regular, design: .rounded))
                     .foregroundStyle(Color.zipTextTertiary)
             }
 
@@ -292,8 +292,8 @@ struct SettingsToggleRow: View {
                 .labelsHidden()
                 .tint(Color.zipPrimary)
         }
-        .padding(.vertical, 12)
-        .padding(.horizontal, 16)
+        .padding(.vertical, 16)
+        .padding(.horizontal, 18)
     }
 }
 
@@ -304,23 +304,23 @@ struct InfoRow: View {
     let value: String
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 14) {
             Image(systemName: icon)
-                .font(.system(size: 16))
+                .font(.system(size: 20))
                 .foregroundStyle(Color.zipPrimary)
-                .frame(width: 24)
+                .frame(width: 28)
 
             Text(label)
-                .font(.system(size: 15, weight: .medium, design: .rounded))
+                .font(.system(size: 18, weight: .medium, design: .rounded))
                 .foregroundStyle(Color.zipTextPrimary)
 
             Spacer()
 
             Text(value)
-                .font(.system(size: 15, weight: .regular, design: .rounded))
+                .font(.system(size: 18, weight: .regular, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
         }
-        .padding(.vertical, 10)
+        .padding(.vertical, 14)
     }
 }
 

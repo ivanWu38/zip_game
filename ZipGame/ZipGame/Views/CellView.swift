@@ -95,7 +95,7 @@ struct CellView: View {
         if isInPath {
             return .white
         } else {
-            return Color.white.opacity(0.9)
+            return Color.zipTextPrimary
         }
     }
 }
