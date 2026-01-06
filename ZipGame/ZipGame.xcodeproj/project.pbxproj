@@ -22,6 +22,10 @@
 		A13 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13; };
 		A14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14; };
 		A15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B15; };
+		A16 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16; };
+		A17 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17; };
+		A18 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18; };
+		A19 /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +45,10 @@
 		B13 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		B14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B16 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		B17 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
+		B18 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B19 /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,9 @@
 				B03 /* GameView.swift */,
 				B04 /* GridView.swift */,
 				B05 /* CellView.swift */,
+				B16 /* MainTabView.swift */,
+				B17 /* JourneyView.swift */,
+				B18 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -120,6 +131,7 @@
 			children = (
 				B12 /* DailyPuzzleService.swift */,
 				B13 /* StorageService.swift */,
+				B19 /* StatsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -215,6 +227,10 @@
 				A12 /* DailyPuzzleService.swift in Sources */,
 				A13 /* StorageService.swift in Sources */,
 				A14 /* Extensions.swift in Sources */,
+				A16 /* MainTabView.swift in Sources */,
+				A17 /* JourneyView.swift in Sources */,
+				A18 /* SettingsView.swift in Sources */,
+				A19 /* StatsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

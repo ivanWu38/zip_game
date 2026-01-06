@@ -126,6 +126,15 @@ class GameViewModel: ObservableObject {
         timer = nil
         gameState = .completed(time: elapsedTime)
         triggerHaptic(style: .success)
+
+        // Record stats
+        let isDaily = mode == .daily
+        StatsService.shared.recordCompletion(difficulty: difficulty, time: elapsedTime, isDaily: isDaily)
+
+        // Also update daily puzzle service if daily mode
+        if isDaily {
+            DailyPuzzleService().markCompleted(time: elapsedTime)
+        }
     }
 
     func resetGame() {
@@ -148,6 +157,9 @@ class GameViewModel: ObservableObject {
     // MARK: - Haptics
 
     private func triggerHaptic(style: HapticStyle) {
+        // Check if haptics are enabled
+        guard SettingsService.shared.hapticsEnabled else { return }
+
         let generator: UIImpactFeedbackGenerator
         switch style {
         case .light:
