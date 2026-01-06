@@ -194,7 +194,7 @@ class StatsService: ObservableObject {
 
     // MARK: - Formatted Strings
     func formatTime(_ time: TimeInterval?) -> String {
-        guard let time = time else { return "--:--" }
+        guard let time = time else { return "—" }  // Em-dash for no record
         let minutes = Int(time) / 60
         let seconds = Int(time) % 60
         return String(format: "%d:%02d", minutes, seconds)

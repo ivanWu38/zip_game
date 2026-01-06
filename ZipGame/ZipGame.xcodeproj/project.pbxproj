@@ -27,6 +27,8 @@
 		A18 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18 /* SettingsView.swift */; };
 		A19 /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19 /* StatsService.swift */; };
 		A20 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20 /* PracticeView.swift */; };
+		A21 /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21 /* AdMobManager.swift */; };
+		A22 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = PKG01 /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		B18 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B19 /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
 		B20 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		B21 /* AdMobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
+		B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A22 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				B01 /* ZipGameApp.swift */,
+				B22 /* Info.plist */,
 				D03 /* Models */,
 				D04 /* ViewModels */,
 				D05 /* Views */,
@@ -135,6 +141,7 @@
 				B12 /* DailyPuzzleService.swift */,
 				B13 /* StorageService.swift */,
 				B19 /* StatsService.swift */,
+				B21 /* AdMobManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -163,6 +170,9 @@
 			dependencies = (
 			);
 			name = ZipGame;
+			packageProductDependencies = (
+				PKG01 /* GoogleMobileAds */,
+			);
 			productName = ZipGame;
 			productReference = B00 /* ZipGame.app */;
 			productType = "com.apple.product-type.application";
@@ -191,6 +201,9 @@
 				Base,
 			);
 			mainGroup = D00;
+			packageReferences = (
+				PKG00 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = D02 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -235,6 +248,7 @@
 				A18 /* SettingsView.swift in Sources */,
 				A19 /* StatsService.swift in Sources */,
 				A20 /* PracticeView.swift in Sources */,
+				A21 /* AdMobManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +385,7 @@
 				DEVELOPMENT_TEAM = Q98K2GW9ZQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZipGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -400,6 +415,7 @@
 				DEVELOPMENT_TEAM = Q98K2GW9ZQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZipGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -440,6 +456,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		PKG00 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		PKG01 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG00 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = P01 /* Project object */;
 }

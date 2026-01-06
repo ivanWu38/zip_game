@@ -67,6 +67,9 @@ struct SettingsView: View {
 
                         // Danger Zone
                         dangerSection
+
+                        // Legal
+                        legalSection
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 16)
@@ -229,6 +232,72 @@ struct SettingsView: View {
                         )
                 )
             }
+        }
+    }
+
+    // MARK: - Legal Section
+    private var legalSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Legal")
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                .foregroundStyle(Color.zipTextTertiary)
+                .textCase(.uppercase)
+                .tracking(1)
+
+            VStack(spacing: 0) {
+                // Privacy Policy
+                Link(destination: URL(string: "https://ikuheikure.xyz/apps/ZipGame/")!) {
+                    HStack(spacing: 14) {
+                        Image(systemName: "hand.raised.fill")
+                            .font(.system(size: 20))
+                            .foregroundStyle(Color.zipPrimary)
+                            .frame(width: 28)
+
+                        Text("Privacy Policy")
+                            .font(.system(size: 18, weight: .medium, design: .rounded))
+                            .foregroundStyle(Color.zipTextPrimary)
+
+                        Spacer()
+
+                        Image(systemName: "arrow.up.right")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(Color.zipTextTertiary)
+                    }
+                    .padding(.vertical, 14)
+                }
+
+                Divider().background(Color.zipCardBorder)
+
+                // Terms of Use
+                Link(destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!) {
+                    HStack(spacing: 14) {
+                        Image(systemName: "doc.text.fill")
+                            .font(.system(size: 20))
+                            .foregroundStyle(Color.zipPrimary)
+                            .frame(width: 28)
+
+                        Text("Terms of Use")
+                            .font(.system(size: 18, weight: .medium, design: .rounded))
+                            .foregroundStyle(Color.zipTextPrimary)
+
+                        Spacer()
+
+                        Image(systemName: "arrow.up.right")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(Color.zipTextTertiary)
+                    }
+                    .padding(.vertical, 14)
+                }
+            }
+            .padding(.horizontal, 18)
+            .background(
+                RoundedRectangle(cornerRadius: 18)
+                    .fill(Color.zipCardBackground)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18)
+                            .stroke(Color.zipCardBorder, lineWidth: 1)
+                    )
+            )
         }
     }
 }

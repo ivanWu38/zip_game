@@ -1,4 +1,5 @@
 import SwiftUI
+import GoogleMobileAds
 
 struct MainTabView: View {
     @State private var selectedTab: Tab = .today
@@ -27,6 +28,14 @@ struct MainTabView: View {
             case .settings: return "person.fill"
             }
         }
+
+        // Show ads on these tabs
+        var showAds: Bool {
+            switch self {
+            case .today, .practice, .journey: return true
+            case .settings: return false
+            }
+        }
     }
 
     var body: some View {
@@ -46,8 +55,16 @@ struct MainTabView: View {
                     .tag(Tab.settings)
             }
 
-            // Custom Tab Bar
-            customTabBar
+            // Banner Ad + Custom Tab Bar
+            VStack(spacing: 0) {
+                // Banner Ad (only show on specific tabs)
+                if selectedTab.showAds {
+                    BannerContainerView()
+                }
+
+                // Custom Tab Bar
+                customTabBar
+            }
         }
         .ignoresSafeArea(.keyboard)
         .preferredColorScheme(colorScheme)
