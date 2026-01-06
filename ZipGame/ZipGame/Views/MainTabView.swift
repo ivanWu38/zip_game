@@ -6,13 +6,15 @@ struct MainTabView: View {
 
     enum Tab: String, CaseIterable {
         case today = "Today"
+        case practice = "Practice"
         case journey = "Journey"
         case settings = "My"
 
         var icon: String {
             switch self {
             case .today: return "calendar"
-            case .journey: return "safari"
+            case .practice: return "infinity"
+            case .journey: return "chart.line.uptrend.xyaxis"
             case .settings: return "person"
             }
         }
@@ -20,7 +22,8 @@ struct MainTabView: View {
         var selectedIcon: String {
             switch self {
             case .today: return "calendar"
-            case .journey: return "safari.fill"
+            case .practice: return "infinity"
+            case .journey: return "chart.line.uptrend.xyaxis"
             case .settings: return "person.fill"
             }
         }
@@ -32,6 +35,9 @@ struct MainTabView: View {
             TabView(selection: $selectedTab) {
                 HomeView()
                     .tag(Tab.today)
+
+                PracticeView()
+                    .tag(Tab.practice)
 
                 JourneyView()
                     .tag(Tab.journey)
@@ -61,7 +67,7 @@ struct MainTabView: View {
                 tabButton(for: tab)
             }
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 16)
         .padding(.top, 12)
         .padding(.bottom, 28)
         .background(

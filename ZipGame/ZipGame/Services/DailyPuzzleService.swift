@@ -28,6 +28,29 @@ class DailyPuzzleService: ObservableObject {
         return daysSinceBase(for: Date()) + 1
     }
 
+    /// Daily difficulty varies based on day of week
+    /// Monday-Tuesday: Easy, Wednesday-Thursday: Medium, Friday-Sunday: Hard
+    var todayDifficulty: Difficulty {
+        let calendar = Calendar.current
+        let weekday = calendar.component(.weekday, from: Date())
+        // weekday: 1=Sunday, 2=Monday, 3=Tuesday, 4=Wednesday, 5=Thursday, 6=Friday, 7=Saturday
+        switch weekday {
+        case 2, 3: // Monday, Tuesday
+            return .easy
+        case 4, 5: // Wednesday, Thursday
+            return .medium
+        default: // Friday, Saturday, Sunday
+            return .hard
+        }
+    }
+
+    var todayDifficultyDescription: String {
+        let calendar = Calendar.current
+        let weekday = calendar.component(.weekday, from: Date())
+        let weekdayName = calendar.weekdaySymbols[weekday - 1]
+        return "\(weekdayName) - \(todayDifficulty.displayName)"
+    }
+
     var timeUntilNextPuzzle: String {
         let calendar = Calendar.current
         guard let tomorrow = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: Date())) else {

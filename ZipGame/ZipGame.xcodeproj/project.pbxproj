@@ -26,6 +26,7 @@
 		A17 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17 /* JourneyView.swift */; };
 		A18 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18 /* SettingsView.swift */; };
 		A19 /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19 /* StatsService.swift */; };
+		A20 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20 /* PracticeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		B17 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
 		B18 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B19 /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
+		B20 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				B16 /* MainTabView.swift */,
 				B17 /* JourneyView.swift */,
 				B18 /* SettingsView.swift */,
+				B20 /* PracticeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				A17 /* JourneyView.swift in Sources */,
 				A18 /* SettingsView.swift in Sources */,
 				A19 /* StatsService.swift in Sources */,
+				A20 /* PracticeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
