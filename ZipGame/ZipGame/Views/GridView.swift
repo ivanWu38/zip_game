@@ -38,7 +38,8 @@ struct GridView: View {
                                         isInPath: pathIndex != nil,
                                         isCurrentEnd: position == viewModel.currentPath.last,
                                         pathIndex: pathIndex,
-                                        cellSize: cellSize
+                                        cellSize: cellSize,
+                                        spacing: spacing
                                     )
                                 }
                             }

@@ -53,8 +53,8 @@ class GameViewModel: ObservableObject {
             return
         }
 
-        // Check if position is adjacent and not already in path
-        if position.isAdjacent(to: lastPosition) && !pathSet.contains(position) {
+        // Check if position is adjacent, not blocked by wall, and not already in path
+        if puzzle.canMove(from: lastPosition, to: position) && !pathSet.contains(position) {
             // Check checkpoint order
             if let checkpoint = puzzle.checkpointNumber(at: position) {
                 if checkpoint == nextRequiredCheckpoint {

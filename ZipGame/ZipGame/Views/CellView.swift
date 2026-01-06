@@ -6,6 +6,19 @@ struct CellView: View {
     let isCurrentEnd: Bool
     let pathIndex: Int?
     let cellSize: CGFloat
+    let spacing: CGFloat
+
+    init(cell: Cell, isInPath: Bool, isCurrentEnd: Bool, pathIndex: Int?, cellSize: CGFloat, spacing: CGFloat = 6) {
+        self.cell = cell
+        self.isInPath = isInPath
+        self.isCurrentEnd = isCurrentEnd
+        self.pathIndex = pathIndex
+        self.cellSize = cellSize
+        self.spacing = spacing
+    }
+
+    private let wallThickness: CGFloat = 4
+    private let wallColor = Color.zipTextPrimary
 
     var body: some View {
         ZStack {
@@ -40,11 +53,55 @@ struct CellView: View {
                     .frame(width: cellSize * 0.25, height: cellSize * 0.25)
                     .shadow(color: .white.opacity(0.5), radius: 4)
             }
+
+            // Walls - drawn on edges
+            wallsOverlay
         }
         .frame(width: cellSize, height: cellSize)
         .scaleEffect(isCurrentEnd ? 1.05 : 1.0)
         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isInPath)
         .animation(.spring(response: 0.2, dampingFraction: 0.7), value: isCurrentEnd)
+    }
+
+    // MARK: - Walls Overlay
+    @ViewBuilder
+    private var wallsOverlay: some View {
+        GeometryReader { geo in
+            let walls = cell.walls
+            let extendAmount = spacing / 2 + wallThickness / 2
+
+            // Top wall
+            if walls.top {
+                Rectangle()
+                    .fill(wallColor)
+                    .frame(width: cellSize + extendAmount * 2, height: wallThickness)
+                    .position(x: geo.size.width / 2, y: 0)
+            }
+
+            // Bottom wall
+            if walls.bottom {
+                Rectangle()
+                    .fill(wallColor)
+                    .frame(width: cellSize + extendAmount * 2, height: wallThickness)
+                    .position(x: geo.size.width / 2, y: geo.size.height)
+            }
+
+            // Left wall
+            if walls.left {
+                Rectangle()
+                    .fill(wallColor)
+                    .frame(width: wallThickness, height: cellSize + extendAmount * 2)
+                    .position(x: 0, y: geo.size.height / 2)
+            }
+
+            // Right wall
+            if walls.right {
+                Rectangle()
+                    .fill(wallColor)
+                    .frame(width: wallThickness, height: cellSize + extendAmount * 2)
+                    .position(x: geo.size.width, y: geo.size.height / 2)
+            }
+        }
     }
 
     private var backgroundColor: Color {
@@ -106,25 +163,28 @@ struct CellView: View {
 
         HStack(spacing: 8) {
             CellView(
-                cell: Cell(position: Position(row: 0, col: 0), checkpointNumber: 1),
+                cell: Cell(position: Position(row: 0, col: 0), checkpointNumber: 1, walls: Walls(top: false, right: true, bottom: false, left: false)),
                 isInPath: false,
                 isCurrentEnd: false,
                 pathIndex: nil,
-                cellSize: 60
+                cellSize: 60,
+                spacing: 8
             )
             CellView(
-                cell: Cell(position: Position(row: 0, col: 1), checkpointNumber: nil),
+                cell: Cell(position: Position(row: 0, col: 1), checkpointNumber: nil, walls: Walls(top: true, right: false, bottom: true, left: true)),
                 isInPath: true,
                 isCurrentEnd: false,
                 pathIndex: 1,
-                cellSize: 60
+                cellSize: 60,
+                spacing: 8
             )
             CellView(
-                cell: Cell(position: Position(row: 0, col: 2), checkpointNumber: 2),
+                cell: Cell(position: Position(row: 0, col: 2), checkpointNumber: 2, walls: Walls(top: false, right: false, bottom: true, left: false)),
                 isInPath: true,
                 isCurrentEnd: true,
                 pathIndex: 2,
-                cellSize: 60
+                cellSize: 60,
+                spacing: 8
             )
         }
         .padding()
