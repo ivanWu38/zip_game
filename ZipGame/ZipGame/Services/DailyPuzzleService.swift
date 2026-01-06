@@ -28,18 +28,18 @@ class DailyPuzzleService: ObservableObject {
         return daysSinceBase(for: Date()) + 1
     }
 
-    /// Daily difficulty varies based on day of week
-    /// Monday-Tuesday: Easy, Wednesday-Thursday: Medium, Friday-Sunday: Hard
+    /// Daily difficulty varies based on day of week (like LinkedIn Zip)
+    /// Monday-Tuesday: Easy (6x6), Wednesday-Friday: Medium (7x7), Saturday-Sunday: Hard (8x8)
     var todayDifficulty: Difficulty {
         let calendar = Calendar.current
         let weekday = calendar.component(.weekday, from: Date())
         // weekday: 1=Sunday, 2=Monday, 3=Tuesday, 4=Wednesday, 5=Thursday, 6=Friday, 7=Saturday
         switch weekday {
-        case 2, 3: // Monday, Tuesday
+        case 2, 3: // Monday, Tuesday - Easy (6x6)
             return .easy
-        case 4, 5: // Wednesday, Thursday
+        case 4, 5, 6: // Wednesday, Thursday, Friday - Medium (7x7)
             return .medium
-        default: // Friday, Saturday, Sunday
+        default: // Saturday, Sunday - Hard (8x8)
             return .hard
         }
     }

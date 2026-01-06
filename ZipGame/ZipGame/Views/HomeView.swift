@@ -53,49 +53,51 @@ struct HomeView: View {
         GeometryReader { geometry in
             let cellSize = calculateCellSize(for: geometry.size, puzzleSize: viewModel.puzzle?.size ?? 5)
 
-            VStack(spacing: 16) {
-                // Header
-                dailyHeader
+            ZStack {
+                VStack(spacing: 10) {
+                    // Compact Header
+                    compactDailyHeader
 
-                Spacer()
-
-                // Grid
-                if let puzzle = viewModel.puzzle, let gameVM = viewModel.gameViewModel {
-                    GridView(viewModel: gameVM, cellSize: cellSize)
-                        .frame(height: CGFloat(puzzle.size) * cellSize + CGFloat(puzzle.size - 1) * 6 + 20)
-                } else {
-                    ProgressView()
-                        .scaleEffect(1.5)
-                }
-
-                Spacer()
-
-                // Progress
-                if let gameVM = viewModel.gameViewModel {
-                    progressView(gameVM: gameVM)
-                }
-
-                // Instructions or replay indicator
-                if isReplaying {
-                    HStack(spacing: 8) {
-                        Image(systemName: "arrow.clockwise")
-                            .font(.system(size: 16))
-                        Text("Replay Mode - Stats won't be recorded")
-                            .font(.system(size: 15, weight: .medium, design: .rounded))
+                    // Grid - more vertical space
+                    if let puzzle = viewModel.puzzle, let gameVM = viewModel.gameViewModel {
+                        GridView(viewModel: gameVM, cellSize: cellSize)
+                            .frame(height: CGFloat(puzzle.size) * cellSize + CGFloat(puzzle.size - 1) * 6 + 20)
+                            .padding(.vertical, 8)
+                    } else {
+                        ProgressView()
+                            .scaleEffect(1.5)
                     }
-                    .foregroundStyle(Color.zipTextTertiary)
-                    .padding(.bottom, 10)
-                } else if viewModel.gameViewModel?.gameState == .ready {
-                    instructionsView
-                }
-            }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 10)
-            .padding(.bottom, 80)
 
-            // Completion overlay for game
-            if viewModel.gameState.isCompleted {
-                gameCompletionOverlay
+                    // Compact Progress
+                    if let gameVM = viewModel.gameViewModel {
+                        compactProgressView(gameVM: gameVM)
+                    }
+
+                    // Instructions or replay indicator (compact)
+                    if isReplaying {
+                        HStack(spacing: 6) {
+                            Image(systemName: "arrow.clockwise")
+                                .font(.system(size: 14))
+                            Text("Replay Mode")
+                                .font(.system(size: 14, weight: .medium, design: .rounded))
+                        }
+                        .foregroundStyle(Color.zipTextTertiary)
+                    } else if viewModel.gameViewModel?.gameState == .ready {
+                        compactInstructionsView
+                    }
+
+                    // Ad space placeholder
+                    Spacer()
+                        .frame(height: 60)
+                }
+                .padding(.horizontal, 16)
+                .padding(.top, 8)
+                .padding(.bottom, 90)
+
+                // Completion overlay for game
+                if viewModel.gameState.isCompleted {
+                    gameCompletionOverlay
+                }
             }
         }
     }
@@ -251,72 +253,63 @@ struct HomeView: View {
         }
     }
 
-    // MARK: - Daily Header
-    private var dailyHeader: some View {
-        VStack(spacing: 12) {
+    // MARK: - Compact Daily Header
+    private var compactDailyHeader: some View {
+        HStack {
             // Puzzle info badge
-            HStack(spacing: 8) {
-                Text("Puzzle #\(dailyService.currentPuzzleNumber)")
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
-
+            HStack(spacing: 6) {
+                Text("#\(dailyService.currentPuzzleNumber)")
+                    .font(.system(size: 14, weight: .semibold, design: .rounded))
                 Text("•")
-
-                Text(dailyService.todayDifficulty.displayName)
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                Text(dailyService.todayDifficulty.rawValue)
+                    .font(.system(size: 14, weight: .semibold, design: .rounded))
             }
             .foregroundStyle(Color.zipTextSecondary)
-            .padding(.horizontal, 18)
-            .padding(.vertical, 10)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
             .background(
                 Capsule()
                     .fill(Color.zipCardBackground)
             )
 
-            // Timer
-            if let gameVM = viewModel.gameViewModel {
-                Text(gameVM.formattedTime)
-                    .font(.system(size: 64, weight: .bold, design: .rounded))
-                    .foregroundStyle(Color.zipTextPrimary)
-                    .monospacedDigit()
-                    .shadow(color: Color.zipPrimary.opacity(0.5), radius: 10)
-            }
+            Spacer()
+
+            // Timer - use viewModel.formattedTime for proper updates
+            Text(viewModel.formattedTime)
+                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .foregroundStyle(Color.zipTextPrimary)
+                .monospacedDigit()
         }
-        .padding(.top, 10)
     }
 
-    // MARK: - Progress View
-    private func progressView(gameVM: GameViewModel) -> some View {
-        VStack(spacing: 10) {
+    // MARK: - Compact Progress View
+    private func compactProgressView(gameVM: GameViewModel) -> some View {
+        HStack(spacing: 12) {
+            // Progress text
+            Text("\(gameVM.currentPath.count)/\(gameVM.puzzle.totalCells)")
+                .font(.system(size: 18, weight: .bold, design: .rounded))
+                .foregroundStyle(Color.zipTextPrimary)
+                .monospacedDigit()
+
             // Progress bar
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 6)
+                    RoundedRectangle(cornerRadius: 4)
                         .fill(Color.zipCardBackground)
 
-                    RoundedRectangle(cornerRadius: 6)
+                    RoundedRectangle(cornerRadius: 4)
                         .fill(LinearGradient.zipButtonGradient)
                         .frame(width: geo.size.width * progressPercentage(gameVM: gameVM))
                         .animation(.spring(response: 0.3), value: gameVM.currentPath.count)
                 }
             }
-            .frame(height: 8)
+            .frame(height: 6)
 
-            // Progress text
-            HStack {
-                Text("\(gameVM.currentPath.count)")
-                    .font(.system(size: 22, weight: .bold, design: .rounded))
-                    .foregroundStyle(Color.zipTextPrimary)
-
-                Text("/ \(gameVM.puzzle.totalCells)")
-                    .font(.system(size: 17, weight: .medium, design: .rounded))
-                    .foregroundStyle(Color.zipTextTertiary)
-
-                Spacer()
-
-                Text("\(Int(progressPercentage(gameVM: gameVM) * 100))%")
-                    .font(.system(size: 16, weight: .semibold, design: .rounded))
-                    .foregroundStyle(Color.zipPrimary)
-            }
+            // Percentage
+            Text("\(Int(progressPercentage(gameVM: gameVM) * 100))%")
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                .foregroundStyle(Color.zipPrimary)
+                .frame(width: 45, alignment: .trailing)
         }
     }
 
@@ -325,16 +318,15 @@ struct HomeView: View {
         return CGFloat(gameVM.currentPath.count) / CGFloat(gameVM.puzzle.totalCells)
     }
 
-    // MARK: - Instructions
-    private var instructionsView: some View {
-        HStack(spacing: 10) {
+    // MARK: - Compact Instructions
+    private var compactInstructionsView: some View {
+        HStack(spacing: 6) {
             Image(systemName: "hand.draw")
-                .font(.system(size: 18))
-            Text("Start at 1 and connect numbers in order")
-                .font(.system(size: 17, weight: .medium, design: .rounded))
+                .font(.system(size: 14))
+            Text("Start at 1, connect in order")
+                .font(.system(size: 14, weight: .medium, design: .rounded))
         }
         .foregroundStyle(Color.zipTextTertiary)
-        .padding(.bottom, 10)
     }
 
     // MARK: - Game Completion Overlay
@@ -431,14 +423,15 @@ struct HomeView: View {
         guard size.width > 0, size.height > 0 else { return 50 }
 
         let spacing: CGFloat = 6
-        let padding: CGFloat = 40
+        let padding: CGFloat = 24
         let maxWidth = size.width - padding
-        let maxHeight = size.height * 0.50
+        // More vertical space for grid (55% of available height)
+        let maxHeight = size.height * 0.55
 
         let cellSizeFromWidth = (maxWidth - CGFloat(puzzleSize - 1) * spacing) / CGFloat(puzzleSize)
         let cellSizeFromHeight = (maxHeight - CGFloat(puzzleSize - 1) * spacing) / CGFloat(puzzleSize)
 
-        return max(min(cellSizeFromWidth, cellSizeFromHeight, 65), 20)
+        return max(min(cellSizeFromWidth, cellSizeFromHeight, 75), 30)
     }
 
     private func formatTime(_ time: TimeInterval) -> String {
@@ -454,6 +447,7 @@ class DailyGameViewModel: ObservableObject {
     @Published var puzzle: Puzzle?
     @Published var gameViewModel: GameViewModel?
     @Published var gameState: GameState = .ready
+    @Published var formattedTime: String = "0:00.0"
 
     var completionTime: TimeInterval? {
         if case .completed(let time) = gameViewModel?.gameState {
@@ -462,7 +456,7 @@ class DailyGameViewModel: ObservableObject {
         return nil
     }
 
-    private var cancellable: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
 
     func loadDailyPuzzle(service: DailyPuzzleService) {
         let difficulty = service.todayDifficulty
@@ -474,14 +468,24 @@ class DailyGameViewModel: ObservableObject {
         self.gameViewModel = GameViewModel(puzzle: puzzle, mode: .daily, difficulty: difficulty)
 
         // Observe game state changes
-        cancellable = gameViewModel?.$gameState.sink { [weak self] state in
-            self?.gameState = state
-        }
+        gameViewModel?.$gameState
+            .sink { [weak self] state in
+                self?.gameState = state
+            }
+            .store(in: &cancellables)
+
+        // Observe timer changes to propagate to view
+        gameViewModel?.$elapsedTime
+            .sink { [weak self] _ in
+                self?.formattedTime = self?.gameViewModel?.formattedTime ?? "0:00.0"
+            }
+            .store(in: &cancellables)
     }
 
     func resetForReplay() {
         gameViewModel?.resetGame()
         gameState = .ready
+        formattedTime = "0:00.0"
     }
 }
 

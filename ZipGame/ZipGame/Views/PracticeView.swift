@@ -164,48 +164,49 @@ struct PracticeGameContent: View {
             let cellSize = calculateCellSize(for: geometry.size)
 
             ZStack {
-                VStack(spacing: 16) {
-                    // Timer
+                VStack(spacing: 12) {
+                    // Compact Timer
                     Text(viewModel.formattedTime)
-                        .font(.system(size: 52, weight: .bold, design: .rounded))
+                        .font(.system(size: 36, weight: .bold, design: .rounded))
                         .foregroundStyle(Color.zipTextPrimary)
                         .monospacedDigit()
 
-                    Spacer()
-
-                    // Grid
+                    // Grid - more vertical space
                     GridView(viewModel: viewModel, cellSize: cellSize)
                         .frame(height: CGFloat(viewModel.puzzle.size) * cellSize + CGFloat(viewModel.puzzle.size - 1) * 6 + 20)
+                        .padding(.vertical, 8)
 
-                    Spacer()
-
-                    // Progress
-                    progressView
+                    // Compact Progress + Button row
+                    compactProgressView
 
                     // New Puzzle Button
                     Button {
                         onNewPuzzle()
                     } label: {
-                        HStack(spacing: 10) {
+                        HStack(spacing: 8) {
                             Image(systemName: "arrow.clockwise")
                             Text("New Puzzle")
                         }
-                        .font(.system(size: 18, weight: .semibold, design: .rounded))
+                        .font(.system(size: 16, weight: .semibold, design: .rounded))
                         .foregroundStyle(Color.zipPrimary)
-                        .padding(.vertical, 14)
+                        .padding(.vertical, 12)
                         .frame(maxWidth: .infinity)
                         .background(Color.zipCardBackground)
-                        .cornerRadius(14)
+                        .cornerRadius(12)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 14)
+                            RoundedRectangle(cornerRadius: 12)
                                 .stroke(Color.zipCardBorder, lineWidth: 1)
                         )
                     }
                     .buttonStyle(ScaleButtonStyle())
+
+                    // Ad space placeholder
+                    Spacer()
+                        .frame(height: 60)
                 }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 10)
-                .padding(.bottom, 80)
+                .padding(.horizontal, 16)
+                .padding(.top, 8)
+                .padding(.bottom, 90)
 
                 // Confetti
                 if showConfetti {
@@ -226,38 +227,33 @@ struct PracticeGameContent: View {
         }
     }
 
-    private var progressView: some View {
-        VStack(spacing: 10) {
+    private var compactProgressView: some View {
+        HStack(spacing: 12) {
+            // Progress text
+            Text("\(viewModel.currentPath.count)/\(viewModel.puzzle.totalCells)")
+                .font(.system(size: 18, weight: .bold, design: .rounded))
+                .foregroundStyle(Color.zipTextPrimary)
+                .monospacedDigit()
+
             // Progress bar
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 6)
+                    RoundedRectangle(cornerRadius: 4)
                         .fill(Color.zipCardBackground)
 
-                    RoundedRectangle(cornerRadius: 6)
+                    RoundedRectangle(cornerRadius: 4)
                         .fill(LinearGradient.zipButtonGradient)
                         .frame(width: geo.size.width * progressPercentage)
                         .animation(.spring(response: 0.3), value: viewModel.currentPath.count)
                 }
             }
-            .frame(height: 8)
+            .frame(height: 6)
 
-            // Progress text
-            HStack {
-                Text("\(viewModel.currentPath.count)")
-                    .font(.system(size: 22, weight: .bold, design: .rounded))
-                    .foregroundStyle(Color.zipTextPrimary)
-
-                Text("/ \(viewModel.puzzle.totalCells)")
-                    .font(.system(size: 17, weight: .medium, design: .rounded))
-                    .foregroundStyle(Color.zipTextTertiary)
-
-                Spacer()
-
-                Text("\(Int(progressPercentage * 100))%")
-                    .font(.system(size: 16, weight: .semibold, design: .rounded))
-                    .foregroundStyle(Color.zipPrimary)
-            }
+            // Percentage
+            Text("\(Int(progressPercentage * 100))%")
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                .foregroundStyle(Color.zipPrimary)
+                .frame(width: 45, alignment: .trailing)
         }
     }
 
@@ -335,14 +331,15 @@ struct PracticeGameContent: View {
 
         let puzzleSize = viewModel.puzzle.size
         let spacing: CGFloat = 6
-        let padding: CGFloat = 40
+        let padding: CGFloat = 24
         let maxWidth = size.width - padding
-        let maxHeight = size.height * 0.50
+        // More vertical space for grid (55% of available height)
+        let maxHeight = size.height * 0.55
 
         let cellSizeFromWidth = (maxWidth - CGFloat(puzzleSize - 1) * spacing) / CGFloat(puzzleSize)
         let cellSizeFromHeight = (maxHeight - CGFloat(puzzleSize - 1) * spacing) / CGFloat(puzzleSize)
 
-        return max(min(cellSizeFromWidth, cellSizeFromHeight, 65), 20)
+        return max(min(cellSizeFromWidth, cellSizeFromHeight, 75), 30)
     }
 
     private func formatTime(_ time: TimeInterval) -> String {

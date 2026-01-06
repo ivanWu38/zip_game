@@ -9,25 +9,25 @@ enum Difficulty: String, CaseIterable, Identifiable {
 
     var gridSize: Int {
         switch self {
-        case .easy: return 5
+        case .easy: return 6
         case .medium: return 7
-        case .hard: return 9
+        case .hard: return 8
         }
     }
 
     var checkpointCount: Int {
         switch self {
-        case .easy: return 5
-        case .medium: return 6
-        case .hard: return 7
+        case .easy: return 7
+        case .medium: return 8
+        case .hard: return 9
         }
     }
 
     var displayName: String {
         switch self {
-        case .easy: return "Easy (5×5)"
+        case .easy: return "Easy (6×6)"
         case .medium: return "Medium (7×7)"
-        case .hard: return "Hard (9×9)"
+        case .hard: return "Hard (8×8)"
         }
     }
 }

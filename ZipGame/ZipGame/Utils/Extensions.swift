@@ -11,79 +11,79 @@ extension Color {
     static let zipSuccess = Color(red: 0.3, green: 0.85, blue: 0.5)
     static let zipGold = Color(red: 1.0, green: 0.8, blue: 0.3)
 
-    // Adaptive Background colors
+    // Adaptive Background colors - Light mode uses warm cream tones for eye comfort
     static let zipBackgroundStart = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(red: 0.08, green: 0.08, blue: 0.12, alpha: 1)
-            : UIColor(red: 0.95, green: 0.96, blue: 0.98, alpha: 1)
+            : UIColor(red: 0.96, green: 0.95, blue: 0.93, alpha: 1)  // Warm cream
     })
 
     static let zipBackgroundEnd = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(red: 0.12, green: 0.10, blue: 0.18, alpha: 1)
-            : UIColor(red: 0.90, green: 0.92, blue: 0.96, alpha: 1)
+            : UIColor(red: 0.93, green: 0.91, blue: 0.88, alpha: 1)  // Soft beige
     })
 
-    // Adaptive Cell colors
+    // Adaptive Cell colors - Softer, warmer tones for light mode
     static let zipCellEmpty = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(red: 0.15, green: 0.15, blue: 0.22, alpha: 1)
-            : UIColor(red: 0.92, green: 0.93, blue: 0.96, alpha: 1)
+            : UIColor(red: 0.88, green: 0.87, blue: 0.85, alpha: 1)  // Warm gray
     })
 
     static let zipCellCheckpoint = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(red: 0.2, green: 0.2, blue: 0.3, alpha: 1)
-            : UIColor(red: 0.85, green: 0.87, blue: 0.92, alpha: 1)
+            : UIColor(red: 0.82, green: 0.81, blue: 0.79, alpha: 1)  // Muted stone
     })
 
     static let zipCellPath = Color(red: 0.4, green: 0.5, blue: 1.0)
     static let zipCellCurrent = Color(red: 0.5, green: 0.6, blue: 1.0)
 
-    // Adaptive Card background
+    // Adaptive Card background - Softer white for light mode
     static let zipCardBackground = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(white: 1.0, alpha: 0.06)
-            : UIColor(white: 1.0, alpha: 0.9)
+            : UIColor(red: 0.98, green: 0.97, blue: 0.95, alpha: 0.95)  // Soft ivory
     })
 
     static let zipCardBorder = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(white: 1.0, alpha: 0.08)
-            : UIColor(red: 0.85, green: 0.87, blue: 0.90, alpha: 1)
+            : UIColor(red: 0.82, green: 0.80, blue: 0.78, alpha: 1)  // Warm border
     })
 
-    // Adaptive Text colors - improved contrast for light mode
+    // Adaptive Text colors - Softer black for light mode (less harsh)
     static let zipTextPrimary = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(white: 1.0, alpha: 1.0)
-            : UIColor(red: 0.05, green: 0.05, blue: 0.1, alpha: 1)  // Almost black
+            : UIColor(red: 0.15, green: 0.14, blue: 0.13, alpha: 1)  // Soft black
     })
 
     static let zipTextSecondary = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(white: 1.0, alpha: 0.7)
-            : UIColor(red: 0.25, green: 0.27, blue: 0.32, alpha: 1)  // Dark gray
+            : UIColor(red: 0.35, green: 0.34, blue: 0.32, alpha: 1)  // Warm dark gray
     })
 
     static let zipTextTertiary = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(white: 1.0, alpha: 0.5)
-            : UIColor(red: 0.4, green: 0.42, blue: 0.48, alpha: 1)  // Medium gray
+            : UIColor(red: 0.50, green: 0.48, blue: 0.46, alpha: 1)  // Warm medium gray
     })
 
-    // Tab bar background
+    // Tab bar background - Soft warm white
     static let zipTabBarBackground = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(red: 0.12, green: 0.10, blue: 0.18, alpha: 1)
-            : UIColor(white: 1.0, alpha: 0.98)
+            : UIColor(red: 0.98, green: 0.97, blue: 0.95, alpha: 0.98)  // Warm white
     })
 
-    // Tab icon inactive - darker for light mode
+    // Tab icon inactive - Warmer gray for light mode
     static let zipTabInactive = Color(UIColor { traitCollection in
         traitCollection.userInterfaceStyle == .dark
             ? UIColor(white: 1.0, alpha: 0.4)
-            : UIColor(red: 0.45, green: 0.47, blue: 0.52, alpha: 1)  // Darker gray
+            : UIColor(red: 0.55, green: 0.53, blue: 0.50, alpha: 1)  // Warm gray
     })
 }
 
