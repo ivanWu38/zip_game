@@ -76,6 +76,7 @@ class GameViewModel: ObservableObject {
         currentPath.append(position)
         pathSet.insert(position)
         triggerHaptic(style: .light)
+        SoundManager.shared.playTap()
     }
 
     private func backtrack() {
@@ -126,6 +127,7 @@ class GameViewModel: ObservableObject {
         timer = nil
         gameState = .completed(time: elapsedTime)
         triggerHaptic(style: .success)
+        SoundManager.shared.playSuccess()
 
         // Record stats
         let isDaily = mode == .daily

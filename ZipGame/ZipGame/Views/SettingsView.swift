@@ -75,7 +75,6 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.large)
-            .toolbarColorScheme(.dark, for: .navigationBar)
             .alert("Reset Statistics", isPresented: $showResetAlert) {
                 Button("Cancel", role: .cancel) { }
                 Button("Reset", role: .destructive) {
@@ -92,7 +91,7 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("System")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
@@ -107,7 +106,7 @@ struct SettingsView: View {
 
                         Text("Appearance")
                             .font(.system(size: 15, weight: .medium, design: .rounded))
-                            .foregroundStyle(.white.opacity(0.8))
+                            .foregroundStyle(Color.zipTextPrimary)
 
                         Spacer()
                     }
@@ -129,7 +128,7 @@ struct SettingsView: View {
                 .padding(.vertical, 14)
                 .padding(.horizontal, 16)
 
-                Divider().background(Color.white.opacity(0.1))
+                Divider().background(Color.zipCardBorder)
 
                 // Sound
                 SettingsToggleRow(
@@ -139,7 +138,7 @@ struct SettingsView: View {
                     isOn: $settings.soundEnabled
                 )
 
-                Divider().background(Color.white.opacity(0.1))
+                Divider().background(Color.zipCardBorder)
 
                 // Haptics
                 SettingsToggleRow(
@@ -151,10 +150,10 @@ struct SettingsView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.white.opacity(0.06))
+                    .fill(Color.zipCardBackground)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                            .stroke(Color.zipCardBorder, lineWidth: 1)
                     )
             )
         }
@@ -165,22 +164,22 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("About")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
             VStack(spacing: 0) {
                 InfoRow(icon: "info.circle.fill", label: "Version", value: "1.0.0")
-                Divider().background(Color.white.opacity(0.1))
+                Divider().background(Color.zipCardBorder)
                 InfoRow(icon: "hammer.fill", label: "Build", value: "1")
             }
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.white.opacity(0.06))
+                    .fill(Color.zipCardBackground)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                            .stroke(Color.zipCardBorder, lineWidth: 1)
                     )
             )
         }
@@ -191,7 +190,7 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Data")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
@@ -211,22 +210,22 @@ struct SettingsView: View {
 
                         Text("Clear all progress, streaks, and achievements")
                             .font(.system(size: 12, weight: .regular, design: .rounded))
-                            .foregroundStyle(.white.opacity(0.5))
+                            .foregroundStyle(Color.zipTextTertiary)
                     }
 
                     Spacer()
 
                     Image(systemName: "chevron.right")
                         .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(.white.opacity(0.3))
+                        .foregroundStyle(Color.zipTextTertiary)
                 }
                 .padding(16)
                 .background(
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.white.opacity(0.06))
+                        .fill(Color.zipCardBackground)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.red.opacity(0.2), lineWidth: 1)
+                                .stroke(Color.red.opacity(0.3), lineWidth: 1)
                         )
                 )
             }
@@ -248,12 +247,16 @@ struct AppearanceModeButton: View {
                 Text(mode.displayName)
                     .font(.system(size: 13, weight: .semibold, design: .rounded))
             }
-            .foregroundStyle(isSelected ? .white : .white.opacity(0.5))
+            .foregroundStyle(isSelected ? .white : Color.zipTextSecondary)
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
             .background(
                 Capsule()
-                    .fill(isSelected ? Color.zipPrimary : Color.white.opacity(0.08))
+                    .fill(isSelected ? Color.zipPrimary : Color.zipCardBackground)
+            )
+            .overlay(
+                Capsule()
+                    .stroke(isSelected ? Color.clear : Color.zipCardBorder, lineWidth: 1)
             )
         }
     }
@@ -276,11 +279,11 @@ struct SettingsToggleRow: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(label)
                     .font(.system(size: 15, weight: .medium, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.8))
+                    .foregroundStyle(Color.zipTextPrimary)
 
                 Text(description)
                     .font(.system(size: 12, weight: .regular, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.5))
+                    .foregroundStyle(Color.zipTextTertiary)
             }
 
             Spacer()
@@ -309,13 +312,13 @@ struct InfoRow: View {
 
             Text(label)
                 .font(.system(size: 15, weight: .medium, design: .rounded))
-                .foregroundStyle(.white.opacity(0.8))
+                .foregroundStyle(Color.zipTextPrimary)
 
             Spacer()
 
             Text(value)
                 .font(.system(size: 15, weight: .regular, design: .rounded))
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Color.zipTextTertiary)
         }
         .padding(.vertical, 10)
     }

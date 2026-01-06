@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A01 /* ZipGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01; };
-		A02 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02; };
-		A03 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03; };
-		A04 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04; };
-		A05 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05; };
-		A06 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06; };
-		A07 /* PuzzleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07; };
-		A08 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08; };
-		A09 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09; };
-		A10 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10; };
-		A11 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11; };
-		A12 /* DailyPuzzleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12; };
-		A13 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13; };
-		A14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14; };
-		A15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B15; };
-		A16 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16; };
-		A17 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17; };
-		A18 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18; };
-		A19 /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19; };
+		A01 /* ZipGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01 /* ZipGameApp.swift */; };
+		A02 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02 /* HomeView.swift */; };
+		A03 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03 /* GameView.swift */; };
+		A04 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04 /* GridView.swift */; };
+		A05 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05 /* CellView.swift */; };
+		A06 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06 /* GameViewModel.swift */; };
+		A07 /* PuzzleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07 /* PuzzleGenerator.swift */; };
+		A08 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08 /* Puzzle.swift */; };
+		A09 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09 /* Cell.swift */; };
+		A10 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10 /* Difficulty.swift */; };
+		A11 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11 /* GameState.swift */; };
+		A12 /* DailyPuzzleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12 /* DailyPuzzleService.swift */; };
+		A13 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13 /* StorageService.swift */; };
+		A14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14 /* Extensions.swift */; };
+		A15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B15 /* Assets.xcassets */; };
+		A16 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16 /* MainTabView.swift */; };
+		A17 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17 /* JourneyView.swift */; };
+		A18 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18 /* SettingsView.swift */; };
+		A19 /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19 /* StatsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,7 +149,7 @@
 /* Begin PBXNativeTarget section */
 		E01 /* ZipGame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F01;
+			buildConfigurationList = F01 /* Build configuration list for PBXNativeTarget "ZipGame" */;
 			buildPhases = (
 				E02 /* Sources */,
 				C01 /* Frameworks */,
@@ -179,7 +179,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F02;
+			buildConfigurationList = F02 /* Build configuration list for PBXProject "ZipGame" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -364,6 +364,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = Q98K2GW9ZQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -392,6 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = Q98K2GW9ZQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

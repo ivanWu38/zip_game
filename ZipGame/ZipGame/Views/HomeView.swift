@@ -73,12 +73,12 @@ struct HomeView: View {
             // Title
             Text("Zip")
                 .font(.system(size: 42, weight: .bold, design: .rounded))
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.zipTextPrimary)
 
             // Subtitle
             Text("Draw a path through every cell")
                 .font(.system(size: 16, weight: .medium, design: .rounded))
-                .foregroundStyle(.white.opacity(0.6))
+                .foregroundStyle(Color.zipTextSecondary)
         }
         .padding(.top, 30)
         .padding(.bottom, 10)
@@ -88,7 +88,7 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Game Mode")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
@@ -112,7 +112,7 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Difficulty")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
@@ -147,7 +147,7 @@ struct HomeView: View {
                 if let time = dailyService.todayCompletionTime {
                     Text("Time: \(formatTime(time))")
                         .font(.system(size: 14, weight: .medium, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.6))
+                        .foregroundStyle(Color.zipTextSecondary)
                 }
 
                 HStack(spacing: 6) {
@@ -156,7 +156,7 @@ struct HomeView: View {
                     Text("Next puzzle in \(dailyService.timeUntilNextPuzzle)")
                         .font(.system(size: 13, weight: .medium, design: .rounded))
                 }
-                .foregroundStyle(.white.opacity(0.4))
+                .foregroundStyle(Color.zipTextTertiary)
             } else {
                 HStack(spacing: 8) {
                     Image(systemName: "calendar")
@@ -164,17 +164,17 @@ struct HomeView: View {
                     Text("Puzzle #\(dailyService.currentPuzzleNumber)")
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
                 }
-                .foregroundStyle(.white.opacity(0.6))
+                .foregroundStyle(Color.zipTextSecondary)
             }
         }
         .padding(.vertical, 20)
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white.opacity(0.05))
+                .fill(Color.zipCardBackground)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                        .stroke(Color.zipCardBorder, lineWidth: 1)
                 )
         )
     }
@@ -236,12 +236,12 @@ struct ModeCard: View {
                 // Icon
                 ZStack {
                     Circle()
-                        .fill(isSelected ? Color.zipPrimary : Color.white.opacity(0.1))
+                        .fill(isSelected ? Color.zipPrimary : Color.zipCardBackground)
                         .frame(width: 48, height: 48)
 
                     Image(systemName: mode.iconName)
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundStyle(isSelected ? .white : .white.opacity(0.6))
+                        .foregroundStyle(isSelected ? .white : Color.zipTextSecondary)
                 }
 
                 // Text content
@@ -249,7 +249,7 @@ struct ModeCard: View {
                     HStack(spacing: 8) {
                         Text(mode.rawValue)
                             .font(.system(size: 17, weight: .semibold, design: .rounded))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.zipTextPrimary)
 
                         if dailyCompleted {
                             Image(systemName: "checkmark.circle.fill")
@@ -260,7 +260,7 @@ struct ModeCard: View {
 
                     Text(mode.description)
                         .font(.system(size: 13, weight: .medium, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.5))
+                        .foregroundStyle(Color.zipTextTertiary)
                 }
 
                 Spacer()
@@ -268,7 +268,7 @@ struct ModeCard: View {
                 // Selection indicator
                 ZStack {
                     Circle()
-                        .stroke(isSelected ? Color.zipPrimary : Color.white.opacity(0.2), lineWidth: 2)
+                        .stroke(isSelected ? Color.zipPrimary : Color.zipCardBorder, lineWidth: 2)
                         .frame(width: 24, height: 24)
 
                     if isSelected {
@@ -281,10 +281,10 @@ struct ModeCard: View {
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(isSelected ? Color.white.opacity(0.08) : Color.white.opacity(0.04))
+                    .fill(Color.zipCardBackground)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(isSelected ? Color.zipPrimary.opacity(0.5) : Color.white.opacity(0.06), lineWidth: 1)
+                            .stroke(isSelected ? Color.zipPrimary.opacity(0.5) : Color.zipCardBorder, lineWidth: 1)
                     )
             )
         }
@@ -302,20 +302,20 @@ struct DifficultyButton: View {
             VStack(spacing: 6) {
                 Text(difficulty.rawValue)
                     .font(.system(size: 15, weight: .semibold, design: .rounded))
-                    .foregroundStyle(isSelected ? .white : .white.opacity(0.7))
+                    .foregroundStyle(isSelected ? .white : Color.zipTextSecondary)
 
                 Text("\(difficulty.gridSize)×\(difficulty.gridSize)")
                     .font(.system(size: 12, weight: .medium, design: .rounded))
-                    .foregroundStyle(isSelected ? .white.opacity(0.8) : .white.opacity(0.4))
+                    .foregroundStyle(isSelected ? .white.opacity(0.8) : Color.zipTextTertiary)
             }
             .padding(.vertical, 14)
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? Color.zipPrimary.opacity(0.3) : Color.white.opacity(0.05))
+                    .fill(isSelected ? Color.zipPrimary.opacity(0.3) : Color.zipCardBackground)
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
-                            .stroke(isSelected ? Color.zipPrimary.opacity(0.6) : Color.white.opacity(0.08), lineWidth: 1)
+                            .stroke(isSelected ? Color.zipPrimary.opacity(0.6) : Color.zipCardBorder, lineWidth: 1)
                     )
             )
         }

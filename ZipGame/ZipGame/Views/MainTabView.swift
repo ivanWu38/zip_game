@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @State private var selectedTab: Tab = .today
+    @ObservedObject private var settings = SettingsService.shared
 
     enum Tab: String, CaseIterable {
         case today = "Today"
@@ -43,6 +44,15 @@ struct MainTabView: View {
             customTabBar
         }
         .ignoresSafeArea(.keyboard)
+        .preferredColorScheme(colorScheme)
+    }
+
+    private var colorScheme: ColorScheme? {
+        switch settings.appearanceMode {
+        case .light: return .light
+        case .dark: return .dark
+        case .auto: return nil
+        }
     }
 
     private var customTabBar: some View {
@@ -56,8 +66,8 @@ struct MainTabView: View {
         .padding(.bottom, 28)
         .background(
             Rectangle()
-                .fill(Color.zipBackgroundEnd)
-                .shadow(color: .black.opacity(0.3), radius: 20, y: -5)
+                .fill(Color.zipTabBarBackground)
+                .shadow(color: .black.opacity(0.15), radius: 20, y: -5)
                 .ignoresSafeArea()
         )
     }
@@ -71,11 +81,11 @@ struct MainTabView: View {
             VStack(spacing: 4) {
                 Image(systemName: selectedTab == tab ? tab.selectedIcon : tab.icon)
                     .font(.system(size: 22, weight: selectedTab == tab ? .semibold : .regular))
-                    .foregroundStyle(selectedTab == tab ? Color.zipPrimary : .white.opacity(0.4))
+                    .foregroundStyle(selectedTab == tab ? Color.zipPrimary : Color.zipTabInactive)
 
                 Text(tab.rawValue)
                     .font(.system(size: 11, weight: .medium, design: .rounded))
-                    .foregroundStyle(selectedTab == tab ? Color.zipPrimary : .white.opacity(0.4))
+                    .foregroundStyle(selectedTab == tab ? Color.zipPrimary : Color.zipTabInactive)
             }
             .frame(maxWidth: .infinity)
         }

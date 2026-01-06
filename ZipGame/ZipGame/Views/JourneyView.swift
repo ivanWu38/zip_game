@@ -31,7 +31,6 @@ struct JourneyView: View {
             }
             .navigationTitle("Journey")
             .navigationBarTitleDisplayMode(.large)
-            .toolbarColorScheme(.dark, for: .navigationBar)
         }
     }
 
@@ -61,28 +60,28 @@ struct JourneyView: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Statistics")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
             VStack(spacing: 0) {
                 StatRow(icon: "checkmark.circle.fill", label: "Total Completed", value: "\(statsService.totalPuzzlesCompleted)")
-                Divider().background(Color.white.opacity(0.1))
+                Divider().background(Color.zipCardBorder)
                 StatRow(icon: "clock.fill", label: "Total Play Time", value: statsService.formatTotalTime())
-                Divider().background(Color.white.opacity(0.1))
+                Divider().background(Color.zipCardBorder)
                 StatRow(icon: "square.grid.3x3.fill", label: "Easy Completed", value: "\(statsService.completedEasy)")
-                Divider().background(Color.white.opacity(0.1))
+                Divider().background(Color.zipCardBorder)
                 StatRow(icon: "square.grid.3x3.fill", label: "Medium Completed", value: "\(statsService.completedMedium)")
-                Divider().background(Color.white.opacity(0.1))
+                Divider().background(Color.zipCardBorder)
                 StatRow(icon: "square.grid.3x3.fill", label: "Hard Completed", value: "\(statsService.completedHard)")
             }
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.white.opacity(0.06))
+                    .fill(Color.zipCardBackground)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                            .stroke(Color.zipCardBorder, lineWidth: 1)
                     )
             )
         }
@@ -93,7 +92,7 @@ struct JourneyView: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Best Times")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
@@ -111,7 +110,7 @@ struct JourneyView: View {
             HStack {
                 Text("Achievements")
                     .font(.system(size: 14, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.5))
+                    .foregroundStyle(Color.zipTextTertiary)
                     .textCase(.uppercase)
                     .tracking(1)
 
@@ -158,22 +157,22 @@ struct StreakCard: View {
             // Value
             Text("\(value)")
                 .font(.system(size: 32, weight: .bold, design: .rounded))
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.zipTextPrimary)
 
             // Label
             Text(value == 1 ? label.replacingOccurrences(of: "streak", with: "day") : label)
                 .font(.system(size: 13, weight: .medium, design: .rounded))
-                .foregroundStyle(.white.opacity(0.6))
+                .foregroundStyle(Color.zipTextSecondary)
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 20)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white.opacity(0.06))
+                .fill(Color.zipCardBackground)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                        .stroke(Color.zipCardBorder, lineWidth: 1)
                 )
         )
     }
@@ -194,13 +193,13 @@ struct StatRow: View {
 
             Text(label)
                 .font(.system(size: 15, weight: .medium, design: .rounded))
-                .foregroundStyle(.white.opacity(0.8))
+                .foregroundStyle(Color.zipTextPrimary)
 
             Spacer()
 
             Text(value)
                 .font(.system(size: 15, weight: .semibold, design: .rounded))
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.zipTextPrimary)
         }
         .padding(.vertical, 12)
     }
@@ -220,14 +219,14 @@ struct BestTimeCard: View {
 
             Text(time)
                 .font(.system(size: 20, weight: .bold, design: .rounded))
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.zipTextPrimary)
                 .monospacedDigit()
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 16)
         .background(
             RoundedRectangle(cornerRadius: 14)
-                .fill(Color.white.opacity(0.06))
+                .fill(Color.zipCardBackground)
                 .overlay(
                     RoundedRectangle(cornerRadius: 14)
                         .stroke(color.opacity(0.3), lineWidth: 1)
@@ -244,17 +243,17 @@ struct AchievementBadge: View {
         VStack(spacing: 8) {
             ZStack {
                 Circle()
-                    .fill(achievement.isUnlocked ? achievement.color.opacity(0.2) : Color.white.opacity(0.05))
+                    .fill(achievement.isUnlocked ? achievement.color.opacity(0.2) : Color.zipCardBackground)
                     .frame(width: 50, height: 50)
 
                 Image(systemName: achievement.isUnlocked ? achievement.icon : "lock.fill")
                     .font(.system(size: 22))
-                    .foregroundStyle(achievement.isUnlocked ? achievement.color : .white.opacity(0.3))
+                    .foregroundStyle(achievement.isUnlocked ? achievement.color : Color.zipTextTertiary)
             }
 
             Text(achievement.title)
                 .font(.system(size: 10, weight: .medium, design: .rounded))
-                .foregroundStyle(achievement.isUnlocked ? .white.opacity(0.8) : .white.opacity(0.4))
+                .foregroundStyle(achievement.isUnlocked ? Color.zipTextPrimary : Color.zipTextTertiary)
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
                 .frame(height: 28)
@@ -263,7 +262,11 @@ struct AchievementBadge: View {
         .padding(.vertical, 12)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color.white.opacity(achievement.isUnlocked ? 0.06 : 0.03))
+                .fill(Color.zipCardBackground)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.zipCardBorder, lineWidth: 1)
+                )
         )
     }
 }
