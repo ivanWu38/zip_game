@@ -67,11 +67,18 @@ class PuzzleGenerator {
         var visited = Array(repeating: Array(repeating: false, count: size), count: size)
         var path: [Position] = []
         let totalCells = size * size
+        var iterations = 0
+        let maxIterations = 10000  // Limit to prevent long searches
 
-        // Start from a random position
-        let startRow = randomInt(in: 0..<size)
-        let startCol = randomInt(in: 0..<size)
-        let start = Position(row: startRow, col: startCol)
+        // Start from a corner for more reliable path finding
+        let corners = [
+            Position(row: 0, col: 0),
+            Position(row: 0, col: size - 1),
+            Position(row: size - 1, col: 0),
+            Position(row: size - 1, col: size - 1)
+        ]
+        let startIndex = randomInt(in: 0..<corners.count)
+        let start = corners[startIndex]
 
         func getNeighbors(_ pos: Position) -> [Position] {
             let directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
@@ -94,6 +101,11 @@ class PuzzleGenerator {
         }
 
         func dfs(_ current: Position) -> Bool {
+            iterations += 1
+            if iterations > maxIterations {
+                return false  // Give up and use fallback
+            }
+
             visited[current.row][current.col] = true
             path.append(current)
 
@@ -104,11 +116,6 @@ class PuzzleGenerator {
             // Get neighbors and sort by Warnsdorff's heuristic (fewer moves first)
             var neighbors = getNeighbors(current)
             neighbors.sort { countMoves(from: $0) < countMoves(from: $1) }
-
-            // Add some randomness while mostly following heuristic
-            if neighbors.count > 1 && randomBool() {
-                shuffleArray(&neighbors)
-            }
 
             for neighbor in neighbors {
                 if dfs(neighbor) {
@@ -124,14 +131,6 @@ class PuzzleGenerator {
 
         // Try to find a Hamiltonian path
         if dfs(start) {
-            return path
-        }
-
-        // If failed from random start, try from corner (more likely to succeed)
-        visited = Array(repeating: Array(repeating: false, count: size), count: size)
-        path = []
-        let corner = Position(row: 0, col: 0)
-        if dfs(corner) {
             return path
         }
 
