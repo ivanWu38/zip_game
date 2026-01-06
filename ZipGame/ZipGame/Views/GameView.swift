@@ -3,149 +3,254 @@ import SwiftUI
 struct GameView: View {
     @StateObject var viewModel: GameViewModel
     @Environment(\.dismiss) private var dismiss
+    @State private var showConfetti = false
 
     var body: some View {
         GeometryReader { geometry in
             let cellSize = calculateCellSize(for: geometry.size)
 
-            VStack(spacing: 20) {
-                // Header
-                headerView
+            ZStack {
+                // Background gradient
+                LinearGradient.zipBackground
+                    .ignoresSafeArea()
 
-                Spacer()
+                VStack(spacing: 16) {
+                    // Header
+                    headerView
 
-                // Grid
-                GridView(viewModel: viewModel, cellSize: cellSize)
-                    .frame(height: CGFloat(viewModel.puzzle.size) * cellSize + CGFloat(viewModel.puzzle.size - 1) * 4 + 40)
+                    Spacer()
 
-                Spacer()
+                    // Grid
+                    GridView(viewModel: viewModel, cellSize: cellSize)
+                        .frame(height: CGFloat(viewModel.puzzle.size) * cellSize + CGFloat(viewModel.puzzle.size - 1) * 6 + 20)
 
-                // Controls
-                controlsView
-            }
-            .padding()
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Reset") {
-                    viewModel.resetGame()
+                    Spacer()
+
+                    // Progress bar
+                    progressView
+
+                    // Instructions
+                    instructionsView
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+
+                // Confetti overlay
+                if showConfetti {
+                    ConfettiView()
+                        .ignoresSafeArea()
+                }
+
+                // Completion overlay
+                if viewModel.gameState.isCompleted {
+                    completionOverlay
                 }
             }
         }
-        .overlay {
-            if viewModel.gameState.isCompleted {
-                completionOverlay
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action: {
+            viewModel.resetGame()
+        }) {
+            Text("Reset")
+                .font(.system(size: 16, weight: .medium, design: .rounded))
+                .foregroundStyle(.white.opacity(0.8))
+        })
+        .onChange(of: viewModel.gameState) { newState in
+            if newState.isCompleted {
+                showConfetti = true
             }
         }
     }
 
     private var headerView: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 12) {
+            // Difficulty badge
             Text(viewModel.difficulty.displayName)
-                .font(.headline)
-                .foregroundColor(.secondary)
+                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .foregroundStyle(.white.opacity(0.6))
+                .padding(.horizontal, 16)
+                .padding(.vertical, 6)
+                .background(
+                    Capsule()
+                        .fill(Color.white.opacity(0.1))
+                )
 
+            // Timer
             Text(viewModel.formattedTime)
-                .font(.system(size: 48, weight: .bold, design: .rounded))
+                .font(.system(size: 56, weight: .bold, design: .rounded))
+                .foregroundStyle(.white)
                 .monospacedDigit()
+                .shadow(color: Color.zipPrimary.opacity(0.5), radius: 10)
         }
+        .padding(.top, 10)
     }
 
-    private var controlsView: some View {
-        VStack(spacing: 12) {
-            // Progress indicator
-            HStack {
-                Text("Progress:")
-                    .foregroundColor(.secondary)
-                Text("\(viewModel.currentPath.count) / \(viewModel.puzzle.totalCells)")
-                    .fontWeight(.semibold)
-            }
-            .font(.subheadline)
+    private var progressView: some View {
+        VStack(spacing: 10) {
+            // Progress bar
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    // Background
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(Color.white.opacity(0.1))
 
-            // Instructions
+                    // Progress fill
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(LinearGradient.zipButtonGradient)
+                        .frame(width: geo.size.width * progressPercentage)
+                        .animation(.spring(response: 0.3), value: viewModel.currentPath.count)
+                }
+            }
+            .frame(height: 8)
+
+            // Progress text
+            HStack {
+                Text("\(viewModel.currentPath.count)")
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+
+                Text("/ \(viewModel.puzzle.totalCells)")
+                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                    .foregroundStyle(.white.opacity(0.5))
+
+                Spacer()
+
+                Text("\(Int(progressPercentage * 100))%")
+                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                    .foregroundStyle(Color.zipPrimary)
+            }
+        }
+        .padding(.horizontal, 4)
+    }
+
+    private var progressPercentage: CGFloat {
+        guard viewModel.puzzle.totalCells > 0 else { return 0 }
+        return CGFloat(viewModel.currentPath.count) / CGFloat(viewModel.puzzle.totalCells)
+    }
+
+    private var instructionsView: some View {
+        Group {
             if viewModel.gameState == .ready {
-                Text("Start at 1 and connect all numbers in order")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
+                HStack(spacing: 8) {
+                    Image(systemName: "hand.draw")
+                        .font(.system(size: 14))
+                    Text("Start at 1 and connect numbers in order")
+                        .font(.system(size: 14, weight: .medium, design: .rounded))
+                }
+                .foregroundStyle(.white.opacity(0.5))
+                .padding(.bottom, 10)
             }
         }
     }
 
     private var completionOverlay: some View {
         ZStack {
-            Color.black.opacity(0.4)
+            // Dimmed background
+            Color.black.opacity(0.6)
                 .ignoresSafeArea()
 
-            VStack(spacing: 24) {
-                Text("Completed!")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+            // Completion card
+            VStack(spacing: 28) {
+                // Trophy icon
+                ZStack {
+                    Circle()
+                        .fill(LinearGradient(
+                            colors: [Color.zipGold.opacity(0.3), Color.zipGold.opacity(0.1)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ))
+                        .frame(width: 100, height: 100)
 
+                    Image(systemName: "trophy.fill")
+                        .font(.system(size: 44))
+                        .foregroundStyle(Color.zipGold)
+                        .shadow(color: Color.zipGold.opacity(0.5), radius: 10)
+                }
+
+                // Title
+                Text("Puzzle Complete!")
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+
+                // Time
                 if case .completed(let time) = viewModel.gameState {
                     VStack(spacing: 4) {
                         Text("Your Time")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+                            .font(.system(size: 14, weight: .medium, design: .rounded))
+                            .foregroundStyle(.white.opacity(0.6))
                         Text(formatTime(time))
-                            .font(.system(size: 36, weight: .bold, design: .rounded))
+                            .font(.system(size: 40, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white)
+                            .monospacedDigit()
                     }
                 }
 
-                HStack(spacing: 16) {
+                // Buttons
+                VStack(spacing: 12) {
                     if viewModel.mode == .unlimited {
                         Button {
+                            showConfetti = false
                             viewModel.newPuzzle()
                         } label: {
-                            Label("New Puzzle", systemImage: "arrow.clockwise")
-                                .font(.headline)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(12)
+                            HStack(spacing: 8) {
+                                Image(systemName: "arrow.clockwise")
+                                Text("New Puzzle")
+                            }
+                            .font(.system(size: 17, weight: .semibold, design: .rounded))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(LinearGradient.zipButtonGradient)
+                            .cornerRadius(14)
                         }
+                        .buttonStyle(ScaleButtonStyle())
                     }
 
                     Button {
                         dismiss()
                     } label: {
-                        Label("Done", systemImage: "checkmark")
-                            .font(.headline)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(12)
+                        HStack(spacing: 8) {
+                            Image(systemName: "house")
+                            Text("Home")
+                        }
+                        .font(.system(size: 17, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.9))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(Color.white.opacity(0.15))
+                        .cornerRadius(14)
                     }
+                    .buttonStyle(ScaleButtonStyle())
                 }
             }
             .padding(32)
             .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color(.systemBackground))
-                    .shadow(radius: 20)
+                RoundedRectangle(cornerRadius: 28)
+                    .fill(Color.zipBackgroundEnd)
+                    .shadow(color: .black.opacity(0.5), radius: 30)
             )
-            .padding(40)
+            .overlay(
+                RoundedRectangle(cornerRadius: 28)
+                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+            )
+            .padding(32)
         }
+        .transition(.opacity.combined(with: .scale(scale: 0.9)))
     }
 
     private func calculateCellSize(for size: CGSize) -> CGFloat {
-        // Guard against zero or invalid sizes during initial layout
         guard size.width > 0, size.height > 0 else { return 50 }
 
         let puzzleSize = viewModel.puzzle.size
-        let spacing: CGFloat = 4
-        let padding: CGFloat = 32
+        let spacing: CGFloat = 6
+        let padding: CGFloat = 40
         let maxWidth = size.width - padding
-        let maxHeight = size.height * 0.6
+        let maxHeight = size.height * 0.55
 
         let cellSizeFromWidth = (maxWidth - CGFloat(puzzleSize - 1) * spacing) / CGFloat(puzzleSize)
         let cellSizeFromHeight = (maxHeight - CGFloat(puzzleSize - 1) * spacing) / CGFloat(puzzleSize)
 
-        // Ensure minimum cell size of 20
-        return max(min(cellSizeFromWidth, cellSizeFromHeight, 70), 20)
+        return max(min(cellSizeFromWidth, cellSizeFromHeight, 65), 20)
     }
 
     private func formatTime(_ time: TimeInterval) -> String {

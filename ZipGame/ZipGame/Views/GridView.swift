@@ -3,13 +3,12 @@ import SwiftUI
 struct GridView: View {
     @ObservedObject var viewModel: GameViewModel
     let cellSize: CGFloat
-    let spacing: CGFloat = 4
+    let spacing: CGFloat = 6
 
     var body: some View {
         let puzzle = viewModel.puzzle
 
         GeometryReader { geometry in
-            // Guard against invalid geometry
             let validWidth = max(geometry.size.width, 1)
             let validHeight = max(geometry.size.height, 1)
 
@@ -18,7 +17,7 @@ struct GridView: View {
             let offsetY = (validHeight - totalSize) / 2
 
             ZStack {
-                // Path lines connecting cells
+                // Path lines connecting cells (behind cells)
                 PathLinesView(
                     path: viewModel.currentPath,
                     cellSize: cellSize,
@@ -65,7 +64,6 @@ struct GridView: View {
         let puzzle = viewModel.puzzle
         let totalSize = CGFloat(puzzle.size) * cellSize + CGFloat(puzzle.size - 1) * spacing
 
-        // Calculate which cell the touch is in
         let adjustedX = location.x - offset.x
         let adjustedY = location.y - offset.y
 
@@ -95,29 +93,59 @@ struct PathLinesView: View {
 
     var body: some View {
         Canvas { context, size in
-            // Guard against invalid states
             guard path.count >= 2, cellSize > 0 else { return }
 
-            var pathShape = Path()
-
+            // Draw glow layer first
+            var glowPath = Path()
             for (index, position) in path.enumerated() {
                 let point = centerPoint(for: position)
-
-                // Skip invalid points
                 guard point.x.isFinite, point.y.isFinite else { continue }
 
                 if index == 0 {
-                    pathShape.move(to: point)
+                    glowPath.move(to: point)
                 } else {
-                    pathShape.addLine(to: point)
+                    glowPath.addLine(to: point)
                 }
             }
 
-            let lineWidth = max(cellSize * 0.3, 1)
+            // Glow effect
             context.stroke(
-                pathShape,
-                with: .color(.blue.opacity(0.5)),
-                lineWidth: lineWidth
+                glowPath,
+                with: .color(Color.zipPrimary.opacity(0.4)),
+                style: StrokeStyle(lineWidth: max(cellSize * 0.5, 1), lineCap: .round, lineJoin: .round)
+            )
+
+            // Main path
+            var mainPath = Path()
+            for (index, position) in path.enumerated() {
+                let point = centerPoint(for: position)
+                guard point.x.isFinite, point.y.isFinite else { continue }
+
+                if index == 0 {
+                    mainPath.move(to: point)
+                } else {
+                    mainPath.addLine(to: point)
+                }
+            }
+
+            // Draw gradient-like effect with multiple strokes
+            let lineWidth = max(cellSize * 0.35, 1)
+
+            context.stroke(
+                mainPath,
+                with: .linearGradient(
+                    Gradient(colors: [Color.zipPrimary, Color.zipSecondary]),
+                    startPoint: CGPoint(x: 0, y: 0),
+                    endPoint: CGPoint(x: size.width, y: size.height)
+                ),
+                style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round)
+            )
+
+            // Inner highlight
+            context.stroke(
+                mainPath,
+                with: .color(Color.white.opacity(0.3)),
+                style: StrokeStyle(lineWidth: lineWidth * 0.4, lineCap: .round, lineJoin: .round)
             )
         }
     }
@@ -131,11 +159,15 @@ struct PathLinesView: View {
 }
 
 #Preview {
-    let generator = PuzzleGenerator(difficulty: .easy)
-    let puzzle = generator.generate()
-    let viewModel = GameViewModel(puzzle: puzzle, mode: .unlimited, difficulty: .easy)
+    ZStack {
+        LinearGradient.zipBackground.ignoresSafeArea()
 
-    GridView(viewModel: viewModel, cellSize: 60)
-        .frame(height: 400)
-        .padding()
+        let generator = PuzzleGenerator(difficulty: .easy)
+        let puzzle = generator.generate()
+        let viewModel = GameViewModel(puzzle: puzzle, mode: .unlimited, difficulty: .easy)
+
+        GridView(viewModel: viewModel, cellSize: 55)
+            .frame(height: 350)
+            .padding()
+    }
 }

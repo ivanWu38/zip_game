@@ -3,7 +3,8 @@
     "allow": [
       "WebSearch",
       "Bash(python3:*)",
-      "Bash(swift generate_icon.swift:*)"
+      "Bash(swift generate_icon.swift:*)",
+      "WebFetch(domain:apps.apple.com)"
     ]
   }
 }

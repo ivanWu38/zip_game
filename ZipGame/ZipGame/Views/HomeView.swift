@@ -9,32 +9,40 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 32) {
-                    // Logo/Title
-                    titleSection
+            ZStack {
+                // Background
+                LinearGradient.zipBackground
+                    .ignoresSafeArea()
 
-                    // Mode Selection
-                    modeSelectionSection
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 28) {
+                        // Logo/Title
+                        titleSection
 
-                    // Difficulty Selection (for unlimited mode)
-                    if selectedMode == .unlimited {
-                        difficultySection
+                        // Mode Selection
+                        modeSelectionSection
+
+                        // Difficulty Selection (for unlimited mode)
+                        if selectedMode == .unlimited {
+                            difficultySection
+                                .transition(.opacity.combined(with: .move(edge: .top)))
+                        }
+
+                        // Daily puzzle info
+                        if selectedMode == .daily {
+                            dailyInfoSection
+                                .transition(.opacity.combined(with: .move(edge: .top)))
+                        }
+
+                        // Play Button
+                        playButton
                     }
-
-                    // Daily puzzle info
-                    if selectedMode == .daily {
-                        dailyInfoSection
-                    }
-
-                    // Play Button
-                    playButton
+                    .padding(.horizontal, 24)
+                    .padding(.top, 20)
+                    .padding(.bottom, 40)
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
             }
-            .background(Color(.systemBackground))
-            .navigationTitle("Zip")
+            .navigationBarHidden(true)
             .navigationDestination(isPresented: $showingGame) {
                 if let puzzle = generatedPuzzle {
                     let difficulty = selectedMode == .daily ? Difficulty.medium : selectedDifficulty
@@ -49,33 +57,51 @@ struct HomeView: View {
     }
 
     private var titleSection: some View {
-        VStack(spacing: 8) {
-            Image(systemName: "line.diagonal")
-                .font(.system(size: 60))
-                .foregroundStyle(.blue)
-                .rotationEffect(.degrees(45))
+        VStack(spacing: 16) {
+            // Logo
+            ZStack {
+                Circle()
+                    .fill(Color.zipPrimary.opacity(0.2))
+                    .frame(width: 100, height: 100)
 
+                Image(systemName: "point.topleft.down.to.point.bottomright.curvepath.fill")
+                    .font(.system(size: 44))
+                    .foregroundStyle(Color.zipPrimary)
+                    .shadow(color: Color.zipPrimary.opacity(0.5), radius: 10)
+            }
+
+            // Title
+            Text("Zip")
+                .font(.system(size: 42, weight: .bold, design: .rounded))
+                .foregroundStyle(.white)
+
+            // Subtitle
             Text("Draw a path through every cell")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .font(.system(size: 16, weight: .medium, design: .rounded))
+                .foregroundStyle(.white.opacity(0.6))
         }
-        .padding(.top, 20)
+        .padding(.top, 30)
+        .padding(.bottom, 10)
     }
 
     private var modeSelectionSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 14) {
             Text("Game Mode")
-                .font(.headline)
-                .foregroundStyle(.primary)
+                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .foregroundStyle(.white.opacity(0.5))
+                .textCase(.uppercase)
+                .tracking(1)
 
-            ForEach(GameMode.allCases) { mode in
-                ModeCard(
-                    mode: mode,
-                    isSelected: selectedMode == mode,
-                    dailyCompleted: mode == .daily && dailyService.isTodayCompleted
-                ) {
-                    withAnimation(.spring(response: 0.3)) {
-                        selectedMode = mode
+            VStack(spacing: 12) {
+                ForEach(GameMode.allCases) { mode in
+                    ModeCard(
+                        mode: mode,
+                        isSelected: selectedMode == mode,
+                        dailyCompleted: mode == .daily && dailyService.isTodayCompleted
+                    ) {
+                        withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
+                            selectedMode = mode
+                        }
                     }
                 }
             }
@@ -83,10 +109,12 @@ struct HomeView: View {
     }
 
     private var difficultySection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 14) {
             Text("Difficulty")
-                .font(.headline)
-                .foregroundStyle(.primary)
+                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .foregroundStyle(.white.opacity(0.5))
+                .textCase(.uppercase)
+                .tracking(1)
 
             HStack(spacing: 12) {
                 ForEach(Difficulty.allCases) { difficulty in
@@ -94,7 +122,7 @@ struct HomeView: View {
                         difficulty: difficulty,
                         isSelected: selectedDifficulty == difficulty
                     ) {
-                        withAnimation(.spring(response: 0.3)) {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                             selectedDifficulty = difficulty
                         }
                     }
@@ -104,47 +132,72 @@ struct HomeView: View {
     }
 
     private var dailyInfoSection: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 14) {
             if dailyService.isTodayCompleted {
-                Label("Completed today!", systemImage: "checkmark.circle.fill")
-                    .foregroundStyle(.green)
+                HStack(spacing: 10) {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 20))
+                        .foregroundStyle(Color.zipSuccess)
+
+                    Text("Completed today!")
+                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .foregroundStyle(Color.zipSuccess)
+                }
 
                 if let time = dailyService.todayCompletionTime {
                     Text("Time: \(formatTime(time))")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .font(.system(size: 14, weight: .medium, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.6))
                 }
 
-                Text("Next puzzle in \(dailyService.timeUntilNextPuzzle)")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                HStack(spacing: 6) {
+                    Image(systemName: "clock")
+                        .font(.system(size: 12))
+                    Text("Next puzzle in \(dailyService.timeUntilNextPuzzle)")
+                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                }
+                .foregroundStyle(.white.opacity(0.4))
             } else {
-                Text("Puzzle #\(dailyService.currentPuzzleNumber)")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                HStack(spacing: 8) {
+                    Image(systemName: "calendar")
+                        .font(.system(size: 16))
+                    Text("Puzzle #\(dailyService.currentPuzzleNumber)")
+                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                }
+                .foregroundStyle(.white.opacity(0.6))
             }
         }
-        .padding()
+        .padding(.vertical, 20)
         .frame(maxWidth: .infinity)
-        .background(Color(.systemGray6))
-        .cornerRadius(12)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.white.opacity(0.05))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                )
+        )
     }
 
     private var playButton: some View {
         Button {
             startGame()
         } label: {
-            HStack {
+            HStack(spacing: 10) {
                 Image(systemName: selectedMode == .daily && dailyService.isTodayCompleted ? "arrow.clockwise" : "play.fill")
+                    .font(.system(size: 18, weight: .semibold))
                 Text(selectedMode == .daily && dailyService.isTodayCompleted ? "Play Again" : "Play")
+                    .font(.system(size: 18, weight: .bold, design: .rounded))
             }
-            .font(.headline)
-            .padding()
+            .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(12)
+            .padding(.vertical, 18)
+            .background(LinearGradient.zipButtonGradient)
+            .cornerRadius(16)
+            .shadow(color: Color.zipPrimary.opacity(0.4), radius: 15, y: 5)
         }
+        .buttonStyle(ScaleButtonStyle())
+        .padding(.top, 8)
     }
 
     private func startGame() {
@@ -179,48 +232,63 @@ struct ModeCard: View {
 
     var body: some View {
         Button(action: action) {
-            HStack {
-                Image(systemName: mode.iconName)
-                    .font(.title2)
-                    .foregroundStyle(.primary)
-                    .frame(width: 40)
+            HStack(spacing: 16) {
+                // Icon
+                ZStack {
+                    Circle()
+                        .fill(isSelected ? Color.zipPrimary : Color.white.opacity(0.1))
+                        .frame(width: 48, height: 48)
 
+                    Image(systemName: mode.iconName)
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundStyle(isSelected ? .white : .white.opacity(0.6))
+                }
+
+                // Text content
                 VStack(alignment: .leading, spacing: 4) {
-                    HStack {
+                    HStack(spacing: 8) {
                         Text(mode.rawValue)
-                            .font(.headline)
-                            .foregroundStyle(.primary)
+                            .font(.system(size: 17, weight: .semibold, design: .rounded))
+                            .foregroundStyle(.white)
 
                         if dailyCompleted {
                             Image(systemName: "checkmark.circle.fill")
-                                .foregroundStyle(.green)
-                                .font(.caption)
+                                .font(.system(size: 14))
+                                .foregroundStyle(Color.zipSuccess)
                         }
                     }
 
                     Text(mode.description)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.5))
                 }
 
                 Spacer()
 
-                if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(.blue)
+                // Selection indicator
+                ZStack {
+                    Circle()
+                        .stroke(isSelected ? Color.zipPrimary : Color.white.opacity(0.2), lineWidth: 2)
+                        .frame(width: 24, height: 24)
+
+                    if isSelected {
+                        Circle()
+                            .fill(Color.zipPrimary)
+                            .frame(width: 14, height: 14)
+                    }
                 }
             }
-            .padding()
+            .padding(16)
             .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? Color.blue.opacity(0.1) : Color(.systemGray6))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(isSelected ? Color.blue : Color.clear, lineWidth: 2)
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(isSelected ? Color.white.opacity(0.08) : Color.white.opacity(0.04))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(isSelected ? Color.zipPrimary.opacity(0.5) : Color.white.opacity(0.06), lineWidth: 1)
+                    )
             )
         }
-        .buttonStyle(.plain)
+        .buttonStyle(ScaleButtonStyle())
     }
 }
 
@@ -231,26 +299,27 @@ struct DifficultyButton: View {
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 4) {
+            VStack(spacing: 6) {
                 Text(difficulty.rawValue)
-                    .font(.headline)
-                    .foregroundStyle(.primary)
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .foregroundStyle(isSelected ? .white : .white.opacity(0.7))
+
                 Text("\(difficulty.gridSize)×\(difficulty.gridSize)")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.system(size: 12, weight: .medium, design: .rounded))
+                    .foregroundStyle(isSelected ? .white.opacity(0.8) : .white.opacity(0.4))
             }
-            .padding()
+            .padding(.vertical, 14)
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? Color.blue.opacity(0.1) : Color(.systemGray6))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(isSelected ? Color.blue : Color.clear, lineWidth: 2)
+                    .fill(isSelected ? Color.zipPrimary.opacity(0.3) : Color.white.opacity(0.05))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(isSelected ? Color.zipPrimary.opacity(0.6) : Color.white.opacity(0.08), lineWidth: 1)
+                    )
             )
         }
-        .buttonStyle(.plain)
+        .buttonStyle(ScaleButtonStyle())
     }
 }
 
