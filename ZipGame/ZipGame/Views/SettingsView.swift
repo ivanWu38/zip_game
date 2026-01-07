@@ -30,9 +30,9 @@ enum AppearanceMode: String, CaseIterable {
 
     var displayName: String {
         switch self {
-        case .light: return "Light"
-        case .dark: return "Dark"
-        case .auto: return "Auto"
+        case .light: return "settings.appearance.light".localized
+        case .dark: return "settings.appearance.dark".localized
+        case .auto: return "settings.appearance.auto".localized
         }
     }
 
@@ -48,10 +48,12 @@ enum AppearanceMode: String, CaseIterable {
 struct SettingsView: View {
     @ObservedObject var settings = SettingsService.shared
     @ObservedObject var stats = StatsService.shared
+    @ObservedObject var localization = LocalizationService.shared
     @StateObject var subscriptionService = SubscriptionService.shared
     @State private var showResetAlert = false
     @State private var showSubscription = false
     @State private var showBoardSettings = false
+    @State private var showLanguagePicker = false
 
     var body: some View {
         NavigationStack {
@@ -68,6 +70,9 @@ struct SettingsView: View {
                         // System Settings
                         systemSection
 
+                        // Language Section
+                        languageSection
+
                         // App Info
                         appInfoSection
 
@@ -79,18 +84,18 @@ struct SettingsView: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 16)
-                    .padding(.bottom, 100) // Extra padding for tab bar
+                    .padding(.bottom, 100)
                 }
             }
-            .navigationTitle("Settings")
+            .navigationTitle("settings.title".localized)
             .navigationBarTitleDisplayMode(.large)
-            .alert("Reset Statistics", isPresented: $showResetAlert) {
-                Button("Cancel", role: .cancel) { }
-                Button("Reset", role: .destructive) {
+            .alert("settings.reset.alert.title".localized, isPresented: $showResetAlert) {
+                Button("common.cancel".localized, role: .cancel) { }
+                Button("common.reset".localized, role: .destructive) {
                     stats.resetAllStats()
                 }
             } message: {
-                Text("This will permanently delete all your statistics, streaks, and achievements. This action cannot be undone.")
+                Text("settings.reset.alert.message".localized)
             }
             .sheet(isPresented: $showSubscription) {
                 SubscriptionView()
@@ -98,13 +103,16 @@ struct SettingsView: View {
             .sheet(isPresented: $showBoardSettings) {
                 BoardSettingsView()
             }
+            .sheet(isPresented: $showLanguagePicker) {
+                LanguagePickerView()
+            }
         }
     }
 
     // MARK: - Subscription Section
     private var subscriptionSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Premium")
+            Text("settings.section.premium".localized)
                 .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
@@ -120,11 +128,11 @@ struct SettingsView: View {
                         .frame(width: 32)
 
                     VStack(alignment: .leading, spacing: 5) {
-                        Text(subscriptionService.isPremium ? "Premium Active" : "Play Without Ads")
+                        Text(subscriptionService.isPremium ? "settings.premium.active".localized : "settings.premium.playWithoutAds".localized)
                             .font(.system(size: 19, weight: .semibold, design: .rounded))
                             .foregroundStyle(Color.zipTextPrimary)
 
-                        Text(subscriptionService.isPremium ? "Thank you for your support!" : "Remove ads, unlock themes & fonts")
+                        Text(subscriptionService.isPremium ? "settings.premium.thankyou".localized : "settings.premium.description".localized)
                             .font(.system(size: 15, weight: .regular, design: .rounded))
                             .foregroundStyle(Color.zipTextTertiary)
                     }
@@ -154,7 +162,7 @@ struct SettingsView: View {
     // MARK: - System Section
     private var systemSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("System")
+            Text("settings.section.system".localized)
                 .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
@@ -169,7 +177,7 @@ struct SettingsView: View {
                             .foregroundStyle(Color.zipPrimary)
                             .frame(width: 32)
 
-                        Text("Appearance")
+                        Text("settings.appearance".localized)
                             .font(.system(size: 19, weight: .medium, design: .rounded))
                             .foregroundStyle(Color.zipTextPrimary)
 
@@ -198,8 +206,8 @@ struct SettingsView: View {
                 // Sound
                 SettingsToggleRow(
                     icon: "speaker.wave.2.fill",
-                    label: "Sound Effects",
-                    description: "Play sounds during gameplay",
+                    label: "settings.sound.title".localized,
+                    description: "settings.sound.description".localized,
                     isOn: $settings.soundEnabled
                 )
 
@@ -208,8 +216,8 @@ struct SettingsView: View {
                 // Haptics
                 SettingsToggleRow(
                     icon: "iphone.radiowaves.left.and.right",
-                    label: "Haptics",
-                    description: "Vibration feedback on actions",
+                    label: "settings.haptics.title".localized,
+                    description: "settings.haptics.description".localized,
                     isOn: $settings.hapticsEnabled
                 )
 
@@ -224,11 +232,11 @@ struct SettingsView: View {
                             .frame(width: 32)
 
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Board")
+                            Text("settings.board.title".localized)
                                 .font(.system(size: 19, weight: .medium, design: .rounded))
                                 .foregroundStyle(Color.zipTextPrimary)
 
-                            Text("Customize colors and fonts")
+                            Text("settings.board.description".localized)
                                 .font(.system(size: 15, weight: .regular, design: .rounded))
                                 .foregroundStyle(Color.zipTextTertiary)
                         }
@@ -254,19 +262,64 @@ struct SettingsView: View {
         }
     }
 
+    // MARK: - Language Section
+    private var languageSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("settings.section.language".localized)
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                .foregroundStyle(Color.zipTextTertiary)
+                .textCase(.uppercase)
+                .tracking(1)
+
+            Button(action: { showLanguagePicker = true }) {
+                HStack(spacing: 14) {
+                    Image(systemName: "globe")
+                        .font(.system(size: 22))
+                        .foregroundStyle(Color.zipPrimary)
+                        .frame(width: 32)
+
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("settings.language.title".localized)
+                            .font(.system(size: 19, weight: .medium, design: .rounded))
+                            .foregroundStyle(Color.zipTextPrimary)
+
+                        Text(localization.currentLanguage.displayName)
+                            .font(.system(size: 15, weight: .regular, design: .rounded))
+                            .foregroundStyle(Color.zipTextTertiary)
+                    }
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundStyle(Color.zipTextTertiary)
+                }
+                .padding(20)
+                .background(
+                    RoundedRectangle(cornerRadius: 18)
+                        .fill(Color.zipCardBackground)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 18)
+                                .stroke(Color.zipCardBorder, lineWidth: 1)
+                        )
+                )
+            }
+        }
+    }
+
     // MARK: - App Info Section
     private var appInfoSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("About")
+            Text("settings.section.about".localized)
                 .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
             VStack(spacing: 0) {
-                InfoRow(icon: "info.circle.fill", label: "Version", value: "1.0.0")
+                InfoRow(icon: "info.circle.fill", label: "settings.about.version".localized, value: "1.0.0")
                 Divider().background(Color.zipCardBorder)
-                InfoRow(icon: "hammer.fill", label: "Build", value: "1")
+                InfoRow(icon: "hammer.fill", label: "settings.about.build".localized, value: "1")
             }
             .padding(18)
             .background(
@@ -283,7 +336,7 @@ struct SettingsView: View {
     // MARK: - Danger Section
     private var dangerSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Data")
+            Text("settings.section.data".localized)
                 .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
@@ -299,11 +352,11 @@ struct SettingsView: View {
                         .frame(width: 32)
 
                     VStack(alignment: .leading, spacing: 5) {
-                        Text("Reset All Statistics")
+                        Text("settings.reset.title".localized)
                             .font(.system(size: 19, weight: .medium, design: .rounded))
                             .foregroundStyle(.red)
 
-                        Text("Clear all progress, streaks, and achievements")
+                        Text("settings.reset.description".localized)
                             .font(.system(size: 15, weight: .regular, design: .rounded))
                             .foregroundStyle(Color.zipTextTertiary)
                     }
@@ -330,7 +383,7 @@ struct SettingsView: View {
     // MARK: - Legal Section
     private var legalSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Legal")
+            Text("settings.section.legal".localized)
                 .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
@@ -345,7 +398,7 @@ struct SettingsView: View {
                             .foregroundStyle(Color.zipPrimary)
                             .frame(width: 28)
 
-                        Text("Privacy Policy")
+                        Text("settings.legal.privacy".localized)
                             .font(.system(size: 18, weight: .medium, design: .rounded))
                             .foregroundStyle(Color.zipTextPrimary)
 
@@ -368,7 +421,7 @@ struct SettingsView: View {
                             .foregroundStyle(Color.zipPrimary)
                             .frame(width: 28)
 
-                        Text("Terms of Use")
+                        Text("settings.legal.terms".localized)
                             .font(.system(size: 18, weight: .medium, design: .rounded))
                             .foregroundStyle(Color.zipTextPrimary)
 
@@ -390,6 +443,66 @@ struct SettingsView: View {
                             .stroke(Color.zipCardBorder, lineWidth: 1)
                     )
             )
+        }
+    }
+}
+
+// MARK: - Language Picker View
+struct LanguagePickerView: View {
+    @Environment(\.dismiss) private var dismiss
+    @ObservedObject var localization = LocalizationService.shared
+
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                LinearGradient.zipBackground
+                    .ignoresSafeArea()
+
+                ScrollView {
+                    VStack(spacing: 12) {
+                        ForEach(AppLanguage.allCases) { language in
+                            Button(action: {
+                                localization.currentLanguage = language
+                                dismiss()
+                            }) {
+                                HStack {
+                                    Text(language.displayName)
+                                        .font(.system(size: 18, weight: .medium, design: .rounded))
+                                        .foregroundStyle(Color.zipTextPrimary)
+
+                                    Spacer()
+
+                                    if localization.currentLanguage == language {
+                                        Image(systemName: "checkmark")
+                                            .font(.system(size: 16, weight: .semibold))
+                                            .foregroundStyle(Color.zipPrimary)
+                                    }
+                                }
+                                .padding(18)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 14)
+                                        .fill(Color.zipCardBackground)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 14)
+                                                .stroke(localization.currentLanguage == language ? Color.zipPrimary : Color.zipCardBorder, lineWidth: 1)
+                                        )
+                                )
+                            }
+                        }
+                    }
+                    .padding(20)
+                }
+            }
+            .navigationTitle("settings.language.title".localized)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { dismiss() }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(Color.zipTextTertiary)
+                    }
+                }
+            }
         }
     }
 }

@@ -1,0 +1,173 @@
+/*
+  Localizable.strings (Simplified Chinese)
+  ZipGame
+*/
+
+// MARK: - Tabs
+"tab.today" = "今日";
+"tab.practice" = "练习";
+"tab.journey" = "旅程";
+"tab.my" = "我的";
+
+// MARK: - Common
+"common.cancel" = "取消";
+"common.save" = "保存";
+"common.reset" = "重置";
+"common.ok" = "确定";
+"common.error" = "错误";
+"common.retry" = "重试";
+"common.continue" = "继续";
+"common.notNow" = "稍后再说";
+
+// MARK: - Difficulty
+"difficulty.easy" = "简单";
+"difficulty.medium" = "中等";
+"difficulty.hard" = "困难";
+"difficulty.easy.size" = "简单 (6×6)";
+"difficulty.medium.size" = "中等 (7×7)";
+"difficulty.hard.size" = "困难 (8×8)";
+
+// MARK: - Game
+"game.reset" = "重置";
+"game.instruction" = "从1开始，按顺序连接";
+"game.complete.title" = "拼图完成！";
+"game.complete.yourTime" = "你的时间";
+"game.complete.newPuzzle" = "新拼图";
+"game.complete.home" = "首页";
+"game.complete.playAgain" = "再玩一次";
+"game.complete.backToSummary" = "返回摘要";
+"game.complete.viewSummary" = "查看摘要";
+"game.replayMode" = "重玩模式";
+
+// MARK: - Home (Today)
+"home.title" = "今日";
+"home.dailyComplete" = "每日挑战完成！";
+"home.replayComplete" = "重玩完成！";
+"home.puzzleNumber" = "拼图 #%d";
+"home.difficulty" = "难度";
+"home.currentStreak" = "当前连续";
+"home.nextPuzzleIn" = "下一个拼图于";
+"home.days" = " 天";
+"home.day" = " 天";
+
+// MARK: - Practice
+"practice.title" = "练习模式";
+"practice.subtitle" = "无限拼图提升你的技巧";
+"practice.selectDifficulty" = "选择难度";
+"practice.startPractice" = "开始练习";
+"practice.newPuzzle" = "新拼图";
+
+// MARK: - Journey (Stats)
+"journey.title" = "旅程";
+"journey.currentStreak" = "当前连续";
+"journey.longestStreak" = "最长连续";
+"journey.day" = "天";
+"journey.streak" = "连续";
+"journey.section.statistics" = "统计";
+"journey.section.bestTimes" = "最佳时间";
+"journey.section.achievements" = "成就";
+"journey.stats.totalCompleted" = "完成总数";
+"journey.stats.totalPlayTime" = "总游玩时间";
+"journey.stats.easyCompleted" = "简单完成";
+"journey.stats.mediumCompleted" = "中等完成";
+"journey.stats.hardCompleted" = "困难完成";
+
+// MARK: - Achievements
+"achievement.3dayStreak" = "连续3天";
+"achievement.weekWarrior" = "周挑战者";
+"achievement.monthlyMaster" = "月度大师";
+"achievement.puzzleNovice" = "拼图新手";
+"achievement.puzzleExpert" = "拼图专家";
+"achievement.puzzleMaster" = "拼图大师";
+"achievement.hardModeHero" = "困难模式英雄";
+"achievement.speedDemonEasy" = "速度恶魔（简单）";
+"achievement.speedDemonMedium" = "速度恶魔（中等）";
+
+// MARK: - Settings
+"settings.title" = "设置";
+"settings.section.premium" = "高级版";
+"settings.section.system" = "系统";
+"settings.section.language" = "语言";
+"settings.section.about" = "关于";
+"settings.section.data" = "数据";
+"settings.section.legal" = "法律";
+
+"settings.premium.active" = "高级版已启用";
+"settings.premium.playWithoutAds" = "无广告游玩";
+"settings.premium.thankyou" = "感谢您的支持！";
+"settings.premium.description" = "移除广告，解锁主题和字体";
+
+"settings.appearance" = "外观";
+"settings.appearance.light" = "浅色";
+"settings.appearance.dark" = "深色";
+"settings.appearance.auto" = "自动";
+
+"settings.sound.title" = "音效";
+"settings.sound.description" = "游戏中播放音效";
+"settings.haptics.title" = "触觉反馈";
+"settings.haptics.description" = "操作时震动反馈";
+"settings.board.title" = "棋盘";
+"settings.board.description" = "自定义颜色和字体";
+
+"settings.language.title" = "语言";
+"settings.language.system" = "系统默认";
+
+"settings.about.version" = "版本";
+"settings.about.build" = "构建";
+
+"settings.reset.title" = "重置所有统计";
+"settings.reset.description" = "清除所有进度、连续天数和成就";
+"settings.reset.alert.title" = "重置统计";
+"settings.reset.alert.message" = "这将永久删除您的所有统计数据、连续天数和成就。此操作无法撤销。";
+
+"settings.legal.privacy" = "隐私政策";
+"settings.legal.terms" = "使用条款";
+
+// MARK: - Subscription
+"subscription.title" = "无广告游玩";
+"subscription.header" = "享受更流畅的游戏体验，零广告干扰。";
+"subscription.benefit.removeAds" = "移除所有广告";
+"subscription.benefit.removeAds.desc" = "享受不间断的游戏";
+"subscription.benefit.customizeBoard" = "自定义棋盘";
+"subscription.benefit.customizeBoard.desc" = "解锁所有颜色主题";
+"subscription.benefit.fonts" = "独特字体";
+"subscription.benefit.fonts.desc" = "个性化您的游戏风格";
+"subscription.benefit.support" = "支持开发者";
+"subscription.benefit.support.desc" = "帮助我们改进游戏";
+
+"subscription.error.title" = "无法加载订阅选项";
+"subscription.error.message" = "请检查您的网络连接并重试。";
+
+"subscription.plan.monthly" = "月付";
+"subscription.plan.quarterly" = "季付";
+"subscription.plan.yearly" = "年付";
+"subscription.save" = "节省 %d%%";
+"subscription.perMonth" = "/ 月";
+
+"subscription.billing.quarterly" = "每季 %@ 计费";
+"subscription.billing.yearly" = "每年 %@ 计费";
+"subscription.billing.months" = "每 %d 个月 %@ 计费";
+"subscription.billing.weekly" = "每周 %@ 计费";
+"subscription.billing.daily" = "每日 %@ 计费";
+
+"subscription.button.subscribe" = "订阅 - %@";
+"subscription.button.subscribeDefault" = "订阅";
+"subscription.terms.prefix" = "随时取消。";
+"subscription.terms.and" = "和";
+"subscription.terms.apply" = "适用。";
+"subscription.restore" = "恢复购买";
+
+// MARK: - Board Settings
+"board.title" = "棋盘";
+"board.tab.colors" = "颜色";
+"board.tab.font" = "字体";
+"board.premium.title" = "解锁高级功能";
+"board.premium.description" = "自定义颜色、字体，打造专属主题";
+"board.premium.upgrade" = "升级";
+
+// MARK: - ATT Prompt
+"att.title" = "更好的广告体验";
+"att.description" = "允许跟踪以查看符合您兴趣的广告，而非随机内容。";
+"att.note" = "这不会增加您看到的广告数量。";
+"att.continue" = "继续";
+"att.notNow" = "稍后再说";

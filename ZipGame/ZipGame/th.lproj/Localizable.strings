@@ -1,0 +1,173 @@
+/*
+  Localizable.strings (Thai)
+  ZipGame
+*/
+
+// MARK: - Tabs
+"tab.today" = "วันนี้";
+"tab.practice" = "ฝึกฝน";
+"tab.journey" = "เส้นทาง";
+"tab.my" = "ของฉัน";
+
+// MARK: - Common
+"common.cancel" = "ยกเลิก";
+"common.save" = "บันทึก";
+"common.reset" = "รีเซ็ต";
+"common.ok" = "ตกลง";
+"common.error" = "ข้อผิดพลาด";
+"common.retry" = "ลองใหม่";
+"common.continue" = "ดำเนินการต่อ";
+"common.notNow" = "ไม่ใช่ตอนนี้";
+
+// MARK: - Difficulty
+"difficulty.easy" = "ง่าย";
+"difficulty.medium" = "ปานกลาง";
+"difficulty.hard" = "ยาก";
+"difficulty.easy.size" = "ง่าย (6×6)";
+"difficulty.medium.size" = "ปานกลาง (7×7)";
+"difficulty.hard.size" = "ยาก (8×8)";
+
+// MARK: - Game
+"game.reset" = "รีเซ็ต";
+"game.instruction" = "เริ่มที่ 1 เชื่อมต่อตามลำดับ";
+"game.complete.title" = "ปริศนาเสร็จสมบูรณ์!";
+"game.complete.yourTime" = "เวลาของคุณ";
+"game.complete.newPuzzle" = "ปริศนาใหม่";
+"game.complete.home" = "หน้าหลัก";
+"game.complete.playAgain" = "เล่นอีกครั้ง";
+"game.complete.backToSummary" = "กลับไปสรุป";
+"game.complete.viewSummary" = "ดูสรุป";
+"game.replayMode" = "โหมดเล่นซ้ำ";
+
+// MARK: - Home (Today)
+"home.title" = "วันนี้";
+"home.dailyComplete" = "ประจำวันเสร็จแล้ว!";
+"home.replayComplete" = "เล่นซ้ำเสร็จแล้ว!";
+"home.puzzleNumber" = "ปริศนา #%d";
+"home.difficulty" = "ระดับความยาก";
+"home.currentStreak" = "สตรีคปัจจุบัน";
+"home.nextPuzzleIn" = "ปริศนาถัดไปใน";
+"home.days" = " วัน";
+"home.day" = " วัน";
+
+// MARK: - Practice
+"practice.title" = "โหมดฝึกฝน";
+"practice.subtitle" = "ปริศนาไม่จำกัดเพื่อพัฒนาทักษะของคุณ";
+"practice.selectDifficulty" = "เลือกระดับความยาก";
+"practice.startPractice" = "เริ่มฝึกฝน";
+"practice.newPuzzle" = "ปริศนาใหม่";
+
+// MARK: - Journey (Stats)
+"journey.title" = "เส้นทาง";
+"journey.currentStreak" = "สตรีคปัจจุบัน";
+"journey.longestStreak" = "สตรีคยาวที่สุด";
+"journey.day" = "วัน";
+"journey.streak" = "สตรีค";
+"journey.section.statistics" = "สถิติ";
+"journey.section.bestTimes" = "เวลาที่ดีที่สุด";
+"journey.section.achievements" = "ความสำเร็จ";
+"journey.stats.totalCompleted" = "เสร็จสมบูรณ์ทั้งหมด";
+"journey.stats.totalPlayTime" = "เวลาเล่นทั้งหมด";
+"journey.stats.easyCompleted" = "ง่ายเสร็จแล้ว";
+"journey.stats.mediumCompleted" = "ปานกลางเสร็จแล้ว";
+"journey.stats.hardCompleted" = "ยากเสร็จแล้ว";
+
+// MARK: - Achievements
+"achievement.3dayStreak" = "สตรีค 3 วัน";
+"achievement.weekWarrior" = "นักรบประจำสัปดาห์";
+"achievement.monthlyMaster" = "ผู้เชี่ยวชาญประจำเดือน";
+"achievement.puzzleNovice" = "มือใหม่ปริศนา";
+"achievement.puzzleExpert" = "ผู้เชี่ยวชาญปริศนา";
+"achievement.puzzleMaster" = "ปรมาจารย์ปริศนา";
+"achievement.hardModeHero" = "ฮีโร่โหมดยาก";
+"achievement.speedDemonEasy" = "ปีศาจความเร็ว (ง่าย)";
+"achievement.speedDemonMedium" = "ปีศาจความเร็ว (ปานกลาง)";
+
+// MARK: - Settings
+"settings.title" = "การตั้งค่า";
+"settings.section.premium" = "พรีเมียม";
+"settings.section.system" = "ระบบ";
+"settings.section.language" = "ภาษา";
+"settings.section.about" = "เกี่ยวกับ";
+"settings.section.data" = "ข้อมูล";
+"settings.section.legal" = "ข้อกฎหมาย";
+
+"settings.premium.active" = "พรีเมียมใช้งานอยู่";
+"settings.premium.playWithoutAds" = "เล่นโดยไม่มีโฆษณา";
+"settings.premium.thankyou" = "ขอบคุณสำหรับการสนับสนุน!";
+"settings.premium.description" = "ลบโฆษณา ปลดล็อกธีมและฟอนต์";
+
+"settings.appearance" = "รูปลักษณ์";
+"settings.appearance.light" = "สว่าง";
+"settings.appearance.dark" = "มืด";
+"settings.appearance.auto" = "อัตโนมัติ";
+
+"settings.sound.title" = "เอฟเฟกต์เสียง";
+"settings.sound.description" = "เล่นเสียงระหว่างเกม";
+"settings.haptics.title" = "การสั่น";
+"settings.haptics.description" = "การตอบสนองแบบสั่นเมื่อกดปุ่ม";
+"settings.board.title" = "กระดาน";
+"settings.board.description" = "ปรับแต่งสีและฟอนต์";
+
+"settings.language.title" = "ภาษา";
+"settings.language.system" = "ค่าเริ่มต้นของระบบ";
+
+"settings.about.version" = "เวอร์ชัน";
+"settings.about.build" = "บิลด์";
+
+"settings.reset.title" = "รีเซ็ตสถิติทั้งหมด";
+"settings.reset.description" = "ล้างความคืบหน้า สตรีค และความสำเร็จทั้งหมด";
+"settings.reset.alert.title" = "รีเซ็ตสถิติ";
+"settings.reset.alert.message" = "การดำเนินการนี้จะลบสถิติ สตรีค และความสำเร็จทั้งหมดของคุณอย่างถาวร ไม่สามารถยกเลิกการกระทำนี้ได้";
+
+"settings.legal.privacy" = "นโยบายความเป็นส่วนตัว";
+"settings.legal.terms" = "ข้อกำหนดการใช้งาน";
+
+// MARK: - Subscription
+"subscription.title" = "เล่นโดยไม่มีโฆษณา";
+"subscription.header" = "เพลิดเพลินกับการเล่นเกมที่ราบรื่นไม่มีการขัดจังหวะ";
+"subscription.benefit.removeAds" = "ลบโฆษณาทั้งหมด";
+"subscription.benefit.removeAds.desc" = "เพลิดเพลินกับการเล่นเกมอย่างต่อเนื่อง";
+"subscription.benefit.customizeBoard" = "ปรับแต่งกระดานของคุณ";
+"subscription.benefit.customizeBoard.desc" = "ปลดล็อกธีมสีทั้งหมด";
+"subscription.benefit.fonts" = "ฟอนต์พิเศษ";
+"subscription.benefit.fonts.desc" = "ปรับแต่งสไตล์เกมของคุณ";
+"subscription.benefit.support" = "สนับสนุนผู้พัฒนา";
+"subscription.benefit.support.desc" = "ช่วยเราปรับปรุงเกม";
+
+"subscription.error.title" = "ไม่สามารถโหลดตัวเลือกการสมัครสมาชิก";
+"subscription.error.message" = "กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตและลองใหม่อีกครั้ง";
+
+"subscription.plan.monthly" = "รายเดือน";
+"subscription.plan.quarterly" = "รายไตรมาส";
+"subscription.plan.yearly" = "รายปี";
+"subscription.save" = "ประหยัด %d%%";
+"subscription.perMonth" = "/ เดือน";
+
+"subscription.billing.quarterly" = "เรียกเก็บเงินรายไตรมาสที่ %@";
+"subscription.billing.yearly" = "เรียกเก็บเงินรายปีที่ %@";
+"subscription.billing.months" = "เรียกเก็บเงินทุก %d เดือนที่ %@";
+"subscription.billing.weekly" = "เรียกเก็บเงินรายสัปดาห์ที่ %@";
+"subscription.billing.daily" = "เรียกเก็บเงินรายวันที่ %@";
+
+"subscription.button.subscribe" = "สมัครสมาชิก - %@";
+"subscription.button.subscribeDefault" = "สมัครสมาชิก";
+"subscription.terms.prefix" = "ยกเลิกได้ตลอดเวลา ";
+"subscription.terms.and" = " และ ";
+"subscription.terms.apply" = " มีผลบังคับใช้";
+"subscription.restore" = "กู้คืนการซื้อ";
+
+// MARK: - Board Settings
+"board.title" = "กระดาน";
+"board.tab.colors" = "สี";
+"board.tab.font" = "ฟอนต์";
+"board.premium.title" = "ปลดล็อกฟีเจอร์พรีเมียม";
+"board.premium.description" = "ปรับแต่งสี ฟอนต์ และสร้างธีมที่สมบูรณ์แบบของคุณ";
+"board.premium.upgrade" = "อัปเกรด";
+
+// MARK: - ATT Prompt
+"att.title" = "ประสบการณ์โฆษณาที่ดีขึ้น";
+"att.description" = "อนุญาตการติดตามเพื่อดูโฆษณาที่ตรงกับความสนใจของคุณแทนเนื้อหาแบบสุ่ม";
+"att.note" = "การดำเนินการนี้จะไม่เพิ่มจำนวนโฆษณาที่คุณเห็น";
+"att.continue" = "ดำเนินการต่อ";
+"att.notNow" = "ไม่ใช่ตอนนี้";

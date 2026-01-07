@@ -2,6 +2,7 @@ import SwiftUI
 
 struct JourneyView: View {
     @ObservedObject var statsService = StatsService.shared
+    @ObservedObject private var localization = LocalizationService.shared
 
     var body: some View {
         NavigationStack {
@@ -29,7 +30,7 @@ struct JourneyView: View {
                     .padding(.bottom, 100) // Extra padding for tab bar
                 }
             }
-            .navigationTitle("Journey")
+            .navigationTitle("journey.title".localized)
             .navigationBarTitleDisplayMode(.large)
         }
     }
@@ -40,7 +41,7 @@ struct JourneyView: View {
             // Current Streak
             StreakCard(
                 value: statsService.currentStreak,
-                label: "Current streak",
+                label: "journey.currentStreak".localized,
                 icon: "flame.fill",
                 iconColor: .orange
             )
@@ -48,7 +49,7 @@ struct JourneyView: View {
             // Longest Streak
             StreakCard(
                 value: statsService.longestStreak,
-                label: "Longest streak",
+                label: "journey.longestStreak".localized,
                 icon: "trophy.fill",
                 iconColor: .yellow
             )
@@ -58,22 +59,22 @@ struct JourneyView: View {
     // MARK: - Statistics Section
     private var statisticsSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Statistics")
+            Text("journey.section.statistics".localized)
                 .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
             VStack(spacing: 0) {
-                StatRow(icon: "checkmark.circle.fill", label: "Total Completed", value: "\(statsService.totalPuzzlesCompleted)")
+                StatRow(icon: "checkmark.circle.fill", label: "journey.stats.totalCompleted".localized, value: "\(statsService.totalPuzzlesCompleted)")
                 Divider().background(Color.zipCardBorder)
-                StatRow(icon: "clock.fill", label: "Total Play Time", value: statsService.formatTotalTime())
+                StatRow(icon: "clock.fill", label: "journey.stats.totalPlayTime".localized, value: statsService.formatTotalTime())
                 Divider().background(Color.zipCardBorder)
-                StatRow(icon: "square.grid.3x3.fill", label: "Easy Completed", value: "\(statsService.completedEasy)")
+                StatRow(icon: "square.grid.3x3.fill", label: "journey.stats.easyCompleted".localized, value: "\(statsService.completedEasy)")
                 Divider().background(Color.zipCardBorder)
-                StatRow(icon: "square.grid.3x3.fill", label: "Medium Completed", value: "\(statsService.completedMedium)")
+                StatRow(icon: "square.grid.3x3.fill", label: "journey.stats.mediumCompleted".localized, value: "\(statsService.completedMedium)")
                 Divider().background(Color.zipCardBorder)
-                StatRow(icon: "square.grid.3x3.fill", label: "Hard Completed", value: "\(statsService.completedHard)")
+                StatRow(icon: "square.grid.3x3.fill", label: "journey.stats.hardCompleted".localized, value: "\(statsService.completedHard)")
             }
             .padding(16)
             .background(
@@ -90,16 +91,16 @@ struct JourneyView: View {
     // MARK: - Best Times Section
     private var bestTimesSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Best Times")
+            Text("journey.section.bestTimes".localized)
                 .font(.system(size: 16, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.zipTextTertiary)
                 .textCase(.uppercase)
                 .tracking(1)
 
             HStack(spacing: 12) {
-                BestTimeCard(difficulty: "Easy", time: statsService.formatTime(statsService.bestTimeEasy), color: .green)
-                BestTimeCard(difficulty: "Medium", time: statsService.formatTime(statsService.bestTimeMedium), color: .orange)
-                BestTimeCard(difficulty: "Hard", time: statsService.formatTime(statsService.bestTimeHard), color: .red)
+                BestTimeCard(difficulty: "difficulty.easy".localized, time: statsService.formatTime(statsService.bestTimeEasy), color: .green)
+                BestTimeCard(difficulty: "difficulty.medium".localized, time: statsService.formatTime(statsService.bestTimeMedium), color: .orange)
+                BestTimeCard(difficulty: "difficulty.hard".localized, time: statsService.formatTime(statsService.bestTimeHard), color: .red)
             }
         }
     }
@@ -108,7 +109,7 @@ struct JourneyView: View {
     private var achievementsSection: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
-                Text("Achievements")
+                Text("journey.section.achievements".localized)
                     .font(.system(size: 16, weight: .semibold, design: .rounded))
                     .foregroundStyle(Color.zipTextTertiary)
                     .textCase(.uppercase)
@@ -160,7 +161,7 @@ struct StreakCard: View {
                 .foregroundStyle(Color.zipTextPrimary)
 
             // Label
-            Text(value == 1 ? label.replacingOccurrences(of: "streak", with: "day") : label)
+            Text(value == 1 ? "journey.day".localized : label)
                 .font(.system(size: 16, weight: .medium, design: .rounded))
                 .foregroundStyle(Color.zipTextSecondary)
                 .multilineTextAlignment(.center)

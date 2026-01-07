@@ -236,3 +236,15 @@ class SoundManager {
         playSound(.error)
     }
 }
+
+// MARK: - Localization Extension
+extension String {
+    var localized: String {
+        return LocalizationService.shared.localizedString(self)
+    }
+
+    func localized(_ arguments: CVarArg...) -> String {
+        let format = LocalizationService.shared.localizedString(self)
+        return String(format: format, arguments: arguments)
+    }
+}

@@ -11,9 +11,9 @@ enum SubscriptionPlan: String, CaseIterable, Identifiable {
 
     var displayName: String {
         switch self {
-        case .monthly: return "Monthly"
-        case .quarterly: return "Quarterly"
-        case .yearly: return "Yearly"
+        case .monthly: return "subscription.plan.monthly".localized
+        case .quarterly: return "subscription.plan.quarterly".localized
+        case .yearly: return "subscription.plan.yearly".localized
         }
     }
 
@@ -230,16 +230,16 @@ class SubscriptionService: ObservableObject {
             if value == 1 {
                 return ""
             } else if value == 3 {
-                return "billed quarterly at \(product.displayPrice)"
+                return String(format: "subscription.billing.quarterly".localized, product.displayPrice)
             } else {
-                return "billed every \(value) months at \(product.displayPrice)"
+                return String(format: "subscription.billing.months".localized, value, product.displayPrice)
             }
         case .year:
-            return "billed yearly at \(product.displayPrice)"
+            return String(format: "subscription.billing.yearly".localized, product.displayPrice)
         case .week:
-            return "billed weekly at \(product.displayPrice)"
+            return String(format: "subscription.billing.weekly".localized, product.displayPrice)
         case .day:
-            return "billed daily at \(product.displayPrice)"
+            return String(format: "subscription.billing.daily".localized, product.displayPrice)
         @unknown default:
             return ""
         }

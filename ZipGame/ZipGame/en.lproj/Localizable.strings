@@ -1,0 +1,173 @@
+/*
+  Localizable.strings (English)
+  ZipGame
+*/
+
+// MARK: - Tabs
+"tab.today" = "Today";
+"tab.practice" = "Practice";
+"tab.journey" = "Journey";
+"tab.my" = "My";
+
+// MARK: - Common
+"common.cancel" = "Cancel";
+"common.save" = "Save";
+"common.reset" = "Reset";
+"common.ok" = "OK";
+"common.error" = "Error";
+"common.retry" = "Retry";
+"common.continue" = "Continue";
+"common.notNow" = "Not Now";
+
+// MARK: - Difficulty
+"difficulty.easy" = "Easy";
+"difficulty.medium" = "Medium";
+"difficulty.hard" = "Hard";
+"difficulty.easy.size" = "Easy (6×6)";
+"difficulty.medium.size" = "Medium (7×7)";
+"difficulty.hard.size" = "Hard (8×8)";
+
+// MARK: - Game
+"game.reset" = "Reset";
+"game.instruction" = "Start at 1, connect in order";
+"game.complete.title" = "Puzzle Complete!";
+"game.complete.yourTime" = "Your Time";
+"game.complete.newPuzzle" = "New Puzzle";
+"game.complete.home" = "Home";
+"game.complete.playAgain" = "Play Again";
+"game.complete.backToSummary" = "Back to Summary";
+"game.complete.viewSummary" = "View Summary";
+"game.replayMode" = "Replay Mode";
+
+// MARK: - Home (Today)
+"home.title" = "Today";
+"home.dailyComplete" = "Daily Complete!";
+"home.replayComplete" = "Replay Complete!";
+"home.puzzleNumber" = "Puzzle #%d";
+"home.difficulty" = "Difficulty";
+"home.currentStreak" = "Current Streak";
+"home.nextPuzzleIn" = "Next puzzle in";
+"home.days" = " days";
+"home.day" = " day";
+
+// MARK: - Practice
+"practice.title" = "Practice Mode";
+"practice.subtitle" = "Unlimited puzzles to sharpen your skills";
+"practice.selectDifficulty" = "Select Difficulty";
+"practice.startPractice" = "Start Practice";
+"practice.newPuzzle" = "New Puzzle";
+
+// MARK: - Journey (Stats)
+"journey.title" = "Journey";
+"journey.currentStreak" = "Current streak";
+"journey.longestStreak" = "Longest streak";
+"journey.day" = "day";
+"journey.streak" = "streak";
+"journey.section.statistics" = "Statistics";
+"journey.section.bestTimes" = "Best Times";
+"journey.section.achievements" = "Achievements";
+"journey.stats.totalCompleted" = "Total Completed";
+"journey.stats.totalPlayTime" = "Total Play Time";
+"journey.stats.easyCompleted" = "Easy Completed";
+"journey.stats.mediumCompleted" = "Medium Completed";
+"journey.stats.hardCompleted" = "Hard Completed";
+
+// MARK: - Achievements
+"achievement.3dayStreak" = "3 Day Streak";
+"achievement.weekWarrior" = "Week Warrior";
+"achievement.monthlyMaster" = "Monthly Master";
+"achievement.puzzleNovice" = "Puzzle Novice";
+"achievement.puzzleExpert" = "Puzzle Expert";
+"achievement.puzzleMaster" = "Puzzle Master";
+"achievement.hardModeHero" = "Hard Mode Hero";
+"achievement.speedDemonEasy" = "Speed Demon (Easy)";
+"achievement.speedDemonMedium" = "Speed Demon (Medium)";
+
+// MARK: - Settings
+"settings.title" = "Settings";
+"settings.section.premium" = "Premium";
+"settings.section.system" = "System";
+"settings.section.language" = "Language";
+"settings.section.about" = "About";
+"settings.section.data" = "Data";
+"settings.section.legal" = "Legal";
+
+"settings.premium.active" = "Premium Active";
+"settings.premium.playWithoutAds" = "Play Without Ads";
+"settings.premium.thankyou" = "Thank you for your support!";
+"settings.premium.description" = "Remove ads, unlock themes & fonts";
+
+"settings.appearance" = "Appearance";
+"settings.appearance.light" = "Light";
+"settings.appearance.dark" = "Dark";
+"settings.appearance.auto" = "Auto";
+
+"settings.sound.title" = "Sound Effects";
+"settings.sound.description" = "Play sounds during gameplay";
+"settings.haptics.title" = "Haptics";
+"settings.haptics.description" = "Vibration feedback on actions";
+"settings.board.title" = "Board";
+"settings.board.description" = "Customize colors and fonts";
+
+"settings.language.title" = "Language";
+"settings.language.system" = "System Default";
+
+"settings.about.version" = "Version";
+"settings.about.build" = "Build";
+
+"settings.reset.title" = "Reset All Statistics";
+"settings.reset.description" = "Clear all progress, streaks, and achievements";
+"settings.reset.alert.title" = "Reset Statistics";
+"settings.reset.alert.message" = "This will permanently delete all your statistics, streaks, and achievements. This action cannot be undone.";
+
+"settings.legal.privacy" = "Privacy Policy";
+"settings.legal.terms" = "Terms of Use";
+
+// MARK: - Subscription
+"subscription.title" = "Play Without Ads";
+"subscription.header" = "Enjoy smoother gameplay with zero interruptions.";
+"subscription.benefit.removeAds" = "Remove all ads";
+"subscription.benefit.removeAds.desc" = "enjoy uninterrupted gameplay";
+"subscription.benefit.customizeBoard" = "Customize your board";
+"subscription.benefit.customizeBoard.desc" = "unlock all color themes";
+"subscription.benefit.fonts" = "Unique fonts";
+"subscription.benefit.fonts.desc" = "personalize your game style";
+"subscription.benefit.support" = "Support the developers";
+"subscription.benefit.support.desc" = "help us improve the game";
+
+"subscription.error.title" = "Unable to load subscription options";
+"subscription.error.message" = "Please check your internet connection and try again.";
+
+"subscription.plan.monthly" = "Monthly";
+"subscription.plan.quarterly" = "Quarterly";
+"subscription.plan.yearly" = "Yearly";
+"subscription.save" = "Save %d%%";
+"subscription.perMonth" = "/ Month";
+
+"subscription.billing.quarterly" = "billed quarterly at %@";
+"subscription.billing.yearly" = "billed yearly at %@";
+"subscription.billing.months" = "billed every %d months at %@";
+"subscription.billing.weekly" = "billed weekly at %@";
+"subscription.billing.daily" = "billed daily at %@";
+
+"subscription.button.subscribe" = "Subscribe - %@";
+"subscription.button.subscribeDefault" = "Subscribe";
+"subscription.terms.prefix" = "Cancel anytime. ";
+"subscription.terms.and" = " and ";
+"subscription.terms.apply" = " apply.";
+"subscription.restore" = "Restore Purchases";
+
+// MARK: - Board Settings
+"board.title" = "Board";
+"board.tab.colors" = "Colors";
+"board.tab.font" = "Font";
+"board.premium.title" = "Unlock Premium Features";
+"board.premium.description" = "Customize colors, fonts & create your perfect theme";
+"board.premium.upgrade" = "Upgrade";
+
+// MARK: - ATT Prompt
+"att.title" = "Better Ad Experience";
+"att.description" = "Allow tracking to see ads that match your interests instead of random content.";
+"att.note" = "This won't increase the number of ads you see.";
+"att.continue" = "Continue";
+"att.notNow" = "Not Now";

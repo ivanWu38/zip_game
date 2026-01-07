@@ -1,0 +1,173 @@
+/*
+  Localizable.strings (Korean)
+  ZipGame
+*/
+
+// MARK: - Tabs
+"tab.today" = "오늘";
+"tab.practice" = "연습";
+"tab.journey" = "여정";
+"tab.my" = "마이";
+
+// MARK: - Common
+"common.cancel" = "취소";
+"common.save" = "저장";
+"common.reset" = "초기화";
+"common.ok" = "확인";
+"common.error" = "오류";
+"common.retry" = "재시도";
+"common.continue" = "계속";
+"common.notNow" = "나중에";
+
+// MARK: - Difficulty
+"difficulty.easy" = "쉬움";
+"difficulty.medium" = "보통";
+"difficulty.hard" = "어려움";
+"difficulty.easy.size" = "쉬움 (6×6)";
+"difficulty.medium.size" = "보통 (7×7)";
+"difficulty.hard.size" = "어려움 (8×8)";
+
+// MARK: - Game
+"game.reset" = "초기화";
+"game.instruction" = "1부터 순서대로 연결하세요";
+"game.complete.title" = "퍼즐 완료!";
+"game.complete.yourTime" = "완료 시간";
+"game.complete.newPuzzle" = "새 퍼즐";
+"game.complete.home" = "홈";
+"game.complete.playAgain" = "다시 하기";
+"game.complete.backToSummary" = "요약으로 돌아가기";
+"game.complete.viewSummary" = "요약 보기";
+"game.replayMode" = "다시하기 모드";
+
+// MARK: - Home (Today)
+"home.title" = "오늘";
+"home.dailyComplete" = "일일 완료!";
+"home.replayComplete" = "다시하기 완료!";
+"home.puzzleNumber" = "퍼즐 #%d";
+"home.difficulty" = "난이도";
+"home.currentStreak" = "현재 연속";
+"home.nextPuzzleIn" = "다음 퍼즐까지";
+"home.days" = "일";
+"home.day" = "일";
+
+// MARK: - Practice
+"practice.title" = "연습 모드";
+"practice.subtitle" = "무제한 퍼즐로 실력을 향상하세요";
+"practice.selectDifficulty" = "난이도 선택";
+"practice.startPractice" = "연습 시작";
+"practice.newPuzzle" = "새 퍼즐";
+
+// MARK: - Journey (Stats)
+"journey.title" = "여정";
+"journey.currentStreak" = "현재 연속";
+"journey.longestStreak" = "최장 연속";
+"journey.day" = "일";
+"journey.streak" = "연속";
+"journey.section.statistics" = "통계";
+"journey.section.bestTimes" = "최고 기록";
+"journey.section.achievements" = "업적";
+"journey.stats.totalCompleted" = "총 완료";
+"journey.stats.totalPlayTime" = "총 플레이 시간";
+"journey.stats.easyCompleted" = "쉬움 완료";
+"journey.stats.mediumCompleted" = "보통 완료";
+"journey.stats.hardCompleted" = "어려움 완료";
+
+// MARK: - Achievements
+"achievement.3dayStreak" = "3일 연속";
+"achievement.weekWarrior" = "주간 전사";
+"achievement.monthlyMaster" = "월간 마스터";
+"achievement.puzzleNovice" = "퍼즐 초보";
+"achievement.puzzleExpert" = "퍼즐 전문가";
+"achievement.puzzleMaster" = "퍼즐 마스터";
+"achievement.hardModeHero" = "어려움 모드 영웅";
+"achievement.speedDemonEasy" = "스피드 데몬 (쉬움)";
+"achievement.speedDemonMedium" = "스피드 데몬 (보통)";
+
+// MARK: - Settings
+"settings.title" = "설정";
+"settings.section.premium" = "프리미엄";
+"settings.section.system" = "시스템";
+"settings.section.language" = "언어";
+"settings.section.about" = "정보";
+"settings.section.data" = "데이터";
+"settings.section.legal" = "법적 고지";
+
+"settings.premium.active" = "프리미엄 활성";
+"settings.premium.playWithoutAds" = "광고 없이 플레이";
+"settings.premium.thankyou" = "지원해 주셔서 감사합니다!";
+"settings.premium.description" = "광고 제거, 테마 및 폰트 해제";
+
+"settings.appearance" = "외관";
+"settings.appearance.light" = "라이트";
+"settings.appearance.dark" = "다크";
+"settings.appearance.auto" = "자동";
+
+"settings.sound.title" = "효과음";
+"settings.sound.description" = "게임 중 효과음 재생";
+"settings.haptics.title" = "진동";
+"settings.haptics.description" = "작업 시 진동 피드백";
+"settings.board.title" = "보드";
+"settings.board.description" = "색상 및 폰트 사용자 지정";
+
+"settings.language.title" = "언어";
+"settings.language.system" = "시스템 기본값";
+
+"settings.about.version" = "버전";
+"settings.about.build" = "빌드";
+
+"settings.reset.title" = "모든 통계 초기화";
+"settings.reset.description" = "모든 진행 상황, 연속 기록, 업적 삭제";
+"settings.reset.alert.title" = "통계 초기화";
+"settings.reset.alert.message" = "모든 통계 데이터, 연속 기록, 업적이 영구적으로 삭제됩니다. 이 작업은 취소할 수 없습니다.";
+
+"settings.legal.privacy" = "개인정보 처리방침";
+"settings.legal.terms" = "이용약관";
+
+// MARK: - Subscription
+"subscription.title" = "광고 없이 플레이";
+"subscription.header" = "광고 없이 부드러운 게임플레이를 즐기세요.";
+"subscription.benefit.removeAds" = "모든 광고 제거";
+"subscription.benefit.removeAds.desc" = "중단 없는 게임플레이";
+"subscription.benefit.customizeBoard" = "보드 사용자 지정";
+"subscription.benefit.customizeBoard.desc" = "모든 색상 테마 해제";
+"subscription.benefit.fonts" = "독특한 폰트";
+"subscription.benefit.fonts.desc" = "게임 스타일 개인화";
+"subscription.benefit.support" = "개발자 지원";
+"subscription.benefit.support.desc" = "게임 개선에 도움";
+
+"subscription.error.title" = "구독 옵션을 불러올 수 없음";
+"subscription.error.message" = "인터넷 연결을 확인하고 다시 시도하세요.";
+
+"subscription.plan.monthly" = "월간";
+"subscription.plan.quarterly" = "분기";
+"subscription.plan.yearly" = "연간";
+"subscription.save" = "%d%% 절약";
+"subscription.perMonth" = "/ 월";
+
+"subscription.billing.quarterly" = "분기별 %@로 청구";
+"subscription.billing.yearly" = "연간 %@로 청구";
+"subscription.billing.months" = "%d개월마다 %@로 청구";
+"subscription.billing.weekly" = "주간 %@로 청구";
+"subscription.billing.daily" = "일일 %@로 청구";
+
+"subscription.button.subscribe" = "구독 - %@";
+"subscription.button.subscribeDefault" = "구독";
+"subscription.terms.prefix" = "언제든지 취소 가능. ";
+"subscription.terms.and" = " 및 ";
+"subscription.terms.apply" = " 적용.";
+"subscription.restore" = "구매 복원";
+
+// MARK: - Board Settings
+"board.title" = "보드";
+"board.tab.colors" = "색상";
+"board.tab.font" = "폰트";
+"board.premium.title" = "프리미엄 기능 해제";
+"board.premium.description" = "색상, 폰트를 사용자 지정하여 완벽한 테마 만들기";
+"board.premium.upgrade" = "업그레이드";
+
+// MARK: - ATT Prompt
+"att.title" = "더 나은 광고 경험";
+"att.description" = "추적을 허용하면 무작위 콘텐츠 대신 관심사에 맞는 광고를 볼 수 있습니다.";
+"att.note" = "광고 수가 증가하지 않습니다.";
+"att.continue" = "계속";
+"att.notNow" = "나중에";

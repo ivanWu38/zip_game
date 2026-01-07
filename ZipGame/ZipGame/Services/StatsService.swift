@@ -217,37 +217,37 @@ class StatsService: ObservableObject {
 
         // Streak achievements
         if currentStreak >= 3 {
-            list.append(Achievement(id: "streak_3", title: "3 Day Streak", icon: "flame.fill", color: .orange, isUnlocked: true))
+            list.append(Achievement(id: "streak_3", titleKey: "achievement.3dayStreak", icon: "flame.fill", color: .orange, isUnlocked: true))
         }
         if currentStreak >= 7 {
-            list.append(Achievement(id: "streak_7", title: "Week Warrior", icon: "flame.fill", color: .red, isUnlocked: true))
+            list.append(Achievement(id: "streak_7", titleKey: "achievement.weekWarrior", icon: "flame.fill", color: .red, isUnlocked: true))
         }
         if currentStreak >= 30 {
-            list.append(Achievement(id: "streak_30", title: "Monthly Master", icon: "flame.fill", color: .purple, isUnlocked: true))
+            list.append(Achievement(id: "streak_30", titleKey: "achievement.monthlyMaster", icon: "flame.fill", color: .purple, isUnlocked: true))
         }
 
         // Completion achievements
         if totalPuzzlesCompleted >= 10 {
-            list.append(Achievement(id: "complete_10", title: "Puzzle Novice", icon: "puzzlepiece.fill", color: .blue, isUnlocked: true))
+            list.append(Achievement(id: "complete_10", titleKey: "achievement.puzzleNovice", icon: "puzzlepiece.fill", color: .blue, isUnlocked: true))
         }
         if totalPuzzlesCompleted >= 50 {
-            list.append(Achievement(id: "complete_50", title: "Puzzle Expert", icon: "puzzlepiece.fill", color: .green, isUnlocked: true))
+            list.append(Achievement(id: "complete_50", titleKey: "achievement.puzzleExpert", icon: "puzzlepiece.fill", color: .green, isUnlocked: true))
         }
         if totalPuzzlesCompleted >= 100 {
-            list.append(Achievement(id: "complete_100", title: "Puzzle Master", icon: "crown.fill", color: .yellow, isUnlocked: true))
+            list.append(Achievement(id: "complete_100", titleKey: "achievement.puzzleMaster", icon: "crown.fill", color: .yellow, isUnlocked: true))
         }
 
         // Difficulty achievements
         if completedHard >= 10 {
-            list.append(Achievement(id: "hard_10", title: "Hard Mode Hero", icon: "star.fill", color: .pink, isUnlocked: true))
+            list.append(Achievement(id: "hard_10", titleKey: "achievement.hardModeHero", icon: "star.fill", color: .pink, isUnlocked: true))
         }
 
         // Speed achievements
         if let easy = bestTimeEasy, easy < 30 {
-            list.append(Achievement(id: "speed_easy", title: "Speed Demon (Easy)", icon: "bolt.fill", color: .cyan, isUnlocked: true))
+            list.append(Achievement(id: "speed_easy", titleKey: "achievement.speedDemonEasy", icon: "bolt.fill", color: .cyan, isUnlocked: true))
         }
         if let medium = bestTimeMedium, medium < 60 {
-            list.append(Achievement(id: "speed_medium", title: "Speed Demon (Medium)", icon: "bolt.fill", color: .mint, isUnlocked: true))
+            list.append(Achievement(id: "speed_medium", titleKey: "achievement.speedDemonMedium", icon: "bolt.fill", color: .mint, isUnlocked: true))
         }
 
         return list
@@ -256,15 +256,15 @@ class StatsService: ObservableObject {
     // All possible achievements (for showing locked ones)
     var allAchievements: [Achievement] {
         return [
-            Achievement(id: "streak_3", title: "3 Day Streak", icon: "flame.fill", color: .orange, isUnlocked: currentStreak >= 3),
-            Achievement(id: "streak_7", title: "Week Warrior", icon: "flame.fill", color: .red, isUnlocked: currentStreak >= 7),
-            Achievement(id: "streak_30", title: "Monthly Master", icon: "flame.fill", color: .purple, isUnlocked: longestStreak >= 30),
-            Achievement(id: "complete_10", title: "Puzzle Novice", icon: "puzzlepiece.fill", color: .blue, isUnlocked: totalPuzzlesCompleted >= 10),
-            Achievement(id: "complete_50", title: "Puzzle Expert", icon: "puzzlepiece.fill", color: .green, isUnlocked: totalPuzzlesCompleted >= 50),
-            Achievement(id: "complete_100", title: "Puzzle Master", icon: "crown.fill", color: .yellow, isUnlocked: totalPuzzlesCompleted >= 100),
-            Achievement(id: "hard_10", title: "Hard Mode Hero", icon: "star.fill", color: .pink, isUnlocked: completedHard >= 10),
-            Achievement(id: "speed_easy", title: "Speed Demon (Easy)", icon: "bolt.fill", color: .cyan, isUnlocked: bestTimeEasy != nil && bestTimeEasy! < 30),
-            Achievement(id: "speed_medium", title: "Speed Demon (Medium)", icon: "bolt.fill", color: .mint, isUnlocked: bestTimeMedium != nil && bestTimeMedium! < 60),
+            Achievement(id: "streak_3", titleKey: "achievement.3dayStreak", icon: "flame.fill", color: .orange, isUnlocked: currentStreak >= 3),
+            Achievement(id: "streak_7", titleKey: "achievement.weekWarrior", icon: "flame.fill", color: .red, isUnlocked: currentStreak >= 7),
+            Achievement(id: "streak_30", titleKey: "achievement.monthlyMaster", icon: "flame.fill", color: .purple, isUnlocked: longestStreak >= 30),
+            Achievement(id: "complete_10", titleKey: "achievement.puzzleNovice", icon: "puzzlepiece.fill", color: .blue, isUnlocked: totalPuzzlesCompleted >= 10),
+            Achievement(id: "complete_50", titleKey: "achievement.puzzleExpert", icon: "puzzlepiece.fill", color: .green, isUnlocked: totalPuzzlesCompleted >= 50),
+            Achievement(id: "complete_100", titleKey: "achievement.puzzleMaster", icon: "crown.fill", color: .yellow, isUnlocked: totalPuzzlesCompleted >= 100),
+            Achievement(id: "hard_10", titleKey: "achievement.hardModeHero", icon: "star.fill", color: .pink, isUnlocked: completedHard >= 10),
+            Achievement(id: "speed_easy", titleKey: "achievement.speedDemonEasy", icon: "bolt.fill", color: .cyan, isUnlocked: bestTimeEasy != nil && bestTimeEasy! < 30),
+            Achievement(id: "speed_medium", titleKey: "achievement.speedDemonMedium", icon: "bolt.fill", color: .mint, isUnlocked: bestTimeMedium != nil && bestTimeMedium! < 60),
         ]
     }
 
@@ -297,8 +297,12 @@ class StatsService: ObservableObject {
 // MARK: - Achievement Model
 struct Achievement: Identifiable {
     let id: String
-    let title: String
+    let titleKey: String
     let icon: String
     let color: Color
     let isUnlocked: Bool
+
+    var title: String {
+        titleKey.localized
+    }
 }

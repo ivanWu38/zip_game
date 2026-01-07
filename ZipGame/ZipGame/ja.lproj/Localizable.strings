@@ -1,0 +1,173 @@
+/*
+  Localizable.strings (Japanese)
+  ZipGame
+*/
+
+// MARK: - Tabs
+"tab.today" = "今日";
+"tab.practice" = "練習";
+"tab.journey" = "ジャーニー";
+"tab.my" = "マイページ";
+
+// MARK: - Common
+"common.cancel" = "キャンセル";
+"common.save" = "保存";
+"common.reset" = "リセット";
+"common.ok" = "OK";
+"common.error" = "エラー";
+"common.retry" = "再試行";
+"common.continue" = "続ける";
+"common.notNow" = "後で";
+
+// MARK: - Difficulty
+"difficulty.easy" = "かんたん";
+"difficulty.medium" = "ふつう";
+"difficulty.hard" = "むずかしい";
+"difficulty.easy.size" = "かんたん (6×6)";
+"difficulty.medium.size" = "ふつう (7×7)";
+"difficulty.hard.size" = "むずかしい (8×8)";
+
+// MARK: - Game
+"game.reset" = "リセット";
+"game.instruction" = "1から順番につなげよう";
+"game.complete.title" = "パズル完成！";
+"game.complete.yourTime" = "クリアタイム";
+"game.complete.newPuzzle" = "新しいパズル";
+"game.complete.home" = "ホーム";
+"game.complete.playAgain" = "もう一度";
+"game.complete.backToSummary" = "サマリーに戻る";
+"game.complete.viewSummary" = "サマリーを見る";
+"game.replayMode" = "リプレイモード";
+
+// MARK: - Home (Today)
+"home.title" = "今日";
+"home.dailyComplete" = "デイリー完了！";
+"home.replayComplete" = "リプレイ完了！";
+"home.puzzleNumber" = "パズル #%d";
+"home.difficulty" = "難易度";
+"home.currentStreak" = "連続記録";
+"home.nextPuzzleIn" = "次のパズルまで";
+"home.days" = "日";
+"home.day" = "日";
+
+// MARK: - Practice
+"practice.title" = "練習モード";
+"practice.subtitle" = "無制限のパズルでスキルアップ";
+"practice.selectDifficulty" = "難易度を選択";
+"practice.startPractice" = "練習開始";
+"practice.newPuzzle" = "新しいパズル";
+
+// MARK: - Journey (Stats)
+"journey.title" = "ジャーニー";
+"journey.currentStreak" = "連続記録";
+"journey.longestStreak" = "最長記録";
+"journey.day" = "日";
+"journey.streak" = "連続";
+"journey.section.statistics" = "統計";
+"journey.section.bestTimes" = "ベストタイム";
+"journey.section.achievements" = "実績";
+"journey.stats.totalCompleted" = "完了数";
+"journey.stats.totalPlayTime" = "総プレイ時間";
+"journey.stats.easyCompleted" = "かんたん完了";
+"journey.stats.mediumCompleted" = "ふつう完了";
+"journey.stats.hardCompleted" = "むずかしい完了";
+
+// MARK: - Achievements
+"achievement.3dayStreak" = "3日連続";
+"achievement.weekWarrior" = "ウィークウォリアー";
+"achievement.monthlyMaster" = "マンスリーマスター";
+"achievement.puzzleNovice" = "パズル初心者";
+"achievement.puzzleExpert" = "パズルエキスパート";
+"achievement.puzzleMaster" = "パズルマスター";
+"achievement.hardModeHero" = "ハードモードヒーロー";
+"achievement.speedDemonEasy" = "スピードデーモン（かんたん）";
+"achievement.speedDemonMedium" = "スピードデーモン（ふつう）";
+
+// MARK: - Settings
+"settings.title" = "設定";
+"settings.section.premium" = "プレミアム";
+"settings.section.system" = "システム";
+"settings.section.language" = "言語";
+"settings.section.about" = "アプリについて";
+"settings.section.data" = "データ";
+"settings.section.legal" = "法的情報";
+
+"settings.premium.active" = "プレミアム有効";
+"settings.premium.playWithoutAds" = "広告なしでプレイ";
+"settings.premium.thankyou" = "ご支援ありがとうございます！";
+"settings.premium.description" = "広告削除、テーマとフォント解除";
+
+"settings.appearance" = "外観";
+"settings.appearance.light" = "ライト";
+"settings.appearance.dark" = "ダーク";
+"settings.appearance.auto" = "自動";
+
+"settings.sound.title" = "サウンド";
+"settings.sound.description" = "ゲーム中のサウンド効果";
+"settings.haptics.title" = "触覚フィードバック";
+"settings.haptics.description" = "操作時の振動フィードバック";
+"settings.board.title" = "ボード";
+"settings.board.description" = "色とフォントをカスタマイズ";
+
+"settings.language.title" = "言語";
+"settings.language.system" = "システム設定";
+
+"settings.about.version" = "バージョン";
+"settings.about.build" = "ビルド";
+
+"settings.reset.title" = "すべての統計をリセット";
+"settings.reset.description" = "進捗、連続記録、実績をすべて消去";
+"settings.reset.alert.title" = "統計をリセット";
+"settings.reset.alert.message" = "すべての統計データ、連続記録、実績が永久に削除されます。この操作は取り消せません。";
+
+"settings.legal.privacy" = "プライバシーポリシー";
+"settings.legal.terms" = "利用規約";
+
+// MARK: - Subscription
+"subscription.title" = "広告なしでプレイ";
+"subscription.header" = "広告なしでスムーズなゲームプレイを楽しもう。";
+"subscription.benefit.removeAds" = "すべての広告を削除";
+"subscription.benefit.removeAds.desc" = "中断なしのゲームプレイ";
+"subscription.benefit.customizeBoard" = "ボードをカスタマイズ";
+"subscription.benefit.customizeBoard.desc" = "すべてのカラーテーマを解除";
+"subscription.benefit.fonts" = "ユニークなフォント";
+"subscription.benefit.fonts.desc" = "ゲームスタイルをパーソナライズ";
+"subscription.benefit.support" = "開発者を応援";
+"subscription.benefit.support.desc" = "ゲームの改善にご協力";
+
+"subscription.error.title" = "サブスクリプションを読み込めません";
+"subscription.error.message" = "インターネット接続を確認して再試行してください。";
+
+"subscription.plan.monthly" = "月額";
+"subscription.plan.quarterly" = "3ヶ月";
+"subscription.plan.yearly" = "年額";
+"subscription.save" = "%d%%お得";
+"subscription.perMonth" = "/ 月";
+
+"subscription.billing.quarterly" = "3ヶ月ごとに%@で請求";
+"subscription.billing.yearly" = "年間%@で請求";
+"subscription.billing.months" = "%dヶ月ごとに%@で請求";
+"subscription.billing.weekly" = "週ごとに%@で請求";
+"subscription.billing.daily" = "日ごとに%@で請求";
+
+"subscription.button.subscribe" = "登録 - %@";
+"subscription.button.subscribeDefault" = "登録";
+"subscription.terms.prefix" = "いつでも解約可能。";
+"subscription.terms.and" = "と";
+"subscription.terms.apply" = "が適用されます。";
+"subscription.restore" = "購入を復元";
+
+// MARK: - Board Settings
+"board.title" = "ボード";
+"board.tab.colors" = "カラー";
+"board.tab.font" = "フォント";
+"board.premium.title" = "プレミアム機能を解除";
+"board.premium.description" = "色、フォントをカスタマイズして理想のテーマを作成";
+"board.premium.upgrade" = "アップグレード";
+
+// MARK: - ATT Prompt
+"att.title" = "より良い広告体験";
+"att.description" = "トラッキングを許可すると、ランダムな広告の代わりにあなたの興味に合った広告が表示されます。";
+"att.note" = "広告の数は増えません。";
+"att.continue" = "続ける";
+"att.notNow" = "後で";

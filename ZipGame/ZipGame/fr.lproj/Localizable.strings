@@ -1,0 +1,173 @@
+/*
+  Localizable.strings (French)
+  ZipGame
+*/
+
+// MARK: - Tabs
+"tab.today" = "Aujourd'hui";
+"tab.practice" = "Entraînement";
+"tab.journey" = "Parcours";
+"tab.my" = "Profil";
+
+// MARK: - Common
+"common.cancel" = "Annuler";
+"common.save" = "Enregistrer";
+"common.reset" = "Réinitialiser";
+"common.ok" = "OK";
+"common.error" = "Erreur";
+"common.retry" = "Réessayer";
+"common.continue" = "Continuer";
+"common.notNow" = "Pas maintenant";
+
+// MARK: - Difficulty
+"difficulty.easy" = "Facile";
+"difficulty.medium" = "Moyen";
+"difficulty.hard" = "Difficile";
+"difficulty.easy.size" = "Facile (6×6)";
+"difficulty.medium.size" = "Moyen (7×7)";
+"difficulty.hard.size" = "Difficile (8×8)";
+
+// MARK: - Game
+"game.reset" = "Recommencer";
+"game.instruction" = "Commencez à 1, connectez dans l'ordre";
+"game.complete.title" = "Puzzle terminé !";
+"game.complete.yourTime" = "Votre temps";
+"game.complete.newPuzzle" = "Nouveau puzzle";
+"game.complete.home" = "Accueil";
+"game.complete.playAgain" = "Rejouer";
+"game.complete.backToSummary" = "Retour au résumé";
+"game.complete.viewSummary" = "Voir le résumé";
+"game.replayMode" = "Mode replay";
+
+// MARK: - Home (Today)
+"home.title" = "Aujourd'hui";
+"home.dailyComplete" = "Défi quotidien terminé !";
+"home.replayComplete" = "Replay terminé !";
+"home.puzzleNumber" = "Puzzle n°%d";
+"home.difficulty" = "Difficulté";
+"home.currentStreak" = "Série en cours";
+"home.nextPuzzleIn" = "Prochain puzzle dans";
+"home.days" = " jours";
+"home.day" = " jour";
+
+// MARK: - Practice
+"practice.title" = "Mode entraînement";
+"practice.subtitle" = "Des puzzles illimités pour perfectionner vos compétences";
+"practice.selectDifficulty" = "Choisir la difficulté";
+"practice.startPractice" = "Commencer l'entraînement";
+"practice.newPuzzle" = "Nouveau puzzle";
+
+// MARK: - Journey (Stats)
+"journey.title" = "Parcours";
+"journey.currentStreak" = "Série en cours";
+"journey.longestStreak" = "Meilleure série";
+"journey.day" = "jour";
+"journey.streak" = "série";
+"journey.section.statistics" = "Statistiques";
+"journey.section.bestTimes" = "Meilleurs temps";
+"journey.section.achievements" = "Succès";
+"journey.stats.totalCompleted" = "Total terminé";
+"journey.stats.totalPlayTime" = "Temps de jeu total";
+"journey.stats.easyCompleted" = "Facile terminé";
+"journey.stats.mediumCompleted" = "Moyen terminé";
+"journey.stats.hardCompleted" = "Difficile terminé";
+
+// MARK: - Achievements
+"achievement.3dayStreak" = "Série de 3 jours";
+"achievement.weekWarrior" = "Guerrier de la semaine";
+"achievement.monthlyMaster" = "Maître du mois";
+"achievement.puzzleNovice" = "Novice des puzzles";
+"achievement.puzzleExpert" = "Expert des puzzles";
+"achievement.puzzleMaster" = "Maître des puzzles";
+"achievement.hardModeHero" = "Héros du mode difficile";
+"achievement.speedDemonEasy" = "Éclair (Facile)";
+"achievement.speedDemonMedium" = "Éclair (Moyen)";
+
+// MARK: - Settings
+"settings.title" = "Paramètres";
+"settings.section.premium" = "Premium";
+"settings.section.system" = "Système";
+"settings.section.language" = "Langue";
+"settings.section.about" = "À propos";
+"settings.section.data" = "Données";
+"settings.section.legal" = "Mentions légales";
+
+"settings.premium.active" = "Premium actif";
+"settings.premium.playWithoutAds" = "Jouer sans publicités";
+"settings.premium.thankyou" = "Merci pour votre soutien !";
+"settings.premium.description" = "Supprimez les pubs, débloquez thèmes et polices";
+
+"settings.appearance" = "Apparence";
+"settings.appearance.light" = "Clair";
+"settings.appearance.dark" = "Sombre";
+"settings.appearance.auto" = "Auto";
+
+"settings.sound.title" = "Effets sonores";
+"settings.sound.description" = "Jouer des sons pendant la partie";
+"settings.haptics.title" = "Vibrations";
+"settings.haptics.description" = "Retour haptique sur les actions";
+"settings.board.title" = "Plateau";
+"settings.board.description" = "Personnaliser les couleurs et les polices";
+
+"settings.language.title" = "Langue";
+"settings.language.system" = "Par défaut du système";
+
+"settings.about.version" = "Version";
+"settings.about.build" = "Build";
+
+"settings.reset.title" = "Réinitialiser toutes les statistiques";
+"settings.reset.description" = "Effacer toute la progression, séries et succès";
+"settings.reset.alert.title" = "Réinitialiser les statistiques";
+"settings.reset.alert.message" = "Cela supprimera définitivement toutes vos statistiques, séries et succès. Cette action est irréversible.";
+
+"settings.legal.privacy" = "Politique de confidentialité";
+"settings.legal.terms" = "Conditions d'utilisation";
+
+// MARK: - Subscription
+"subscription.title" = "Jouer sans publicités";
+"subscription.header" = "Profitez d'une expérience de jeu fluide sans interruption.";
+"subscription.benefit.removeAds" = "Supprimer toutes les publicités";
+"subscription.benefit.removeAds.desc" = "profitez d'un jeu sans interruption";
+"subscription.benefit.customizeBoard" = "Personnalisez votre plateau";
+"subscription.benefit.customizeBoard.desc" = "débloquez tous les thèmes de couleurs";
+"subscription.benefit.fonts" = "Polices uniques";
+"subscription.benefit.fonts.desc" = "personnalisez votre style de jeu";
+"subscription.benefit.support" = "Soutenez les développeurs";
+"subscription.benefit.support.desc" = "aidez-nous à améliorer le jeu";
+
+"subscription.error.title" = "Impossible de charger les options d'abonnement";
+"subscription.error.message" = "Veuillez vérifier votre connexion Internet et réessayer.";
+
+"subscription.plan.monthly" = "Mensuel";
+"subscription.plan.quarterly" = "Trimestriel";
+"subscription.plan.yearly" = "Annuel";
+"subscription.save" = "Économisez %d%%";
+"subscription.perMonth" = "/ Mois";
+
+"subscription.billing.quarterly" = "facturé trimestriellement à %@";
+"subscription.billing.yearly" = "facturé annuellement à %@";
+"subscription.billing.months" = "facturé tous les %d mois à %@";
+"subscription.billing.weekly" = "facturé chaque semaine à %@";
+"subscription.billing.daily" = "facturé quotidiennement à %@";
+
+"subscription.button.subscribe" = "S'abonner - %@";
+"subscription.button.subscribeDefault" = "S'abonner";
+"subscription.terms.prefix" = "Annulez à tout moment. ";
+"subscription.terms.and" = " et ";
+"subscription.terms.apply" = " s'appliquent.";
+"subscription.restore" = "Restaurer les achats";
+
+// MARK: - Board Settings
+"board.title" = "Plateau";
+"board.tab.colors" = "Couleurs";
+"board.tab.font" = "Police";
+"board.premium.title" = "Débloquer les fonctionnalités Premium";
+"board.premium.description" = "Personnalisez les couleurs, polices et créez votre thème parfait";
+"board.premium.upgrade" = "Passer à Premium";
+
+// MARK: - ATT Prompt
+"att.title" = "Meilleure expérience publicitaire";
+"att.description" = "Autorisez le suivi pour voir des publicités correspondant à vos intérêts plutôt que du contenu aléatoire.";
+"att.note" = "Cela n'augmentera pas le nombre de publicités affichées.";
+"att.continue" = "Continuer";
+"att.notNow" = "Pas maintenant";

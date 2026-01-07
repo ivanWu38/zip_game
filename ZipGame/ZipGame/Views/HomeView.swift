@@ -4,6 +4,7 @@ import Combine
 struct HomeView: View {
     @StateObject private var dailyService = DailyPuzzleService()
     @StateObject private var viewModel: DailyGameViewModel
+    @ObservedObject private var localization = LocalizationService.shared
     @State private var showConfetti = false
     @State private var isReplaying = false
 
@@ -32,7 +33,7 @@ struct HomeView: View {
                         .ignoresSafeArea()
                 }
             }
-            .navigationTitle("Today")
+            .navigationTitle("home.title".localized)
             .navigationBarTitleDisplayMode(.large)
         }
         .onAppear {
@@ -78,7 +79,7 @@ struct HomeView: View {
                         HStack(spacing: 6) {
                             Image(systemName: "arrow.clockwise")
                                 .font(.system(size: 14))
-                            Text("Replay Mode")
+                            Text("game.replayMode".localized)
                                 .font(.system(size: 14, weight: .medium, design: .rounded))
                         }
                         .foregroundStyle(Color.zipTextTertiary)
@@ -121,11 +122,11 @@ struct HomeView: View {
 
                 // Title
                 VStack(spacing: 8) {
-                    Text("Daily Complete!")
+                    Text("home.dailyComplete".localized)
                         .font(.system(size: 32, weight: .bold, design: .rounded))
                         .foregroundStyle(Color.zipTextPrimary)
 
-                    Text("Puzzle #\(dailyService.currentPuzzleNumber)")
+                    Text(String(format: "home.puzzleNumber".localized, dailyService.currentPuzzleNumber))
                         .font(.system(size: 18, weight: .medium, design: .rounded))
                         .foregroundStyle(Color.zipTextSecondary)
                 }
@@ -139,7 +140,7 @@ struct HomeView: View {
                                 .font(.system(size: 22))
                                 .foregroundStyle(Color.zipPrimary)
 
-                            Text("Your Time")
+                            Text("game.complete.yourTime".localized)
                                 .font(.system(size: 18, weight: .medium, design: .rounded))
                                 .foregroundStyle(Color.zipTextSecondary)
 
@@ -160,7 +161,7 @@ struct HomeView: View {
                             .font(.system(size: 22))
                             .foregroundStyle(Color.zipPrimary)
 
-                        Text("Difficulty")
+                        Text("home.difficulty".localized)
                             .font(.system(size: 18, weight: .medium, design: .rounded))
                             .foregroundStyle(Color.zipTextSecondary)
 
@@ -179,13 +180,13 @@ struct HomeView: View {
                             .font(.system(size: 22))
                             .foregroundStyle(.orange)
 
-                        Text("Current Streak")
+                        Text("home.currentStreak".localized)
                             .font(.system(size: 18, weight: .medium, design: .rounded))
                             .foregroundStyle(Color.zipTextSecondary)
 
                         Spacer()
 
-                        Text("\(StatsService.shared.currentStreak) days")
+                        Text("\(StatsService.shared.currentStreak)" + (StatsService.shared.currentStreak == 1 ? "home.day".localized : "home.days".localized))
                             .font(.system(size: 18, weight: .semibold, design: .rounded))
                             .foregroundStyle(Color.zipTextPrimary)
                     }
@@ -203,7 +204,7 @@ struct HomeView: View {
 
                 // Next Puzzle Countdown
                 VStack(spacing: 12) {
-                    Text("Next puzzle in")
+                    Text("home.nextPuzzleIn".localized)
                         .font(.system(size: 16, weight: .medium, design: .rounded))
                         .foregroundStyle(Color.zipTextTertiary)
 
@@ -232,7 +233,7 @@ struct HomeView: View {
                     HStack(spacing: 10) {
                         Image(systemName: "arrow.clockwise")
                             .font(.system(size: 18))
-                        Text("Play Again")
+                        Text("game.complete.playAgain".localized)
                             .font(.system(size: 18, weight: .semibold, design: .rounded))
                     }
                     .foregroundStyle(Color.zipPrimary)
@@ -323,7 +324,7 @@ struct HomeView: View {
         HStack(spacing: 6) {
             Image(systemName: "hand.draw")
                 .font(.system(size: 14))
-            Text("Start at 1, connect in order")
+            Text("game.instruction".localized)
                 .font(.system(size: 14, weight: .medium, design: .rounded))
         }
         .foregroundStyle(Color.zipTextTertiary)
@@ -351,13 +352,13 @@ struct HomeView: View {
                         .foregroundStyle(Color.zipGold)
                 }
 
-                Text(isReplaying ? "Replay Complete!" : "Daily Complete!")
+                Text(isReplaying ? "home.replayComplete".localized : "home.dailyComplete".localized)
                     .font(.system(size: 32, weight: .bold, design: .rounded))
                     .foregroundStyle(Color.zipTextPrimary)
 
                 if let time = viewModel.completionTime {
                     VStack(spacing: 6) {
-                        Text("Your Time")
+                        Text("game.complete.yourTime".localized)
                             .font(.system(size: 16, weight: .medium, design: .rounded))
                             .foregroundStyle(Color.zipTextTertiary)
                         Text(formatTime(time))
@@ -374,7 +375,7 @@ struct HomeView: View {
                     } label: {
                         HStack(spacing: 10) {
                             Image(systemName: "arrow.clockwise")
-                            Text("Play Again")
+                            Text("game.complete.playAgain".localized)
                         }
                         .font(.system(size: 18, weight: .semibold, design: .rounded))
                         .foregroundStyle(.white)
@@ -389,7 +390,7 @@ struct HomeView: View {
                         showConfetti = false
                         isReplaying = false
                     } label: {
-                        Text("Back to Summary")
+                        Text("game.complete.backToSummary".localized)
                             .font(.system(size: 16, weight: .medium, design: .rounded))
                             .foregroundStyle(Color.zipTextSecondary)
                     }
@@ -397,7 +398,7 @@ struct HomeView: View {
                     Button {
                         showConfetti = false
                     } label: {
-                        Text("View Summary")
+                        Text("game.complete.viewSummary".localized)
                             .font(.system(size: 18, weight: .semibold, design: .rounded))
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)

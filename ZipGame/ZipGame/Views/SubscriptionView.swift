@@ -4,6 +4,7 @@ import StoreKit
 struct SubscriptionView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var subscriptionService = SubscriptionService.shared
+    @ObservedObject private var localization = LocalizationService.shared
     @State private var selectedPlan: SubscriptionPlan = .yearly
     @State private var isPurchasing = false
     @State private var showError = false
@@ -37,7 +38,7 @@ struct SubscriptionView: View {
                     bottomSection
                 }
             }
-            .navigationTitle("Play Without Ads")
+            .navigationTitle("subscription.title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -48,8 +49,8 @@ struct SubscriptionView: View {
                     }
                 }
             }
-            .alert("Error", isPresented: $showError) {
-                Button("OK", role: .cancel) { }
+            .alert("common.error".localized, isPresented: $showError) {
+                Button("common.ok".localized, role: .cancel) { }
             } message: {
                 Text(errorMessage)
             }
@@ -65,7 +66,7 @@ struct SubscriptionView: View {
     // MARK: - Header Section
     private var headerSection: some View {
         VStack(spacing: 8) {
-            Text("Enjoy smoother gameplay with zero interruptions.")
+            Text("subscription.header".localized)
                 .font(.system(size: 18, weight: .regular, design: .rounded))
                 .foregroundColor(Color.zipTextTertiary)
                 .multilineTextAlignment(.center)
@@ -77,20 +78,20 @@ struct SubscriptionView: View {
     private var benefitsSection: some View {
         VStack(alignment: .leading, spacing: 14) {
             BenefitRow(
-                text: "Remove all ads",
-                description: "enjoy uninterrupted gameplay"
+                text: "subscription.benefit.removeAds".localized,
+                description: "subscription.benefit.removeAds.desc".localized
             )
             BenefitRow(
-                text: "Customize your board",
-                description: "unlock all color themes"
+                text: "subscription.benefit.customizeBoard".localized,
+                description: "subscription.benefit.customizeBoard.desc".localized
             )
             BenefitRow(
-                text: "Unique fonts",
-                description: "personalize your game style"
+                text: "subscription.benefit.fonts".localized,
+                description: "subscription.benefit.fonts.desc".localized
             )
             BenefitRow(
-                text: "Support the developers",
-                description: "help us improve the game"
+                text: "subscription.benefit.support".localized,
+                description: "subscription.benefit.support.desc".localized
             )
         }
         .padding(.vertical, 8)
@@ -110,11 +111,11 @@ struct SubscriptionView: View {
                         .font(.system(size: 40))
                         .foregroundColor(Color.zipTextTertiary)
 
-                    Text("Unable to load subscription options")
+                    Text("subscription.error.title".localized)
                         .font(.system(size: 16, weight: .medium, design: .rounded))
                         .foregroundColor(Color.zipTextSecondary)
 
-                    Text("Please check your internet connection and try again.")
+                    Text("subscription.error.message".localized)
                         .font(.system(size: 14, weight: .regular, design: .rounded))
                         .foregroundColor(Color.zipTextTertiary)
                         .multilineTextAlignment(.center)
@@ -124,7 +125,7 @@ struct SubscriptionView: View {
                             await subscriptionService.loadProducts()
                         }
                     }) {
-                        Text("Retry")
+                        Text("common.retry".localized)
                             .font(.system(size: 16, weight: .semibold, design: .rounded))
                             .foregroundColor(.white)
                             .padding(.horizontal, 32)
@@ -176,10 +177,10 @@ struct SubscriptionView: View {
                         ProgressView()
                             .tint(.white)
                     } else if let product = selectedProduct {
-                        Text("Subscribe - \(product.displayPrice)")
+                        Text(String(format: "subscription.button.subscribe".localized, product.displayPrice))
                             .font(.system(size: 19, weight: .bold, design: .rounded))
                     } else {
-                        Text("Subscribe")
+                        Text("subscription.button.subscribeDefault".localized)
                             .font(.system(size: 19, weight: .bold, design: .rounded))
                     }
                 }
@@ -196,19 +197,19 @@ struct SubscriptionView: View {
 
             // Terms and Restore
             VStack(spacing: 8) {
-                Text("Cancel anytime. ")
+                Text("subscription.terms.prefix".localized)
                     .foregroundColor(Color.zipTextTertiary)
                 +
-                Text("[Terms of Use](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/)")
+                Text("[\("settings.legal.terms".localized)](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/)")
                     .foregroundColor(Color.zipPrimary)
                 +
-                Text(" and ")
+                Text("subscription.terms.and".localized)
                     .foregroundColor(Color.zipTextTertiary)
                 +
-                Text("[Privacy Policy](https://ikuheikure.xyz/apps/ZipGame/)")
+                Text("[\("settings.legal.privacy".localized)](https://ikuheikure.xyz/apps/ZipGame/)")
                     .foregroundColor(Color.zipPrimary)
                 +
-                Text(" apply.")
+                Text("subscription.terms.apply".localized)
                     .foregroundColor(Color.zipTextTertiary)
             }
             .font(.system(size: 13, weight: .regular, design: .rounded))
@@ -217,7 +218,7 @@ struct SubscriptionView: View {
                 return .handled
             })
 
-            Button("Restore Purchases") {
+            Button("subscription.restore".localized) {
                 Task {
                     await subscriptionService.restorePurchases()
                 }
@@ -293,7 +294,7 @@ struct PlanCard: View {
                             .foregroundColor(Color.zipTextPrimary)
 
                         if let savings = plan.savingsPercentage {
-                            Text("Save \(savings)%")
+                            Text(String(format: "subscription.save".localized, savings))
                                 .font(.system(size: 13, weight: .bold, design: .rounded))
                                 .foregroundColor(.white)
                                 .padding(.horizontal, 10)
@@ -306,7 +307,7 @@ struct PlanCard: View {
                     }
 
                     if billingDescription.isEmpty {
-                        Text(product.displayPrice + " / Month")
+                        Text(product.displayPrice + " " + "subscription.perMonth".localized)
                             .font(.system(size: 17, weight: .medium, design: .rounded))
                             .foregroundColor(Color.zipTextPrimary)
                     } else {
@@ -315,7 +316,7 @@ struct PlanCard: View {
                             .foregroundColor(Color.zipTextPrimary)
 
                         if let monthly = pricePerMonth {
-                            Text("\(monthly) / Month")
+                            Text("\(monthly) " + "subscription.perMonth".localized)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(Color.zipTextTertiary)
                         }

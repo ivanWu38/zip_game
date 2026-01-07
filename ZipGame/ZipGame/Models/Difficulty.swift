@@ -25,9 +25,17 @@ enum Difficulty: String, CaseIterable, Identifiable {
 
     var displayName: String {
         switch self {
-        case .easy: return "Easy (6×6)"
-        case .medium: return "Medium (7×7)"
-        case .hard: return "Hard (8×8)"
+        case .easy: return "difficulty.easy.size".localized
+        case .medium: return "difficulty.medium.size".localized
+        case .hard: return "difficulty.hard.size".localized
+        }
+    }
+
+    var localizedName: String {
+        switch self {
+        case .easy: return "difficulty.easy".localized
+        case .medium: return "difficulty.medium".localized
+        case .hard: return "difficulty.hard".localized
         }
     }
 }

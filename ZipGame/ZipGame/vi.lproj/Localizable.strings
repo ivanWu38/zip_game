@@ -1,0 +1,173 @@
+/*
+  Localizable.strings (Vietnamese)
+  ZipGame
+*/
+
+// MARK: - Tabs
+"tab.today" = "Hom nay";
+"tab.practice" = "Luyen tap";
+"tab.journey" = "Hanh trinh";
+"tab.my" = "Cua toi";
+
+// MARK: - Common
+"common.cancel" = "Huy";
+"common.save" = "Luu";
+"common.reset" = "Dat lai";
+"common.ok" = "OK";
+"common.error" = "Loi";
+"common.retry" = "Thu lai";
+"common.continue" = "Tiep tuc";
+"common.notNow" = "De sau";
+
+// MARK: - Difficulty
+"difficulty.easy" = "De";
+"difficulty.medium" = "Trung binh";
+"difficulty.hard" = "Kho";
+"difficulty.easy.size" = "De (6×6)";
+"difficulty.medium.size" = "Trung binh (7×7)";
+"difficulty.hard.size" = "Kho (8×8)";
+
+// MARK: - Game
+"game.reset" = "Dat lai";
+"game.instruction" = "Bat dau tu 1, noi theo thu tu";
+"game.complete.title" = "Hoan thanh cau do!";
+"game.complete.yourTime" = "Thoi gian cua ban";
+"game.complete.newPuzzle" = "Cau do moi";
+"game.complete.home" = "Trang chu";
+"game.complete.playAgain" = "Choi lai";
+"game.complete.backToSummary" = "Quay lai tom tat";
+"game.complete.viewSummary" = "Xem tom tat";
+"game.replayMode" = "Che do phat lai";
+
+// MARK: - Home (Today)
+"home.title" = "Hom nay";
+"home.dailyComplete" = "Hoan thanh hang ngay!";
+"home.replayComplete" = "Phat lai hoan tat!";
+"home.puzzleNumber" = "Cau do #%d";
+"home.difficulty" = "Do kho";
+"home.currentStreak" = "Chuoi hien tai";
+"home.nextPuzzleIn" = "Cau do tiep theo trong";
+"home.days" = " ngay";
+"home.day" = " ngay";
+
+// MARK: - Practice
+"practice.title" = "Che do luyen tap";
+"practice.subtitle" = "Cau do khong gioi han de ren luyen ky nang";
+"practice.selectDifficulty" = "Chon do kho";
+"practice.startPractice" = "Bat dau luyen tap";
+"practice.newPuzzle" = "Cau do moi";
+
+// MARK: - Journey (Stats)
+"journey.title" = "Hanh trinh";
+"journey.currentStreak" = "Chuoi hien tai";
+"journey.longestStreak" = "Chuoi dai nhat";
+"journey.day" = "ngay";
+"journey.streak" = "chuoi";
+"journey.section.statistics" = "Thong ke";
+"journey.section.bestTimes" = "Thoi gian tot nhat";
+"journey.section.achievements" = "Thanh tuu";
+"journey.stats.totalCompleted" = "Tong so hoan thanh";
+"journey.stats.totalPlayTime" = "Tong thoi gian choi";
+"journey.stats.easyCompleted" = "De da hoan thanh";
+"journey.stats.mediumCompleted" = "Trung binh da hoan thanh";
+"journey.stats.hardCompleted" = "Kho da hoan thanh";
+
+// MARK: - Achievements
+"achievement.3dayStreak" = "Chuoi 3 ngay";
+"achievement.weekWarrior" = "Chien binh tuan";
+"achievement.monthlyMaster" = "Bac thay thang";
+"achievement.puzzleNovice" = "Nguoi moi choi do";
+"achievement.puzzleExpert" = "Chuyen gia cau do";
+"achievement.puzzleMaster" = "Bac thay cau do";
+"achievement.hardModeHero" = "Anh hung che do kho";
+"achievement.speedDemonEasy" = "Toc do than (De)";
+"achievement.speedDemonMedium" = "Toc do than (Trung binh)";
+
+// MARK: - Settings
+"settings.title" = "Cai dat";
+"settings.section.premium" = "Cao cap";
+"settings.section.system" = "He thong";
+"settings.section.language" = "Ngon ngu";
+"settings.section.about" = "Gioi thieu";
+"settings.section.data" = "Du lieu";
+"settings.section.legal" = "Phap ly";
+
+"settings.premium.active" = "Cao cap dang hoat dong";
+"settings.premium.playWithoutAds" = "Choi khong quang cao";
+"settings.premium.thankyou" = "Cam on ban da ung ho!";
+"settings.premium.description" = "Xoa quang cao, mo khoa chu de & phong chu";
+
+"settings.appearance" = "Giao dien";
+"settings.appearance.light" = "Sang";
+"settings.appearance.dark" = "Toi";
+"settings.appearance.auto" = "Tu dong";
+
+"settings.sound.title" = "Hieu ung am thanh";
+"settings.sound.description" = "Phat am thanh khi choi";
+"settings.haptics.title" = "Rung phan hoi";
+"settings.haptics.description" = "Phan hoi rung khi thao tac";
+"settings.board.title" = "Bang";
+"settings.board.description" = "Tuy chinh mau sac va phong chu";
+
+"settings.language.title" = "Ngon ngu";
+"settings.language.system" = "Mac dinh he thong";
+
+"settings.about.version" = "Phien ban";
+"settings.about.build" = "Ban dung";
+
+"settings.reset.title" = "Dat lai tat ca thong ke";
+"settings.reset.description" = "Xoa tat ca tien trinh, chuoi va thanh tuu";
+"settings.reset.alert.title" = "Dat lai thong ke";
+"settings.reset.alert.message" = "Thao tac nay se xoa vinh vien tat ca thong ke, chuoi va thanh tuu cua ban. Khong the hoan tac.";
+
+"settings.legal.privacy" = "Chinh sach bao mat";
+"settings.legal.terms" = "Dieu khoan su dung";
+
+// MARK: - Subscription
+"subscription.title" = "Choi khong quang cao";
+"subscription.header" = "Tan huong trai nghiem choi muot ma khong bi gian doan.";
+"subscription.benefit.removeAds" = "Xoa tat ca quang cao";
+"subscription.benefit.removeAds.desc" = "tan huong trai nghiem khong gian doan";
+"subscription.benefit.customizeBoard" = "Tuy chinh bang cua ban";
+"subscription.benefit.customizeBoard.desc" = "mo khoa tat ca chu de mau";
+"subscription.benefit.fonts" = "Phong chu doc dao";
+"subscription.benefit.fonts.desc" = "ca nhan hoa phong cach tro choi";
+"subscription.benefit.support" = "Ung ho nha phat trien";
+"subscription.benefit.support.desc" = "giup chung toi cai thien tro choi";
+
+"subscription.error.title" = "Khong the tai tuy chon dang ky";
+"subscription.error.message" = "Vui long kiem tra ket noi internet va thu lai.";
+
+"subscription.plan.monthly" = "Hang thang";
+"subscription.plan.quarterly" = "Hang quy";
+"subscription.plan.yearly" = "Hang nam";
+"subscription.save" = "Tiet kiem %d%%";
+"subscription.perMonth" = "/ Thang";
+
+"subscription.billing.quarterly" = "thanh toan theo quy voi gia %@";
+"subscription.billing.yearly" = "thanh toan theo nam voi gia %@";
+"subscription.billing.months" = "thanh toan moi %d thang voi gia %@";
+"subscription.billing.weekly" = "thanh toan theo tuan voi gia %@";
+"subscription.billing.daily" = "thanh toan theo ngay voi gia %@";
+
+"subscription.button.subscribe" = "Dang ky - %@";
+"subscription.button.subscribeDefault" = "Dang ky";
+"subscription.terms.prefix" = "Huy bat cu luc nao. ";
+"subscription.terms.and" = " va ";
+"subscription.terms.apply" = " duoc ap dung.";
+"subscription.restore" = "Khoi phuc giao dich";
+
+// MARK: - Board Settings
+"board.title" = "Bang";
+"board.tab.colors" = "Mau sac";
+"board.tab.font" = "Phong chu";
+"board.premium.title" = "Mo khoa tinh nang cao cap";
+"board.premium.description" = "Tuy chinh mau sac, phong chu & tao chu de hoan hao";
+"board.premium.upgrade" = "Nang cap";
+
+// MARK: - ATT Prompt
+"att.title" = "Trai nghiem quang cao tot hon";
+"att.description" = "Cho phep theo doi de xem quang cao phu hop voi so thich thay vi noi dung ngau nhien.";
+"att.note" = "Dieu nay se khong tang so luong quang cao ban thay.";
+"att.continue" = "Tiep tuc";
+"att.notNow" = "De sau";

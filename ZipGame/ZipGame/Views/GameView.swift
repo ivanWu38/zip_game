@@ -3,6 +3,7 @@ import SwiftUI
 struct GameView: View {
     @StateObject var viewModel: GameViewModel
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject private var localization = LocalizationService.shared
     @State private var showConfetti = false
     @StateObject private var attService = ATTService.shared
     @State private var showATTPrompt = false
@@ -55,7 +56,7 @@ struct GameView: View {
         .navigationBarItems(trailing: Button(action: {
             viewModel.resetGame()
         }) {
-            Text("Reset")
+            Text("game.reset".localized)
                 .font(.system(size: 18, weight: .medium, design: .rounded))
                 .foregroundStyle(Color.zipPrimary)
         })
@@ -141,7 +142,7 @@ struct GameView: View {
                 HStack(spacing: 6) {
                     Image(systemName: "hand.draw")
                         .font(.system(size: 14))
-                    Text("Start at 1, connect in order")
+                    Text("game.instruction".localized)
                         .font(.system(size: 14, weight: .medium, design: .rounded))
                 }
                 .foregroundStyle(Color.zipTextTertiary)
@@ -174,14 +175,14 @@ struct GameView: View {
                 }
 
                 // Title
-                Text("Puzzle Complete!")
+                Text("game.complete.title".localized)
                     .font(.system(size: 36, weight: .bold, design: .rounded))
                     .foregroundStyle(Color.zipTextPrimary)
 
                 // Time
                 if case .completed(let time) = viewModel.gameState {
                     VStack(spacing: 8) {
-                        Text("Your Time")
+                        Text("game.complete.yourTime".localized)
                             .font(.system(size: 18, weight: .medium, design: .rounded))
                             .foregroundStyle(Color.zipTextTertiary)
                         Text(formatTime(time))
@@ -200,7 +201,7 @@ struct GameView: View {
                         } label: {
                             HStack(spacing: 10) {
                                 Image(systemName: "arrow.clockwise")
-                                Text("New Puzzle")
+                                Text("game.complete.newPuzzle".localized)
                             }
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
                             .foregroundStyle(.white)
@@ -217,7 +218,7 @@ struct GameView: View {
                     } label: {
                         HStack(spacing: 10) {
                             Image(systemName: "house")
-                            Text("Home")
+                            Text("game.complete.home".localized)
                         }
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                         .foregroundStyle(Color.zipTextSecondary)

@@ -1,0 +1,173 @@
+/*
+  Localizable.strings (Malay / Bahasa Melayu)
+  ZipGame
+*/
+
+// MARK: - Tabs
+"tab.today" = "Hari Ini";
+"tab.practice" = "Latihan";
+"tab.journey" = "Perjalanan";
+"tab.my" = "Saya";
+
+// MARK: - Common
+"common.cancel" = "Batal";
+"common.save" = "Simpan";
+"common.reset" = "Set Semula";
+"common.ok" = "OK";
+"common.error" = "Ralat";
+"common.retry" = "Cuba Lagi";
+"common.continue" = "Teruskan";
+"common.notNow" = "Bukan Sekarang";
+
+// MARK: - Difficulty
+"difficulty.easy" = "Mudah";
+"difficulty.medium" = "Sederhana";
+"difficulty.hard" = "Sukar";
+"difficulty.easy.size" = "Mudah (6×6)";
+"difficulty.medium.size" = "Sederhana (7×7)";
+"difficulty.hard.size" = "Sukar (8×8)";
+
+// MARK: - Game
+"game.reset" = "Set Semula";
+"game.instruction" = "Mula dari 1, sambung mengikut turutan";
+"game.complete.title" = "Teka-Teki Selesai!";
+"game.complete.yourTime" = "Masa Anda";
+"game.complete.newPuzzle" = "Teka-Teki Baru";
+"game.complete.home" = "Utama";
+"game.complete.playAgain" = "Main Lagi";
+"game.complete.backToSummary" = "Kembali ke Ringkasan";
+"game.complete.viewSummary" = "Lihat Ringkasan";
+"game.replayMode" = "Mod Main Semula";
+
+// MARK: - Home (Today)
+"home.title" = "Hari Ini";
+"home.dailyComplete" = "Harian Selesai!";
+"home.replayComplete" = "Main Semula Selesai!";
+"home.puzzleNumber" = "Teka-Teki #%d";
+"home.difficulty" = "Kesukaran";
+"home.currentStreak" = "Rentak Semasa";
+"home.nextPuzzleIn" = "Teka-teki seterusnya dalam";
+"home.days" = " hari";
+"home.day" = " hari";
+
+// MARK: - Practice
+"practice.title" = "Mod Latihan";
+"practice.subtitle" = "Teka-teki tanpa had untuk mengasah kemahiran anda";
+"practice.selectDifficulty" = "Pilih Kesukaran";
+"practice.startPractice" = "Mula Latihan";
+"practice.newPuzzle" = "Teka-Teki Baru";
+
+// MARK: - Journey (Stats)
+"journey.title" = "Perjalanan";
+"journey.currentStreak" = "Rentak semasa";
+"journey.longestStreak" = "Rentak terpanjang";
+"journey.day" = "hari";
+"journey.streak" = "rentak";
+"journey.section.statistics" = "Statistik";
+"journey.section.bestTimes" = "Masa Terbaik";
+"journey.section.achievements" = "Pencapaian";
+"journey.stats.totalCompleted" = "Jumlah Selesai";
+"journey.stats.totalPlayTime" = "Jumlah Masa Bermain";
+"journey.stats.easyCompleted" = "Mudah Selesai";
+"journey.stats.mediumCompleted" = "Sederhana Selesai";
+"journey.stats.hardCompleted" = "Sukar Selesai";
+
+// MARK: - Achievements
+"achievement.3dayStreak" = "Rentak 3 Hari";
+"achievement.weekWarrior" = "Wira Mingguan";
+"achievement.monthlyMaster" = "Master Bulanan";
+"achievement.puzzleNovice" = "Pemula Teka-Teki";
+"achievement.puzzleExpert" = "Pakar Teka-Teki";
+"achievement.puzzleMaster" = "Master Teka-Teki";
+"achievement.hardModeHero" = "Wira Mod Sukar";
+"achievement.speedDemonEasy" = "Pantas Kilat (Mudah)";
+"achievement.speedDemonMedium" = "Pantas Kilat (Sederhana)";
+
+// MARK: - Settings
+"settings.title" = "Tetapan";
+"settings.section.premium" = "Premium";
+"settings.section.system" = "Sistem";
+"settings.section.language" = "Bahasa";
+"settings.section.about" = "Perihal";
+"settings.section.data" = "Data";
+"settings.section.legal" = "Undang-Undang";
+
+"settings.premium.active" = "Premium Aktif";
+"settings.premium.playWithoutAds" = "Main Tanpa Iklan";
+"settings.premium.thankyou" = "Terima kasih atas sokongan anda!";
+"settings.premium.description" = "Buang iklan, buka kunci tema & fon";
+
+"settings.appearance" = "Penampilan";
+"settings.appearance.light" = "Cerah";
+"settings.appearance.dark" = "Gelap";
+"settings.appearance.auto" = "Automatik";
+
+"settings.sound.title" = "Kesan Bunyi";
+"settings.sound.description" = "Mainkan bunyi semasa permainan";
+"settings.haptics.title" = "Haptik";
+"settings.haptics.description" = "Maklum balas getaran pada tindakan";
+"settings.board.title" = "Papan";
+"settings.board.description" = "Sesuaikan warna dan fon";
+
+"settings.language.title" = "Bahasa";
+"settings.language.system" = "Lalai Sistem";
+
+"settings.about.version" = "Versi";
+"settings.about.build" = "Binaan";
+
+"settings.reset.title" = "Set Semula Semua Statistik";
+"settings.reset.description" = "Padam semua kemajuan, rentak, dan pencapaian";
+"settings.reset.alert.title" = "Set Semula Statistik";
+"settings.reset.alert.message" = "Ini akan memadam semua statistik, rentak, dan pencapaian anda secara kekal. Tindakan ini tidak boleh dibatalkan.";
+
+"settings.legal.privacy" = "Dasar Privasi";
+"settings.legal.terms" = "Terma Penggunaan";
+
+// MARK: - Subscription
+"subscription.title" = "Main Tanpa Iklan";
+"subscription.header" = "Nikmati permainan yang lebih lancar tanpa gangguan.";
+"subscription.benefit.removeAds" = "Buang semua iklan";
+"subscription.benefit.removeAds.desc" = "nikmati permainan tanpa gangguan";
+"subscription.benefit.customizeBoard" = "Sesuaikan papan anda";
+"subscription.benefit.customizeBoard.desc" = "buka kunci semua tema warna";
+"subscription.benefit.fonts" = "Fon unik";
+"subscription.benefit.fonts.desc" = "peribadikan gaya permainan anda";
+"subscription.benefit.support" = "Sokong pembangun";
+"subscription.benefit.support.desc" = "bantu kami memperbaiki permainan";
+
+"subscription.error.title" = "Tidak dapat memuatkan pilihan langganan";
+"subscription.error.message" = "Sila semak sambungan internet anda dan cuba lagi.";
+
+"subscription.plan.monthly" = "Bulanan";
+"subscription.plan.quarterly" = "Suku Tahunan";
+"subscription.plan.yearly" = "Tahunan";
+"subscription.save" = "Jimat %d%%";
+"subscription.perMonth" = "/ Bulan";
+
+"subscription.billing.quarterly" = "dibilkan suku tahunan pada %@";
+"subscription.billing.yearly" = "dibilkan tahunan pada %@";
+"subscription.billing.months" = "dibilkan setiap %d bulan pada %@";
+"subscription.billing.weekly" = "dibilkan mingguan pada %@";
+"subscription.billing.daily" = "dibilkan harian pada %@";
+
+"subscription.button.subscribe" = "Langgan - %@";
+"subscription.button.subscribeDefault" = "Langgan";
+"subscription.terms.prefix" = "Batal bila-bila masa. ";
+"subscription.terms.and" = " dan ";
+"subscription.terms.apply" = " terpakai.";
+"subscription.restore" = "Pulihkan Pembelian";
+
+// MARK: - Board Settings
+"board.title" = "Papan";
+"board.tab.colors" = "Warna";
+"board.tab.font" = "Fon";
+"board.premium.title" = "Buka Kunci Ciri Premium";
+"board.premium.description" = "Sesuaikan warna, fon & cipta tema sempurna anda";
+"board.premium.upgrade" = "Naik Taraf";
+
+// MARK: - ATT Prompt
+"att.title" = "Pengalaman Iklan Lebih Baik";
+"att.description" = "Benarkan penjejakan untuk melihat iklan yang sepadan dengan minat anda berbanding kandungan rawak.";
+"att.note" = "Ini tidak akan menambah bilangan iklan yang anda lihat.";
+"att.continue" = "Teruskan";
+"att.notNow" = "Bukan Sekarang";

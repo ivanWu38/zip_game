@@ -3,6 +3,7 @@ import SwiftUI
 struct ATTPromptView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var attService = ATTService.shared
+    @ObservedObject private var localization = LocalizationService.shared
 
     var body: some View {
         ZStack {
@@ -27,19 +28,19 @@ struct ATTPromptView: View {
                 }
 
                 // Title
-                Text("Better Ad Experience")
+                Text("att.title".localized)
                     .font(.system(size: 24, weight: .bold, design: .rounded))
                     .foregroundColor(Color.zipTextPrimary)
                     .multilineTextAlignment(.center)
 
                 // Description
                 VStack(spacing: 12) {
-                    Text("Allow tracking to see ads that match your interests instead of random content.")
+                    Text("att.description".localized)
                         .font(.system(size: 16, weight: .regular, design: .rounded))
                         .foregroundColor(Color.zipTextSecondary)
                         .multilineTextAlignment(.center)
 
-                    Text("This won't increase the number of ads you see.")
+                    Text("att.note".localized)
                         .font(.system(size: 14, weight: .medium, design: .rounded))
                         .foregroundColor(Color.zipTextTertiary)
                         .multilineTextAlignment(.center)
@@ -54,7 +55,7 @@ struct ATTPromptView: View {
                             dismiss()
                         }
                     }) {
-                        Text("Continue")
+                        Text("att.button.continue".localized)
                             .font(.system(size: 18, weight: .semibold, design: .rounded))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -70,7 +71,7 @@ struct ATTPromptView: View {
                         attService.skipTracking()
                         dismiss()
                     }) {
-                        Text("Not Now")
+                        Text("att.button.notNow".localized)
                             .font(.system(size: 16, weight: .medium, design: .rounded))
                             .foregroundColor(Color.zipTextTertiary)
                     }

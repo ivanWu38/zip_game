@@ -1,14 +1,24 @@
 import SwiftUI
 
-enum BoardSettingsTab: String, CaseIterable {
-    case colors = "Colors"
-    case font = "Font"
+enum BoardSettingsTab: CaseIterable {
+    case colors
+    case font
+
+    var localizedName: String {
+        switch self {
+        case .colors:
+            return "board.tab.colors".localized
+        case .font:
+            return "board.tab.font".localized
+        }
+    }
 }
 
 struct BoardSettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var themeService = ThemeService.shared
     @StateObject private var subscriptionService = SubscriptionService.shared
+    @ObservedObject private var localization = LocalizationService.shared
     @State private var selectedTab: BoardSettingsTab = .colors
     @State private var showSubscription = false
 
@@ -50,7 +60,7 @@ struct BoardSettingsView: View {
                     .padding(.top, 16)
                 }
             }
-            .navigationTitle("Board")
+            .navigationTitle("board.title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -61,7 +71,7 @@ struct BoardSettingsView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
+                    Button("common.save".localized) {
                         saveSettings()
                     }
                     .font(.system(size: 17, weight: .semibold))
@@ -113,10 +123,10 @@ struct BoardSettingsView: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                Text("Unlock Premium Features")
+                Text("board.premium.title".localized)
                     .font(.system(size: 17, weight: .semibold, design: .rounded))
                     .foregroundColor(Color.zipTextPrimary)
-                Text("Customize colors, fonts & create your perfect theme")
+                Text("board.premium.description".localized)
                     .font(.system(size: 14, weight: .regular, design: .rounded))
                     .foregroundColor(Color.zipTextTertiary)
                     .lineLimit(2)
@@ -125,7 +135,7 @@ struct BoardSettingsView: View {
             Spacer()
 
             Button(action: { showSubscription = true }) {
-                Text("Upgrade")
+                Text("board.premium.upgrade".localized)
                     .font(.system(size: 15, weight: .semibold, design: .rounded))
                     .foregroundColor(.white)
                     .padding(.horizontal, 16)
@@ -189,7 +199,7 @@ struct BoardSettingsView: View {
                         selectedTab = tab
                     }
                 }) {
-                    Text(tab.rawValue)
+                    Text(tab.localizedName)
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
                         .foregroundColor(selectedTab == tab ? .white : Color.zipTextSecondary)
                         .frame(maxWidth: .infinity)

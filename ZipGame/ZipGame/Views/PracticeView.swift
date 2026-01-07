@@ -6,6 +6,7 @@ struct PracticeView: View {
     @State private var gameViewModel: GameViewModel?
     @State private var showingGame = false
     @State private var puzzleKey = UUID()
+    @ObservedObject private var localization = LocalizationService.shared
 
     var body: some View {
         NavigationStack {
@@ -29,7 +30,7 @@ struct PracticeView: View {
                     initialView
                 }
             }
-            .navigationTitle("Practice")
+            .navigationTitle("practice.title".localized)
             .navigationBarTitleDisplayMode(.large)
         }
         .onAppear {
@@ -55,11 +56,11 @@ struct PracticeView: View {
             }
 
             VStack(spacing: 12) {
-                Text("Practice Mode")
+                Text("practice.title".localized)
                     .font(.system(size: 32, weight: .bold, design: .rounded))
                     .foregroundStyle(Color.zipTextPrimary)
 
-                Text("Unlimited puzzles to sharpen your skills")
+                Text("practice.subtitle".localized)
                     .font(.system(size: 18, weight: .medium, design: .rounded))
                     .foregroundStyle(Color.zipTextSecondary)
                     .multilineTextAlignment(.center)
@@ -67,7 +68,7 @@ struct PracticeView: View {
 
             // Difficulty Selection
             VStack(alignment: .leading, spacing: 16) {
-                Text("Select Difficulty")
+                Text("practice.selectDifficulty".localized)
                     .font(.system(size: 16, weight: .semibold, design: .rounded))
                     .foregroundStyle(Color.zipTextTertiary)
                     .textCase(.uppercase)
@@ -95,7 +96,7 @@ struct PracticeView: View {
                 HStack(spacing: 12) {
                     Image(systemName: "play.fill")
                         .font(.system(size: 20, weight: .semibold))
-                    Text("Start Practice")
+                    Text("practice.startPractice".localized)
                         .font(.system(size: 20, weight: .bold, design: .rounded))
                 }
                 .foregroundStyle(.white)
@@ -123,7 +124,7 @@ struct PracticeView: View {
                             generateNewPuzzle()
                         }
                     } label: {
-                        Text(difficulty.rawValue)
+                        Text(difficulty.localizedName)
                             .font(.system(size: 15, weight: .semibold, design: .rounded))
                             .foregroundStyle(selectedDifficulty == difficulty ? .white : Color.zipTextSecondary)
                             .padding(.horizontal, 16)
@@ -185,7 +186,7 @@ struct PracticeGameContent: View {
                     } label: {
                         HStack(spacing: 8) {
                             Image(systemName: "arrow.clockwise")
-                            Text("New Puzzle")
+                            Text("practice.newPuzzle".localized)
                         }
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
                         .foregroundStyle(Color.zipPrimary)
@@ -283,13 +284,13 @@ struct PracticeGameContent: View {
                         .foregroundStyle(Color.zipGold)
                 }
 
-                Text("Puzzle Complete!")
+                Text("game.complete.title".localized)
                     .font(.system(size: 32, weight: .bold, design: .rounded))
                     .foregroundStyle(Color.zipTextPrimary)
 
                 if case .completed(let time) = viewModel.gameState {
                     VStack(spacing: 6) {
-                        Text("Your Time")
+                        Text("game.complete.yourTime".localized)
                             .font(.system(size: 16, weight: .medium, design: .rounded))
                             .foregroundStyle(Color.zipTextTertiary)
                         Text(formatTime(time))
@@ -305,7 +306,7 @@ struct PracticeGameContent: View {
                 } label: {
                     HStack(spacing: 10) {
                         Image(systemName: "arrow.clockwise")
-                        Text("New Puzzle")
+                        Text("practice.newPuzzle".localized)
                     }
                     .font(.system(size: 20, weight: .semibold, design: .rounded))
                     .foregroundStyle(.white)
@@ -359,7 +360,7 @@ struct DifficultyCard: View {
     var body: some View {
         Button(action: action) {
             VStack(spacing: 8) {
-                Text(difficulty.rawValue)
+                Text(difficulty.localizedName)
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
                     .foregroundStyle(isSelected ? .white : Color.zipTextSecondary)
 

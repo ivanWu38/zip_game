@@ -5,12 +5,22 @@ struct MainTabView: View {
     @State private var selectedTab: Tab = .today
     @ObservedObject private var settings = SettingsService.shared
     @StateObject private var subscriptionService = SubscriptionService.shared
+    @ObservedObject private var localization = LocalizationService.shared
 
     enum Tab: String, CaseIterable {
-        case today = "Today"
-        case practice = "Practice"
-        case journey = "Journey"
-        case settings = "My"
+        case today
+        case practice
+        case journey
+        case settings
+
+        var localizedName: String {
+            switch self {
+            case .today: return "tab.today".localized
+            case .practice: return "tab.practice".localized
+            case .journey: return "tab.journey".localized
+            case .settings: return "tab.my".localized
+            }
+        }
 
         var icon: String {
             switch self {
@@ -107,7 +117,7 @@ struct MainTabView: View {
                     .font(.system(size: 22, weight: selectedTab == tab ? .semibold : .regular))
                     .foregroundStyle(selectedTab == tab ? Color.zipPrimary : Color.zipTabInactive)
 
-                Text(tab.rawValue)
+                Text(tab.localizedName)
                     .font(.system(size: 11, weight: .medium, design: .rounded))
                     .foregroundStyle(selectedTab == tab ? Color.zipPrimary : Color.zipTabInactive)
             }
