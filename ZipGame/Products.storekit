@@ -93,7 +93,7 @@
               "locale" : "ja"
             }
           ],
-          "productID" : "com.zipgame.premium.monthly",
+          "productID" : "com.zipgame.premium.monthly.v2",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "Monthly Premium",
           "subscriptionGroupID" : "21610296",

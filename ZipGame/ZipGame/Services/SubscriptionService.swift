@@ -3,7 +3,7 @@ import StoreKit
 
 // MARK: - Subscription Plan
 enum SubscriptionPlan: String, CaseIterable, Identifiable {
-    case monthly = "com.zipgame.premium.monthly"
+    case monthly = "com.zipgame.premium.monthly.v2"
     case quarterly = "com.zipgame.premium.quarterly"
     case yearly = "com.zipgame.premium.yearly"
 
