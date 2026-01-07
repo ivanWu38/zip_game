@@ -1,0 +1,169 @@
+{
+  "identifier" : "3E8B2F9A-1234-5678-9ABC-DEF012345678",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "123456789",
+    "_developerTeamID" : "Q98K2GW9ZQ",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 756470400,
+    "_locale" : "ja_JP",
+    "_storefront" : "JPN",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21610296",
+      "localizations" : [
+
+      ],
+      "name" : "Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "300",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6744979870",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Monthly subscription to remove ads",
+              "displayName" : "Monthly Premium",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "広告を削除する月額サブスクリプション",
+              "displayName" : "月額プレミアム",
+              "locale" : "ja"
+            }
+          ],
+          "productID" : "com.zipgame.premium.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly Premium",
+          "subscriptionGroupID" : "21610296",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "800",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6744979871",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Quarterly subscription to remove ads",
+              "displayName" : "Quarterly Premium",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "広告を削除する3ヶ月サブスクリプション",
+              "displayName" : "3ヶ月プレミアム",
+              "locale" : "ja"
+            }
+          ],
+          "productID" : "com.zipgame.premium.quarterly",
+          "recurringSubscriptionPeriod" : "P3M",
+          "referenceName" : "Quarterly Premium",
+          "subscriptionGroupID" : "21610296",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "1500",
+          "familyShareable" : false,
+          "groupNumber" : 3,
+          "internalID" : "6744979872",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Yearly subscription to remove ads",
+              "displayName" : "Yearly Premium",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "広告を削除する年額サブスクリプション",
+              "displayName" : "年額プレミアム",
+              "locale" : "ja"
+            }
+          ],
+          "productID" : "com.zipgame.premium.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Yearly Premium",
+          "subscriptionGroupID" : "21610296",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

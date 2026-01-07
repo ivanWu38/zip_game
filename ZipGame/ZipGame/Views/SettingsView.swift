@@ -48,7 +48,9 @@ enum AppearanceMode: String, CaseIterable {
 struct SettingsView: View {
     @ObservedObject var settings = SettingsService.shared
     @ObservedObject var stats = StatsService.shared
+    @StateObject var subscriptionService = SubscriptionService.shared
     @State private var showResetAlert = false
+    @State private var showSubscription = false
 
     var body: some View {
         NavigationStack {
@@ -59,6 +61,9 @@ struct SettingsView: View {
 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 28) {
+                        // Subscription Section
+                        subscriptionSection
+
                         // System Settings
                         systemSection
 
@@ -86,6 +91,59 @@ struct SettingsView: View {
             } message: {
                 Text("This will permanently delete all your statistics, streaks, and achievements. This action cannot be undone.")
             }
+            .sheet(isPresented: $showSubscription) {
+                SubscriptionView()
+            }
+        }
+    }
+
+    // MARK: - Subscription Section
+    private var subscriptionSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Premium")
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                .foregroundStyle(Color.zipTextTertiary)
+                .textCase(.uppercase)
+                .tracking(1)
+
+            Button(action: {
+                showSubscription = true
+            }) {
+                HStack(spacing: 14) {
+                    Image(systemName: subscriptionService.isPremium ? "checkmark.seal.fill" : "star.fill")
+                        .font(.system(size: 24))
+                        .foregroundStyle(subscriptionService.isPremium ? Color.green : Color.zipPrimary)
+                        .frame(width: 32)
+
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(subscriptionService.isPremium ? "Premium Active" : "Play Without Ads")
+                            .font(.system(size: 19, weight: .semibold, design: .rounded))
+                            .foregroundStyle(Color.zipTextPrimary)
+
+                        Text(subscriptionService.isPremium ? "Thank you for your support!" : "Remove all ads and support development")
+                            .font(.system(size: 15, weight: .regular, design: .rounded))
+                            .foregroundStyle(Color.zipTextTertiary)
+                    }
+
+                    Spacer()
+
+                    if !subscriptionService.isPremium {
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundStyle(Color.zipTextTertiary)
+                    }
+                }
+                .padding(20)
+                .background(
+                    RoundedRectangle(cornerRadius: 18)
+                        .fill(Color.zipCardBackground)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 18)
+                                .stroke(subscriptionService.isPremium ? Color.green.opacity(0.5) : Color.zipPrimary.opacity(0.5), lineWidth: 1)
+                        )
+                )
+            }
+            .disabled(subscriptionService.isPremium)
         }
     }
 

@@ -4,6 +4,7 @@ import GoogleMobileAds
 struct MainTabView: View {
     @State private var selectedTab: Tab = .today
     @ObservedObject private var settings = SettingsService.shared
+    @StateObject private var subscriptionService = SubscriptionService.shared
 
     enum Tab: String, CaseIterable {
         case today = "Today"
@@ -57,8 +58,8 @@ struct MainTabView: View {
 
             // Banner Ad + Custom Tab Bar
             VStack(spacing: 0) {
-                // Banner Ad (only show on specific tabs)
-                if selectedTab.showAds {
+                // Banner Ad (only show on specific tabs and for non-premium users)
+                if selectedTab.showAds && !subscriptionService.isPremium {
                     BannerContainerView()
                 }
 

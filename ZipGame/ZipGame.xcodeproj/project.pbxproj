@@ -29,6 +29,8 @@
 		A20 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20 /* PracticeView.swift */; };
 		A21 /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21 /* AdMobManager.swift */; };
 		A22 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = PKG01 /* GoogleMobileAds */; };
+		A23 /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23 /* SubscriptionService.swift */; };
+		A24 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24 /* SubscriptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,9 @@
 		B20 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		B21 /* AdMobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
 		B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B23 /* SubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
+		B24 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		B25 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +79,7 @@
 			children = (
 				D01 /* ZipGame */,
 				D02 /* Products */,
+				B25 /* Products.storekit */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +137,7 @@
 				B17 /* JourneyView.swift */,
 				B18 /* SettingsView.swift */,
 				B20 /* PracticeView.swift */,
+				B24 /* SubscriptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -142,6 +149,7 @@
 				B13 /* StorageService.swift */,
 				B19 /* StatsService.swift */,
 				B21 /* AdMobManager.swift */,
+				B23 /* SubscriptionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -249,6 +257,8 @@
 				A19 /* StatsService.swift in Sources */,
 				A20 /* PracticeView.swift in Sources */,
 				A21 /* AdMobManager.swift in Sources */,
+				A23 /* SubscriptionService.swift in Sources */,
+				A24 /* SubscriptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
