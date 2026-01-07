@@ -33,6 +33,8 @@
 		A24 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24 /* SubscriptionView.swift */; };
 		A25 /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26 /* ThemeService.swift */; };
 		A26 /* BoardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27 /* BoardSettingsView.swift */; };
+		A27 /* ATTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28 /* ATTService.swift */; };
+		A28 /* ATTPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29 /* ATTPromptView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		B25 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 		B26 /* ThemeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
 		B27 /* BoardSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSettingsView.swift; sourceTree = "<group>"; };
+		B28 /* ATTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTService.swift; sourceTree = "<group>"; };
+		B29 /* ATTPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTPromptView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,7 @@
 				B20 /* PracticeView.swift */,
 				B24 /* SubscriptionView.swift */,
 				B27 /* BoardSettingsView.swift */,
+				B29 /* ATTPromptView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				B21 /* AdMobManager.swift */,
 				B23 /* SubscriptionService.swift */,
 				B26 /* ThemeService.swift */,
+				B28 /* ATTService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -267,6 +273,8 @@
 				A24 /* SubscriptionView.swift in Sources */,
 				A25 /* ThemeService.swift in Sources */,
 				A26 /* BoardSettingsView.swift in Sources */,
+				A27 /* ATTService.swift in Sources */,
+				A28 /* ATTPromptView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
