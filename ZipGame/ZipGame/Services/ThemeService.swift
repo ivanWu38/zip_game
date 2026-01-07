@@ -144,58 +144,43 @@ enum BoardTheme: String, CaseIterable, Identifiable {
 
 // MARK: - Font Theme
 enum FontTheme: String, CaseIterable, Identifiable {
-    case system = "system"
     case rounded = "rounded"
-    case serif = "serif"
-    case mono = "mono"
     case futura = "futura"
-    case noteworthy = "noteworthy"
+    case courier = "courier"
+    case chalkduster = "chalkduster"
+    case copperplate = "copperplate"
+    case marker = "marker"
 
     var id: String { rawValue }
 
     var displayName: String {
         switch self {
-        case .system: return "San Francisco"
-        case .rounded: return "SF Rounded"
-        case .serif: return "New York"
-        case .mono: return "SF Mono"
+        case .rounded: return "Rounded"
         case .futura: return "Futura"
-        case .noteworthy: return "Noteworthy"
+        case .courier: return "Typewriter"
+        case .chalkduster: return "Chalkboard"
+        case .copperplate: return "Copperplate"
+        case .marker: return "Marker"
         }
     }
 
     var isPremium: Bool {
-        self != .system && self != .rounded
+        self != .rounded
     }
 
-    var fontName: String? {
+    var fontName: String {
         switch self {
-        case .system: return nil
-        case .rounded: return nil
-        case .serif: return "NewYork-Regular"
-        case .mono: return "SFMono-Regular"
-        case .futura: return "Futura-Medium"
-        case .noteworthy: return "Noteworthy-Bold"
-        }
-    }
-
-    var fontDesign: Font.Design {
-        switch self {
-        case .system: return .default
-        case .rounded: return .rounded
-        case .serif: return .serif
-        case .mono: return .monospaced
-        case .futura: return .default
-        case .noteworthy: return .default
+        case .rounded: return "AvenirNext-Bold"
+        case .futura: return "Futura-Bold"
+        case .courier: return "CourierNewPS-BoldMT"
+        case .chalkduster: return "Chalkduster"
+        case .copperplate: return "Copperplate-Bold"
+        case .marker: return "MarkerFelt-Wide"
         }
     }
 
     func font(size: CGFloat, weight: Font.Weight = .regular) -> Font {
-        if let name = fontName {
-            return .custom(name, size: size)
-        } else {
-            return .system(size: size, weight: weight, design: fontDesign)
-        }
+        return .custom(fontName, size: size)
     }
 }
 

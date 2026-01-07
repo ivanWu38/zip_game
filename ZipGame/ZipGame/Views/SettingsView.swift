@@ -124,7 +124,7 @@ struct SettingsView: View {
                             .font(.system(size: 19, weight: .semibold, design: .rounded))
                             .foregroundStyle(Color.zipTextPrimary)
 
-                        Text(subscriptionService.isPremium ? "Thank you for your support!" : "Remove all ads and support development")
+                        Text(subscriptionService.isPremium ? "Thank you for your support!" : "Remove ads, unlock themes & fonts")
                             .font(.system(size: 15, weight: .regular, design: .rounded))
                             .foregroundStyle(Color.zipTextTertiary)
                     }

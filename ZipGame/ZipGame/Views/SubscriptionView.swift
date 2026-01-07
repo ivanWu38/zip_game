@@ -81,6 +81,14 @@ struct SubscriptionView: View {
                 description: "enjoy uninterrupted gameplay"
             )
             BenefitRow(
+                text: "Customize your board",
+                description: "unlock all color themes"
+            )
+            BenefitRow(
+                text: "Unique fonts",
+                description: "personalize your game style"
+            )
+            BenefitRow(
                 text: "Support the developers",
                 description: "help us improve the game"
             )

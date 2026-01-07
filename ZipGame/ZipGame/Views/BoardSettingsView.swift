@@ -12,6 +12,10 @@ struct BoardSettingsView: View {
     @State private var selectedTab: BoardSettingsTab = .colors
     @State private var showSubscription = false
 
+    // Preview states - separate from actual saved settings
+    @State private var previewTheme: BoardTheme = .zipDefault
+    @State private var previewFont: FontTheme = .rounded
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -58,7 +62,7 @@ struct BoardSettingsView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        dismiss()
+                        saveSettings()
                     }
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundColor(Color.zipPrimary)
@@ -67,7 +71,33 @@ struct BoardSettingsView: View {
             .sheet(isPresented: $showSubscription) {
                 SubscriptionView()
             }
+            .onAppear {
+                // Initialize preview with current saved settings
+                previewTheme = themeService.selectedBoardTheme
+                previewFont = themeService.selectedFontTheme
+            }
         }
+    }
+
+    // Save the preview settings if user has permission
+    private func saveSettings() {
+        // Check if selected theme/font requires premium
+        let needsPremium = (previewTheme.isPremium || previewFont.isPremium) && !subscriptionService.isPremium
+
+        if needsPremium {
+            // Show subscription sheet to unlock
+            showSubscription = true
+        } else {
+            // Save to ThemeService and dismiss
+            themeService.selectedBoardTheme = previewTheme
+            themeService.selectedFontTheme = previewFont
+            dismiss()
+        }
+    }
+
+    // Check if current preview has premium-only selections
+    private var hasPremiumSelection: Bool {
+        (previewTheme.isPremium || previewFont.isPremium) && !subscriptionService.isPremium
     }
 
     // MARK: - Premium Banner
@@ -131,8 +161,8 @@ struct BoardSettingsView: View {
                             PreviewCellView(
                                 number: number,
                                 isPath: isPath,
-                                theme: themeService.selectedBoardTheme,
-                                font: themeService.selectedFontTheme
+                                theme: previewTheme,
+                                font: previewFont
                             )
                         }
                     }
@@ -192,15 +222,12 @@ struct BoardSettingsView: View {
             ForEach(BoardTheme.allCases) { theme in
                 ThemeCard(
                     theme: theme,
-                    isSelected: themeService.selectedBoardTheme == theme,
+                    isSelected: previewTheme == theme,
                     isPremium: subscriptionService.isPremium
                 ) {
-                    if theme.isPremium && !subscriptionService.isPremium {
-                        showSubscription = true
-                    } else {
-                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                            themeService.selectedBoardTheme = theme
-                        }
+                    // Always update preview to show what theme looks like
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                        previewTheme = theme
                     }
                 }
             }
@@ -215,15 +242,12 @@ struct BoardSettingsView: View {
             ForEach(FontTheme.allCases) { font in
                 FontRow(
                     font: font,
-                    isSelected: themeService.selectedFontTheme == font,
+                    isSelected: previewFont == font,
                     isPremium: subscriptionService.isPremium
                 ) {
-                    if font.isPremium && !subscriptionService.isPremium {
-                        showSubscription = true
-                    } else {
-                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                            themeService.selectedFontTheme = font
-                        }
+                    // Always update preview to show what font looks like
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                        previewFont = font
                     }
                 }
             }
@@ -295,13 +319,6 @@ struct ThemeCard: View {
                     .font(.system(size: 13, weight: .medium, design: .rounded))
                     .foregroundColor(Color.zipTextPrimary)
                     .lineLimit(1)
-
-                // Lock icon for premium themes
-                if theme.isPremium && !isPremium {
-                    Image(systemName: "lock.fill")
-                        .font(.system(size: 10))
-                        .foregroundColor(Color.zipTextTertiary)
-                }
             }
             .padding(12)
             .frame(maxWidth: .infinity)
@@ -348,11 +365,7 @@ struct FontRow: View {
 
                 Spacer()
 
-                if font.isPremium && !isPremium {
-                    Image(systemName: "lock.fill")
-                        .font(.system(size: 14))
-                        .foregroundColor(Color.zipTextTertiary)
-                } else if isSelected {
+                if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.system(size: 22))
                         .foregroundColor(Color.zipPrimary)
