@@ -7,6 +7,7 @@ struct CellView: View {
     let pathIndex: Int?
     let cellSize: CGFloat
     let spacing: CGFloat
+    @ObservedObject private var themeService = ThemeService.shared
 
     init(cell: Cell, isInPath: Bool, isCurrentEnd: Bool, pathIndex: Int?, cellSize: CGFloat, spacing: CGFloat = 6) {
         self.cell = cell
@@ -34,14 +35,14 @@ struct CellView: View {
             // Glow effect for current end
             if isCurrentEnd {
                 RoundedRectangle(cornerRadius: cellSize * 0.2)
-                    .fill(Color.zipCellCurrent.opacity(0.3))
+                    .fill(themeService.currentColor.opacity(0.3))
                     .blur(radius: 8)
             }
 
             // Checkpoint number
             if let number = cell.checkpointNumber {
                 Text("\(number)")
-                    .font(.system(size: cellSize * 0.45, weight: .bold, design: .rounded))
+                    .font(themeService.gameFont(size: cellSize * 0.45, weight: .bold))
                     .foregroundStyle(textColor)
                     .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 1)
             }
@@ -106,13 +107,13 @@ struct CellView: View {
 
     private var backgroundColor: Color {
         if isCurrentEnd {
-            return Color.zipCellCurrent
+            return themeService.currentColor
         } else if isInPath {
-            return Color.zipCellPath
+            return themeService.pathColor
         } else if cell.isCheckpoint {
-            return Color.zipCellCheckpoint
+            return themeService.checkpointColor
         } else {
-            return Color.zipCellEmpty
+            return themeService.emptyColor
         }
     }
 
@@ -122,7 +123,7 @@ struct CellView: View {
         } else if isInPath {
             return Color.white.opacity(0.3)
         } else if cell.isCheckpoint {
-            return Color.zipPrimary.opacity(0.4)
+            return themeService.pathColor.opacity(0.4)
         } else {
             return Color.white.opacity(0.05)
         }
@@ -140,9 +141,9 @@ struct CellView: View {
 
     private var shadowColor: Color {
         if isCurrentEnd {
-            return Color.zipPrimary.opacity(0.6)
+            return themeService.pathColor.opacity(0.6)
         } else if isInPath {
-            return Color.zipPrimary.opacity(0.4)
+            return themeService.pathColor.opacity(0.4)
         } else {
             return Color.black.opacity(0.3)
         }

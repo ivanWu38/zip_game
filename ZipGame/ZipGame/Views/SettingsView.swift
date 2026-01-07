@@ -51,6 +51,7 @@ struct SettingsView: View {
     @StateObject var subscriptionService = SubscriptionService.shared
     @State private var showResetAlert = false
     @State private var showSubscription = false
+    @State private var showBoardSettings = false
 
     var body: some View {
         NavigationStack {
@@ -93,6 +94,9 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showSubscription) {
                 SubscriptionView()
+            }
+            .sheet(isPresented: $showBoardSettings) {
+                BoardSettingsView()
             }
         }
     }
@@ -208,6 +212,36 @@ struct SettingsView: View {
                     description: "Vibration feedback on actions",
                     isOn: $settings.hapticsEnabled
                 )
+
+                Divider().background(Color.zipCardBorder)
+
+                // Board Settings
+                Button(action: { showBoardSettings = true }) {
+                    HStack(spacing: 14) {
+                        Image(systemName: "paintpalette.fill")
+                            .font(.system(size: 22))
+                            .foregroundStyle(Color.zipPrimary)
+                            .frame(width: 32)
+
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("Board")
+                                .font(.system(size: 19, weight: .medium, design: .rounded))
+                                .foregroundStyle(Color.zipTextPrimary)
+
+                            Text("Customize colors and fonts")
+                                .font(.system(size: 15, weight: .regular, design: .rounded))
+                                .foregroundStyle(Color.zipTextTertiary)
+                        }
+
+                        Spacer()
+
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundStyle(Color.zipTextTertiary)
+                    }
+                    .padding(.vertical, 16)
+                    .padding(.horizontal, 18)
+                }
             }
             .background(
                 RoundedRectangle(cornerRadius: 18)
