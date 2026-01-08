@@ -6,6 +6,9 @@ struct MainTabView: View {
     @ObservedObject private var settings = SettingsService.shared
     @StateObject private var subscriptionService = SubscriptionService.shared
     @ObservedObject private var localization = LocalizationService.shared
+    @StateObject private var attService = ATTService.shared
+    @State private var showATTPrompt = false
+    @State private var hasInitializedAds = false
 
     enum Tab: String, CaseIterable {
         case today
@@ -79,6 +82,27 @@ struct MainTabView: View {
         }
         .ignoresSafeArea(.keyboard)
         .preferredColorScheme(colorScheme)
+        .onAppear {
+            // Check and show ATT prompt on app launch
+            attService.checkAndShowPromptOnLaunch()
+        }
+        .onChange(of: attService.shouldShowPrePrompt) { shouldShow in
+            if shouldShow {
+                showATTPrompt = true
+            }
+        }
+        .onChange(of: attService.hasCompletedATTFlow) { completed in
+            if completed && !hasInitializedAds {
+                // Initialize AdMob only after ATT decision is made
+                GADMobileAds.sharedInstance().start { _ in
+                    print("AdMob SDK initialized after ATT decision")
+                }
+                hasInitializedAds = true
+            }
+        }
+        .fullScreenCover(isPresented: $showATTPrompt) {
+            ATTPromptView()
+        }
     }
 
     private var colorScheme: ColorScheme? {

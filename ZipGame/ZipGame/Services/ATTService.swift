@@ -8,13 +8,17 @@ class ATTService: ObservableObject {
 
     private let defaults = UserDefaults.standard
     private let hasShownPromptKey = "zip_hasShownATTPrompt"
-    private let hasCompletedFirstPuzzleKey = "zip_hasCompletedFirstPuzzle"
 
     @Published var shouldShowPrePrompt = false
     @Published var trackingStatus: ATTrackingManager.AuthorizationStatus = .notDetermined
+    @Published var hasCompletedATTFlow = false  // True when user has made a decision
 
     private init() {
         updateTrackingStatus()
+        // If user already made a choice (not .notDetermined), mark flow as completed
+        if trackingStatus != .notDetermined {
+            hasCompletedATTFlow = true
+        }
     }
 
     // Check if we've already shown the prompt
@@ -22,31 +26,21 @@ class ATTService: ObservableObject {
         defaults.bool(forKey: hasShownPromptKey)
     }
 
-    // Check if user has completed first puzzle
-    var hasCompletedFirstPuzzle: Bool {
-        defaults.bool(forKey: hasCompletedFirstPuzzleKey)
-    }
-
-    // Mark that user has completed their first puzzle
-    func markFirstPuzzleCompleted() {
-        defaults.set(true, forKey: hasCompletedFirstPuzzleKey)
-
-        // Check if we should show the ATT prompt
-        checkAndShowPromptIfNeeded()
-    }
-
-    // Check conditions and show pre-prompt if needed
-    func checkAndShowPromptIfNeeded() {
+    // Check if ATT prompt should be shown on app launch
+    func checkAndShowPromptOnLaunch() {
         // Don't show if already shown
-        guard !hasShownPrompt else { return }
-
-        // Don't show if user hasn't completed first puzzle yet
-        guard hasCompletedFirstPuzzle else { return }
+        guard !hasShownPrompt else {
+            hasCompletedATTFlow = true
+            return
+        }
 
         // Don't show if already determined (user already made a choice via Settings)
-        guard trackingStatus == .notDetermined else { return }
+        guard trackingStatus == .notDetermined else {
+            hasCompletedATTFlow = true
+            return
+        }
 
-        // Show the pre-prompt
+        // Show the pre-prompt immediately on app launch
         shouldShowPrePrompt = true
     }
 
@@ -58,6 +52,8 @@ class ATTService: ObservableObject {
         // Request permission
         let status = await ATTrackingManager.requestTrackingAuthorization()
         trackingStatus = status
+        hasCompletedATTFlow = true
+        shouldShowPrePrompt = false
 
         // Log result
         switch status {
@@ -79,6 +75,7 @@ class ATTService: ObservableObject {
         // Mark as shown so we don't ask again
         defaults.set(true, forKey: hasShownPromptKey)
         shouldShowPrePrompt = false
+        hasCompletedATTFlow = true
     }
 
     // Update current tracking status

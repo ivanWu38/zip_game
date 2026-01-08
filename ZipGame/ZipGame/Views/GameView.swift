@@ -5,8 +5,6 @@ struct GameView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var localization = LocalizationService.shared
     @State private var showConfetti = false
-    @StateObject private var attService = ATTService.shared
-    @State private var showATTPrompt = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -63,18 +61,7 @@ struct GameView: View {
         .onChange(of: viewModel.gameState) { newState in
             if newState.isCompleted {
                 showConfetti = true
-                // Mark first puzzle completed for ATT prompt
-                attService.markFirstPuzzleCompleted()
             }
-        }
-        .onChange(of: attService.shouldShowPrePrompt) { shouldShow in
-            if shouldShow {
-                showATTPrompt = true
-                attService.shouldShowPrePrompt = false
-            }
-        }
-        .fullScreenCover(isPresented: $showATTPrompt) {
-            ATTPromptView()
         }
     }
 

@@ -55,7 +55,7 @@ struct ATTPromptView: View {
                             dismiss()
                         }
                     }) {
-                        Text("att.button.continue".localized)
+                        Text("att.continue".localized)
                             .font(.system(size: 18, weight: .semibold, design: .rounded))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -71,7 +71,7 @@ struct ATTPromptView: View {
                         attService.skipTracking()
                         dismiss()
                     }) {
-                        Text("att.button.notNow".localized)
+                        Text("att.notNow".localized)
                             .font(.system(size: 16, weight: .medium, design: .rounded))
                             .foregroundColor(Color.zipTextTertiary)
                     }
