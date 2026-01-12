@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D1EAEF82F15328200E17262 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D1EAEF72F15328200E17262 /* GoogleService-Info.plist */; };
 		A01 /* ZipGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01 /* ZipGameApp.swift */; };
 		A02 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02 /* HomeView.swift */; };
 		A03 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03 /* GameView.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D1EAEF72F15328200E17262 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B00 /* ZipGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZipGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B01 /* ZipGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipGameApp.swift; sourceTree = "<group>"; };
 		B02 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				B01 /* ZipGameApp.swift */,
 				B22 /* Info.plist */,
+				6D1EAEF72F15328200E17262 /* GoogleService-Info.plist */,
 				D03 /* Models */,
 				D04 /* ViewModels */,
 				D05 /* Views */,
@@ -255,6 +258,7 @@
 			mainGroup = D00;
 			packageReferences = (
 				PKG00 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				6D1EAEF92F15346F00E17262 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D02 /* Products */;
 			projectDirPath = "";
@@ -272,6 +276,7 @@
 			files = (
 				A15 /* Assets.xcassets in Resources */,
 				A30 /* Localizable.strings in Resources */,
+				6D1EAEF82F15328200E17262 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +551,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6D1EAEF92F15346F00E17262 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.7.0;
+			};
+		};
 		PKG00 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
