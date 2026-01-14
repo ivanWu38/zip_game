@@ -224,6 +224,8 @@ struct PracticeGameContent: View {
         .onChange(of: viewModel.gameState) { newState in
             if newState.isCompleted {
                 showConfetti = true
+                // Show interstitial ad
+                AdMobManager.shared.onGameCompleted()
             }
         }
     }

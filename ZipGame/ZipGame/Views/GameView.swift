@@ -58,9 +58,11 @@ struct GameView: View {
                 .font(.system(size: 18, weight: .medium, design: .rounded))
                 .foregroundStyle(Color.zipPrimary)
         })
-        .onChange(of: viewModel.gameState) { newState in
-            if newState.isCompleted {
+        .onChange(of: viewModel.gameState.isCompleted) { isCompleted in
+            if isCompleted {
                 showConfetti = true
+                // Show interstitial ad (respects frequency control and premium status)
+                AdMobManager.shared.onGameCompleted()
             }
         }
     }

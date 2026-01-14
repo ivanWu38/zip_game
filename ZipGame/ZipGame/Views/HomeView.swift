@@ -45,6 +45,8 @@ struct HomeView: View {
                 if let time = viewModel.completionTime {
                     dailyService.markCompleted(time: time)
                 }
+                // Show interstitial ad
+                AdMobManager.shared.onGameCompleted()
             }
         }
     }
