@@ -5,7 +5,10 @@
       "Bash(python3:*)",
       "Bash(swift generate_icon.swift:*)",
       "WebFetch(domain:apps.apple.com)",
-      "Bash(xcodebuild:*)"
+      "Bash(xcodebuild:*)",
+      "Bash(grep:*)",
+      "Bash(tree:*)",
+      "Bash(find:*)"
     ]
   }
 }

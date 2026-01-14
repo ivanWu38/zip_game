@@ -123,6 +123,17 @@
 "settings.legal.privacy" = "Datenschutzrichtlinie";
 "settings.legal.terms" = "Nutzungsbedingungen";
 
+// MARK: - Feedback
+"settings.section.feedback" = "Unterstütze uns";
+"feedback.rate.title" = "Gefällt dir Zip Game?";
+"feedback.rate.description" = "Deine Bewertung hilft anderen, dieses Spiel zu entdecken!";
+"feedback.email.title" = "Feedback senden";
+"feedback.email.description" = "Teile Ideen oder melde Probleme – wir lesen jede Nachricht";
+"feedback.share.title" = "Mit Freunden teilen";
+"feedback.share.description" = "Kennst du jemanden, der Rätsel liebt? Teile den Spaß!";
+"feedback.mail.unavailable.title" = "E-Mail nicht verfügbar";
+"feedback.mail.unavailable.message" = "Bitte konfiguriere ein E-Mail-Konto in den Einstellungen oder sende eine E-Mail direkt an wuyuping38@gmail.com";
+
 // MARK: - Subscription
 "subscription.title" = "Ohne Werbung spielen";
 "subscription.header" = "Genieße flüssigeres Spielen ohne Unterbrechungen.";

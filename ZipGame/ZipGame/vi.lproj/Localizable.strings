@@ -123,6 +123,17 @@
 "settings.legal.privacy" = "Chinh sach bao mat";
 "settings.legal.terms" = "Dieu khoan su dung";
 
+// MARK: - Feedback
+"settings.section.feedback" = "Ung ho chung toi";
+"feedback.rate.title" = "Ban thich Zip Game khong?";
+"feedback.rate.description" = "Danh gia cua ban giup nguoi khac tim thay tro choi nay!";
+"feedback.email.title" = "Gui phan hoi";
+"feedback.email.description" = "Chia se y tuong hoac bao cao van de - chung toi doc moi tin nhan";
+"feedback.share.title" = "Chia se voi ban be";
+"feedback.share.description" = "Biet ai thich giai do khong? Hay chia se niem vui!";
+"feedback.mail.unavailable.title" = "Thu khong kha dung";
+"feedback.mail.unavailable.message" = "Vui long cau hinh tai khoan thu trong Cai dat hoac gui email truc tiep den wuyuping38@gmail.com";
+
 // MARK: - Subscription
 "subscription.title" = "Choi khong quang cao";
 "subscription.header" = "Tan huong trai nghiem choi muot ma khong bi gian doan.";

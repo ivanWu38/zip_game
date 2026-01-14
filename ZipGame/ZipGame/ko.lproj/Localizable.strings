@@ -123,6 +123,17 @@
 "settings.legal.privacy" = "개인정보 처리방침";
 "settings.legal.terms" = "이용약관";
 
+// MARK: - Feedback
+"settings.section.feedback" = "응원하기";
+"feedback.rate.title" = "Zip Game이 마음에 드시나요?";
+"feedback.rate.description" = "평점이 다른 사용자가 이 게임을 발견하는 데 도움이 됩니다!";
+"feedback.email.title" = "피드백 보내기";
+"feedback.email.description" = "아이디어나 문제를 공유해 주세요. 모든 메시지를 읽고 있습니다";
+"feedback.share.title" = "친구에게 공유";
+"feedback.share.description" = "퍼즐을 좋아하는 친구가 있나요? 즐거움을 나눠보세요!";
+"feedback.mail.unavailable.title" = "메일 사용 불가";
+"feedback.mail.unavailable.message" = "설정에서 메일 계정을 구성하거나 wuyuping38@gmail.com으로 직접 이메일을 보내주세요";
+
 // MARK: - Subscription
 "subscription.title" = "광고 없이 플레이";
 "subscription.header" = "광고 없이 부드러운 게임플레이를 즐기세요.";

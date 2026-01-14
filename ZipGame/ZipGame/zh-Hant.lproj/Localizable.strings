@@ -123,6 +123,17 @@
 "settings.legal.privacy" = "隱私政策";
 "settings.legal.terms" = "使用條款";
 
+// MARK: - Feedback
+"settings.section.feedback" = "支持我們";
+"feedback.rate.title" = "喜歡 Zip Game 嗎？";
+"feedback.rate.description" = "您的評分能幫助更多人發現這款遊戲！";
+"feedback.email.title" = "發送回饋";
+"feedback.email.description" = "分享想法或回報問題，我們會仔細閱讀每則訊息";
+"feedback.share.title" = "分享給朋友";
+"feedback.share.description" = "認識喜歡解謎的朋友嗎？一起分享樂趣！";
+"feedback.mail.unavailable.title" = "郵件不可用";
+"feedback.mail.unavailable.message" = "請在設定中配置郵件帳戶，或直接發送郵件至 wuyuping38@gmail.com";
+
 // MARK: - Subscription
 "subscription.title" = "無廣告遊玩";
 "subscription.header" = "享受更流暢的遊戲體驗，零廣告干擾。";

@@ -123,6 +123,17 @@
 "settings.legal.privacy" = "นโยบายความเป็นส่วนตัว";
 "settings.legal.terms" = "ข้อกำหนดการใช้งาน";
 
+// MARK: - Feedback
+"settings.section.feedback" = "สนับสนุนเรา";
+"feedback.rate.title" = "ชอบ Zip Game ไหม?";
+"feedback.rate.description" = "การให้คะแนนของคุณช่วยให้คนอื่นค้นพบเกมนี้!";
+"feedback.email.title" = "ส่งความคิดเห็น";
+"feedback.email.description" = "แบ่งปันไอเดียหรือรายงานปัญหา - เราอ่านทุกข้อความ";
+"feedback.share.title" = "แชร์ให้เพื่อน";
+"feedback.share.description" = "รู้จักใครที่ชอบปริศนาไหม? แบ่งปันความสนุก!";
+"feedback.mail.unavailable.title" = "ไม่สามารถใช้เมลได้";
+"feedback.mail.unavailable.message" = "กรุณาตั้งค่าบัญชีเมลในการตั้งค่า หรือส่งอีเมลโดยตรงที่ wuyuping38@gmail.com";
+
 // MARK: - Subscription
 "subscription.title" = "เล่นโดยไม่มีโฆษณา";
 "subscription.header" = "เพลิดเพลินกับการเล่นเกมที่ราบรื่นไม่มีการขัดจังหวะ";

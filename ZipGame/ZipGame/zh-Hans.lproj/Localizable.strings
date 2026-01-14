@@ -123,6 +123,17 @@
 "settings.legal.privacy" = "隐私政策";
 "settings.legal.terms" = "使用条款";
 
+// MARK: - Feedback
+"settings.section.feedback" = "支持我们";
+"feedback.rate.title" = "喜欢 Zip Game 吗？";
+"feedback.rate.description" = "您的评分能帮助更多人发现这款游戏！";
+"feedback.email.title" = "发送反馈";
+"feedback.email.description" = "分享想法或报告问题，我们会仔细阅读每条消息";
+"feedback.share.title" = "分享给朋友";
+"feedback.share.description" = "认识喜欢解谜的朋友吗？一起分享乐趣！";
+"feedback.mail.unavailable.title" = "邮件不可用";
+"feedback.mail.unavailable.message" = "请在设置中配置邮件账户，或直接发送邮件至 wuyuping38@gmail.com";
+
 // MARK: - Subscription
 "subscription.title" = "无广告游玩";
 "subscription.header" = "享受更流畅的游戏体验，零广告干扰。";

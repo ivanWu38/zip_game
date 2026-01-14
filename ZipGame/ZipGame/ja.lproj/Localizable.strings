@@ -123,6 +123,17 @@
 "settings.legal.privacy" = "プライバシーポリシー";
 "settings.legal.terms" = "利用規約";
 
+// MARK: - Feedback
+"settings.section.feedback" = "サポート";
+"feedback.rate.title" = "Zip Gameを気に入っていますか？";
+"feedback.rate.description" = "あなたの評価が他のユーザーにこのゲームを見つけてもらう助けになります！";
+"feedback.email.title" = "フィードバックを送る";
+"feedback.email.description" = "アイデアや問題の報告をお待ちしています。すべてのメッセージを読んでいます";
+"feedback.share.title" = "友達にシェア";
+"feedback.share.description" = "パズル好きな友達に教えてあげませんか？";
+"feedback.mail.unavailable.title" = "メールが利用できません";
+"feedback.mail.unavailable.message" = "設定でメールアカウントを設定するか、wuyuping38@gmail.comに直接メールを送信してください";
+
 // MARK: - Subscription
 "subscription.title" = "広告なしでプレイ";
 "subscription.header" = "広告なしでスムーズなゲームプレイを楽しもう。";

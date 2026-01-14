@@ -123,6 +123,17 @@
 "settings.legal.privacy" = "Dasar Privasi";
 "settings.legal.terms" = "Terma Penggunaan";
 
+// MARK: - Feedback
+"settings.section.feedback" = "Sokong Kami";
+"feedback.rate.title" = "Suka Zip Game?";
+"feedback.rate.description" = "Penilaian anda membantu orang lain menemui permainan ini!";
+"feedback.email.title" = "Hantar Maklum Balas";
+"feedback.email.description" = "Kongsi idea atau laporkan masalah - kami membaca setiap mesej";
+"feedback.share.title" = "Kongsi dengan Rakan";
+"feedback.share.description" = "Kenal seseorang yang suka teka-teki? Sebarkan keseronokan!";
+"feedback.mail.unavailable.title" = "Mel Tidak Tersedia";
+"feedback.mail.unavailable.message" = "Sila konfigurasikan akaun mel dalam Tetapan, atau emel terus ke wuyuping38@gmail.com";
+
 // MARK: - Subscription
 "subscription.title" = "Main Tanpa Iklan";
 "subscription.header" = "Nikmati permainan yang lebih lancar tanpa gangguan.";

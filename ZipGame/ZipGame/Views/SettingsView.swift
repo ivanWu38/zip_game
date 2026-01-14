@@ -1,4 +1,6 @@
 import SwiftUI
+import StoreKit
+import MessageUI
 
 class SettingsService: ObservableObject {
     static let shared = SettingsService()
@@ -54,6 +56,8 @@ struct SettingsView: View {
     @State private var showSubscription = false
     @State private var showBoardSettings = false
     @State private var showLanguagePicker = false
+    @State private var showMailComposer = false
+    @State private var showMailError = false
 
     var body: some View {
         NavigationStack {
@@ -72,6 +76,9 @@ struct SettingsView: View {
 
                         // Language Section
                         languageSection
+
+                        // Feedback Section
+                        feedbackSection
 
                         // App Info
                         appInfoSection
@@ -105,6 +112,18 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showLanguagePicker) {
                 LanguagePickerView()
+            }
+            .sheet(isPresented: $showMailComposer) {
+                MailComposeView(
+                    recipient: "wuyuping38@gmail.com",
+                    subject: "Zip Game Feedback",
+                    body: ""
+                )
+            }
+            .alert("feedback.mail.unavailable.title".localized, isPresented: $showMailError) {
+                Button("common.ok".localized, role: .cancel) { }
+            } message: {
+                Text("feedback.mail.unavailable.message".localized)
             }
         }
     }
@@ -304,6 +323,133 @@ struct SettingsView: View {
                         )
                 )
             }
+        }
+    }
+
+    // MARK: - Feedback Section
+    private var feedbackSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("settings.section.feedback".localized)
+                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                .foregroundStyle(Color.zipTextTertiary)
+                .textCase(.uppercase)
+                .tracking(1)
+
+            VStack(spacing: 0) {
+                // Rate App
+                Button(action: {
+                    requestAppReview()
+                }) {
+                    HStack(spacing: 14) {
+                        Image(systemName: "star.fill")
+                            .font(.system(size: 22))
+                            .foregroundStyle(Color.yellow)
+                            .frame(width: 32)
+
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("feedback.rate.title".localized)
+                                .font(.system(size: 19, weight: .medium, design: .rounded))
+                                .foregroundStyle(Color.zipTextPrimary)
+
+                            Text("feedback.rate.description".localized)
+                                .font(.system(size: 15, weight: .regular, design: .rounded))
+                                .foregroundStyle(Color.zipTextTertiary)
+                                .multilineTextAlignment(.leading)
+                        }
+
+                        Spacer()
+
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundStyle(Color.zipTextTertiary)
+                    }
+                    .padding(.vertical, 16)
+                    .padding(.horizontal, 18)
+                }
+
+                Divider().background(Color.zipCardBorder)
+
+                // Send Feedback
+                Button(action: {
+                    if MFMailComposeViewController.canSendMail() {
+                        showMailComposer = true
+                    } else {
+                        showMailError = true
+                    }
+                }) {
+                    HStack(spacing: 14) {
+                        Image(systemName: "envelope.fill")
+                            .font(.system(size: 22))
+                            .foregroundStyle(Color.zipPrimary)
+                            .frame(width: 32)
+
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("feedback.email.title".localized)
+                                .font(.system(size: 19, weight: .medium, design: .rounded))
+                                .foregroundStyle(Color.zipTextPrimary)
+
+                            Text("feedback.email.description".localized)
+                                .font(.system(size: 15, weight: .regular, design: .rounded))
+                                .foregroundStyle(Color.zipTextTertiary)
+                                .multilineTextAlignment(.leading)
+                        }
+
+                        Spacer()
+
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundStyle(Color.zipTextTertiary)
+                    }
+                    .padding(.vertical, 16)
+                    .padding(.horizontal, 18)
+                }
+
+                Divider().background(Color.zipCardBorder)
+
+                // Share App
+                ShareLink(item: URL(string: "https://apps.apple.com/app/id6757413224")!) {
+                    HStack(spacing: 14) {
+                        Image(systemName: "square.and.arrow.up.fill")
+                            .font(.system(size: 22))
+                            .foregroundStyle(Color.green)
+                            .frame(width: 32)
+
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("feedback.share.title".localized)
+                                .font(.system(size: 19, weight: .medium, design: .rounded))
+                                .foregroundStyle(Color.zipTextPrimary)
+
+                            Text("feedback.share.description".localized)
+                                .font(.system(size: 15, weight: .regular, design: .rounded))
+                                .foregroundStyle(Color.zipTextTertiary)
+                                .multilineTextAlignment(.leading)
+                        }
+
+                        Spacer()
+
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundStyle(Color.zipTextTertiary)
+                    }
+                    .padding(.vertical, 16)
+                    .padding(.horizontal, 18)
+                }
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 18)
+                    .fill(Color.zipCardBackground)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18)
+                            .stroke(Color.zipCardBorder, lineWidth: 1)
+                    )
+            )
+        }
+    }
+
+    // Helper function for App Review
+    private func requestAppReview() {
+        if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: scene)
         }
     }
 
@@ -595,6 +741,41 @@ struct InfoRow: View {
                 .foregroundStyle(Color.zipTextTertiary)
         }
         .padding(.vertical, 14)
+    }
+}
+
+// MARK: - Mail Compose View
+struct MailComposeView: UIViewControllerRepresentable {
+    let recipient: String
+    let subject: String
+    let body: String
+    @Environment(\.dismiss) private var dismiss
+
+    func makeUIViewController(context: Context) -> MFMailComposeViewController {
+        let composer = MFMailComposeViewController()
+        composer.mailComposeDelegate = context.coordinator
+        composer.setToRecipients([recipient])
+        composer.setSubject(subject)
+        composer.setMessageBody(body, isHTML: false)
+        return composer
+    }
+
+    func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(dismiss: dismiss)
+    }
+
+    class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
+        let dismiss: DismissAction
+
+        init(dismiss: DismissAction) {
+            self.dismiss = dismiss
+        }
+
+        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+            dismiss()
+        }
     }
 }
 

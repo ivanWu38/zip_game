@@ -123,6 +123,17 @@
 "settings.legal.privacy" = "Kebijakan Privasi";
 "settings.legal.terms" = "Ketentuan Penggunaan";
 
+// MARK: - Feedback
+"settings.section.feedback" = "Dukung Kami";
+"feedback.rate.title" = "Suka Zip Game?";
+"feedback.rate.description" = "Penilaian Anda membantu orang lain menemukan game ini!";
+"feedback.email.title" = "Kirim Masukan";
+"feedback.email.description" = "Bagikan ide atau laporkan masalah - kami membaca setiap pesan";
+"feedback.share.title" = "Bagikan ke Teman";
+"feedback.share.description" = "Kenal seseorang yang suka puzzle? Sebarkan keseruan!";
+"feedback.mail.unavailable.title" = "Mail Tidak Tersedia";
+"feedback.mail.unavailable.message" = "Silakan konfigurasikan akun mail di Pengaturan, atau kirim email langsung ke wuyuping38@gmail.com";
+
 // MARK: - Subscription
 "subscription.title" = "Bermain Tanpa Iklan";
 "subscription.header" = "Nikmati permainan lebih lancar tanpa gangguan.";
