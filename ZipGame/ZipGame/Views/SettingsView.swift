@@ -661,15 +661,17 @@ struct AppearanceModeButton: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 8) {
+            HStack(spacing: 6) {
                 Image(systemName: mode.icon)
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.system(size: 14, weight: .semibold))
                 Text(mode.displayName)
-                    .font(.system(size: 17, weight: .semibold, design: .rounded))
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .lineLimit(1)
+                    .fixedSize(horizontal: true, vertical: false)
             }
             .foregroundStyle(isSelected ? .white : Color.zipTextSecondary)
-            .padding(.horizontal, 18)
-            .padding(.vertical, 12)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
             .background(
                 Capsule()
                     .fill(isSelected ? Color.zipPrimary : Color.zipCardBackground)
